@@ -10,7 +10,7 @@ module.exports = {
 
         const infoEmbed = new Discord.MessageEmbed()
             .setColor("BLUE")
-            .setTitle(`${member.user.username}'s Information`)
+            .setTitle(`${user.username}'s Information`)
             .setDescription(`Info from ${message.guild.name}`)
             .setThumbnail(user.avatarURL({dynamic: true}))
             .setFooter('requested')
