@@ -7,7 +7,7 @@ module.exports = {
     async execute(interaction) {
 
         const embed = new Discord.MessageEmbed()
-            .setColor('36393E')
+            .setColor('00FFFF')
             .setTitle(interaction.guild.name + ' Server Stats')
             .addField('📄 Channels', `${interaction.guild.channels.cache.filter(chan => chan.type === 'voice').size} Voice Channels | ${interaction.guild.channels.cache.filter(chan => chan.type === 'text').size} Text Channels | ${interaction.guild.channels.cache.filter(chan => chan.type === 'category').size} Categories | ${Math.round((interaction.guild.channels.cache.filter(chan => chan.type === 'voice').size / interaction.guild.channels.cache.size) * 100)}% Voice Channels | ${Math.round((interaction.guild.channels.cache.filter(chan => chan.type === 'text').size / interaction.guild.channels.cache.size) * 100)}% Text Channels | ${Math.round((interaction.guild.channels.cache.filter(chan => chan.type === 'category').size / interaction.guild.channels.cache.size) * 100)}% Categories`, true)
             .addField(':man: Members', `${interaction.guild.members.cache.filter(member => member.user.bot).size} Bots | ${(interaction.guild.memberCount) - (interaction.guild.members.cache.filter(member => member.user.bot).size)} Humans | ${interaction.guild.memberCount} Total Members | ${Math.round((interaction.guild.members.cache.filter(member => member.user.bot).size / interaction.guild.memberCount) * 100)}% Bots | ${Math.round((((interaction.guild.memberCount) - (interaction.guild.members.cache.filter(member => member.user.bot).size)) / interaction.guild.memberCount) * 100)}% Humans`, true)

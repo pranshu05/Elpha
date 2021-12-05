@@ -64,20 +64,9 @@ module.exports = {
 
         .setName('botinfo')
 
-        .setDescription('Basic Information About db8bot')
+        .setDescription('Basic Information About Elpha'),
 
-        .addStringOption(option =>
-
-            option.setName('flags')
-
-                .addChoice('nerdy', 'nerdy')
-
-                .setDescription('Optional flags for the botinfo command')
-
-                .setRequired(false)
-
-        ),
-
+        
     async execute(interaction) {
 
 
@@ -98,13 +87,11 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
 
-            .setColor('36393E')
+            .setColor('0000FF')
 
-            .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' + config.BUILD)
+            .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' )
 
             .setDescription(interaction.client.user.username + ' has been awake for ' + timeCon(process.uptime()))
-
-            .addField(':construction_worker: Creator', config.OWNERTAG, true)
 
             .addField('🏠 Guilds', '' + interaction.client.guilds.cache.size, true)
 
@@ -112,11 +99,6 @@ module.exports = {
 
             .addField('🤵 Total Users', '' + (totalPeople - botNumber), true) // repl with -test cmd contents
 
-            .addField(':arrow_left: Legacy Prefix', config.PREFIX, true)
-
-            .addField(':clipboard: # of Commands - Some not accessable to users', '' + commandsLength, true)
-
-            .addField(':gem: Shards', 'N/A')
 
             // .addField(`:heart: Upvote ${config.name}`, `[Discord Bot List (discordbots.org)](https://discordbots.org/bot/460610749283172353)\n[Discord Bot List](https://discordbotlist.com/bots/460610749283172353)\n[Bots on Discord](https://bots.ondiscord.xyz/bots/460610749283172353)\n[Bots for Discord](https://botsfordiscord.com/bots/460610749283172353)`, true) // check if this is working with the custom emoji
 
@@ -138,41 +120,7 @@ module.exports = {
 
             .addField(':white_check_mark: Host OS', `${os.platform} ${os.release}`, true)
 
-        if (args === 'nerdy') {
-
             interaction.reply({ embeds: [embed] })
-
-        } else {
-
-            const embednotNerdy = new Discord.MessageEmbed()
-
-                .setColor('36393E')
-
-                .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' + config.BUILD)
-
-                .setDescription('Awake for ' + timeCon(process.uptime()))
-
-                .addField(':crown: Developer/Owner', config.OWNERTAG, true)
-
-                .addField('🏠 Guilds', '' + interaction.client.guilds.cache.size, true)
-
-                .addField('📄 Channels', '' + interaction.client.channels.cache.size, true)
-
-                .addField('🤵 Total Users', '' + (totalPeople - botNumber), true)
-
-                .addField(':arrow_left: Legacy Prefix', config.PREFIX, true)
-
-                .addField(':clipboard: # of Commands - Some not accessable to users', '' + commandsLength, true)
-
-                .addField(':gem: Shards', 'N/A', true)
-
-            // .addField(`:heart: Upvote ${config.name}`, `[Discord Bot List (discordbots.org)](https://discordbots.org/bot/460610749283172353)\n[Discord Bot List](https://discordbotlist.com/bots/460610749283172353)\n[Bots on Discord](https://bots.ondiscord.xyz/bots/460610749283172353)\n[Bots for Discord](https://botsfordiscord.com/bots/460610749283172353)`, true) // check if this is working with the custom emoji
-
-            // .addField(`:moneybag: Donate`, `[DonateBot](https://donatebot.io/checkout/430303752357019648)\n[Patreon](https://www.patreon.com/airfusion)`, true) //check if everything runs here.
-
-            interaction.reply({ embeds: [embednotNerdy] })
-
-        }
 
     }
 
