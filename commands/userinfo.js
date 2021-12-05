@@ -21,17 +21,17 @@ console.log(member.user);
             .addFields(
                 { 
                     name: "User Info",
-                    value: "```Username:"+user.username+"\nDiscriminator: #"+user.discriminator+"\nTag: "+user.tag+"\nServer Nickname: "+member.displayName+"\nIs Bot: "+user.bot+"\nID: "+user.id+" ```",
+                    value: "```Username:"+member.user.username+"\nDiscriminator: #"+member.user.discriminator+"\nTag: "member.user.tag+"\nServer Nickname: "+member.displayName+"\nIs Bot: "member.user.bot+"\nID: "+user.id+" ```",
                     inline: true
                 },
                 {
                     name: `Status`,
-                    value: "```"+user.presence.status+"\n"+activities+"```",
+                    value: "```"+member.user.presence.status+"\n"+activities+"```",
                     inline: false
                 },
                 {
                     name: `Member Info`,
-                    value: "```Joined Server: "+new Date(user.joinedAt).toLocaleDateString()+"\nJoined Discord: "+new Date(user.createdTimestamp).toLocaleDateString()+"```",
+                    value: "```Joined Server: "+new Date(member.user.joinedAt).toLocaleDateString()+"\nJoined Discord: "+new Date(member.user.createdTimestamp).toLocaleDateString()+"```",
                     inline: true
                 },
                 {
