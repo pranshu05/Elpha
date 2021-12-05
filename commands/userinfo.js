@@ -6,7 +6,7 @@ module.exports = {
     .setName("userinfo")
     .setDescription("user's info!"),
     
-    async execute(interaction){
+    async execute(cilent, interaction){
 
         const infoEmbed = new Discord.MessageEmbed()
             .setColor("BLUE")
