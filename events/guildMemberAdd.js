@@ -7,7 +7,7 @@ module.exports = {
 		console.log(member.user);
 
 		const newMemberEmbed = new Discord.MessageEmbed()
-			.setColor("#d81e5b")
+			.setColor("00FFFF")
 			.setTitle("New Member!")
 			.setDescription(`${member.user} has joined the server! We hope you enjoy your stay!`)
 			.setThumbnail(member.user.displayAvatarURL())
