@@ -1,18 +1,21 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { Message Embed, Discord }  = require("discord.js");
+const { MessageEmbed, Discord }  = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("userinfo")
     .setDescription("user's info!"),
     
-    async execute(cilent, interaction){
-
+    async execute(cilent, interaction, member){
+        
+        
+console.log(member.user);
+        
         const infoEmbed = new Discord.MessageEmbed()
             .setColor("BLUE")
-            .setTitle(`${user.username}'s Information`)
+            .setTitle(`${member.user.username}'s Information`)
             .setDescription(`Info from ${message.guild.name}`)
-            .setThumbnail(user.avatarURL({dynamic: true}))
+            .setThumbnail(member.user.avatarURL({dynamic: true}))
             .setFooter('requested')
             .setTimestamp()
             .addFields(
@@ -40,9 +43,10 @@ module.exports = {
             
             );
 
+member.guild.channels.send({
+				embeds: [infoEmbed] 
+  
 
-        interaction.reply({
-            embeds: [infoEmbed] 
         })
     }
 }
