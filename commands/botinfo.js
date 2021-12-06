@@ -1,23 +1,15 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
-
 const fs = require('fs')
-
 const dir = './commands'
-
 let commandsLength = 0
-
 fs.readdir(dir, (_err, files) => {
 
     commandsLength = files.length
 
 })
-
 const Discord = require('discord.js')
-
 const pkg = require('../package.json')
-
 const os = require('os')
-
 function timeCon(time) {
 
     time = time * 1000
@@ -87,7 +79,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
 
-            .setColor('0000FF')
+            .setColor('00FFFF')
 
             .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' )
 
