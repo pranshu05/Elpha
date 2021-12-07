@@ -26,6 +26,16 @@ token=
 
 Elpha uses Discord slash commands however the custom command's prefix will be added soon! 
 
+## Contributors
+
+📜 [**Pranshu05**](https://github.com/pranshu05)
+
+## Bug finder and Helper
+
+📜 [**Fad The Chad**](https://github.com/FadTheChad)
+
+* Github: [@Elphabot](https://github.com/Elphabot)
+
 
 ## Open Source
 
