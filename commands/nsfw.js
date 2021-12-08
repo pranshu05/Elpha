@@ -9,7 +9,6 @@ module.exports = {
     async execute(interaction) {
 
         let eightball = [
-            'https://c.tenor.com/LSdPTJ_Uki4AAAAS/haram-heisenberg.gif',
             'https://c.tenor.com/LJKTSD9hZHQAAAAM/shame-on-you-how-dare-you.gif',
             'https://c.tenor.com/sign51fHK0kAAAAM/smh-kanyewest.gif',
             'https://c.tenor.com/CwHsyBGtIr4AAAAM/dwight-schrute-the-office.gif',

@@ -1,32 +1,39 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const  Discord  = require("discord.js");
+const  Interaction  = require("discord.js");
+const Discord = require('discord.js');
 const moment = require('moment');
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("userinfo")
-    .setDescription("user's info!"),
-    
-    async execute(interaction){
+    .setName("userinfor")
+    .setDescription("sends user's info")
+    .addUserOption(option =>
+        option.setName('user')
+            .setDescription('user id')
+            .setRequired(true)
+    ),
 
-        const member = interaction.guild.member(user);
-        const infoEmbed = new Discord.MessageEmbed()
+    async execute(interaction) {
+
+        var user = interaction.options.getUser('user')
+        const embed = new Discord.MessageEmbed()
+       .setColor('#00ffff')
+        .setTitle(`User info`)
         .setColor("00FFFF")
-        .setThumbnail(interaction.author.avatarURL)
+        .setThumbnail(user.displayAvatarURL())
         .addField(`${user.tag}`, `${user}`, true)
         .addField("ID:", `${user.id}`, true)
-        .addField("Nickname:", `${member.nickname !== null ? `${member.nickname}` : 'None'}`, true)
-        .addField("Status:", `${user.presence.status}`, true)
+        .addField("Nickname:", `${user.nickname !== null ? `${user.nickname}` : 'None'}`, true)
+       // .addField("Status:", `${user.presence.status}`, true)
         .addField("In Server", interaction.guild.name, true)
-        .addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
-        .addField("Bot:", `${user.bot}`, true)
-        .addField("Joined The Server On:", `${moment.utc(member.joinedAt).format("dddd, MMMM Do YYYY")}`, true)
+        //.addField("Permissons:", interaction.guild.members.cache.get(user).permissions)
+       // .addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
+        //.addField("Bot:", `${user.bot}`, true)
+        .addField("Joined The Server On:", `${moment.utc(user.joinedAt).format("dddd, MMMM Do YYYY")}`, true)
         .addField("Account Created On:", `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`, true) 
-        .addField("Roles:", member.roles.map(roles => `${roles}`).join(', '), true)
-        .setFooter(`Replying to ${interaction.author.username}#${interaction.author.discriminator}`)
+        //.addField("Roles:", user.roles.map(roles => `${roles}`).join(', '), true)
+        .setFooter(`Replying to ${user.username}#${user.discriminator}`)
 
-        interaction.reply({
-            embeds: [infoEmbed] 
-        })
-    }
-}
+        interaction.reply({ embeds: [embed] })
+    },
+};
