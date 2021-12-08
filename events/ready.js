@@ -9,7 +9,7 @@ module.exports = {
         console.log('ready!');
 
     client.user.setPresence({
-        status: 'online',
+        status: 'idle',
         activities: [{ 
        name: `Pranshu developing me 👀`,
         type: "WATCHING",
