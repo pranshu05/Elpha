@@ -34,6 +34,8 @@ Elpha uses Discord slash commands however the custom command's prefix will be ad
 
 📜 [**Fad The Chad**](https://github.com/FadTheChad)
 
+## Github
+
 * Github: [@Elphabot](https://github.com/Elphabot)
 
 
