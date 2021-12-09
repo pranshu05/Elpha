@@ -16,6 +16,15 @@ npm install
 node .
 ```
 
+You can also use nodemone to run
+name the cript commands in package.json
+```sh
+"start": "nodemon something"
+```
+and to run the code
+```sh
+npm run something
+```
 ## .env file
 ```json
 DATABASE_URL=
