@@ -16,8 +16,8 @@ npm install
 node .
 ```
 
-You can also use nodemone to run
-name the cript commands in package.json
+You can also use nodemone to run....
+name the script commands in package.json
 ```sh
 "start": "nodemon something"
 ```
