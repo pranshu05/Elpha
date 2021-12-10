@@ -7,12 +7,12 @@ module.exports = {
     .setName("choose")
     .setDescription("Elpha will choose for u!")
     .addSubcommand(subcommand => subcommand
-        .setName('choice')
         .setDescription('choice')
         .addStringOption(option => option.setName('1st').setDescription('Enter 1st choice').setRequired(true))
         .addStringOption(option => option.setName('2nd').setDescription('Enter 2nd choice').setRequired(true))),
 
     async execute(interaction){
+
 
         let choose = [
 
@@ -23,8 +23,9 @@ module.exports = {
         let index = (Math.floor(Math.random() * Math.floor(choose.length)));
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
-
         .setTitle('I choose')
+        .addField('First choice', '' + interaction.options.getString('1st') )
+        .addField(' Second choice ','' +  interaction.options.getString('2nd'))
         .setDescription(choose[index])    
         interaction.reply({ embeds: [embed] })
         

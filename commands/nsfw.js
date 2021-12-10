@@ -20,7 +20,16 @@ module.exports = {
             'https://c.tenor.com/BXjuX2oibK8AAAAM/shame-shame-on-you.gif',
             'https://c.tenor.com/u7lPRIZwv00AAAAM/bahut-tez.gif',
             'https://c.tenor.com/y-r4qV_yEXsAAAAM/kareena-kapoor-khan-angrezi-medium.gif',
-    ]
+            'https://c.tenor.com/olTVP9rBLuoAAAAM/you-naughty-naughty-pointing.gif',
+            'https://c.tenor.com/pdDPCkLF2vEAAAAM/naughty.gif',
+            'https://c.tenor.com/uBjg1oObWnYAAAAM/naughtynaughty-atharvakore.gif',
+            'https://c.tenor.com/n8wXFR2JRVkAAAAM/behave-austin-powers.gif',
+            'https://c.tenor.com/Oj8eXOmVwOAAAAAM/naughty-no.gif',
+            'https://c.tenor.com/zN4rxp_K3NQAAAAM/youre-a-very-naughty-boy-youre-bad-boy.gif',
+            'https://c.tenor.com/OvCO9wv3qWcAAAAM/raise-eyebrow-sexy.gif',
+            'https://c.tenor.com/DfSs6KiP6-kAAAAM/akshay-kumar-smile.gif',
+            'https://c.tenor.com/zK6-iEBjjcEAAAAS/no-nooo.gif',
+                ]
 
         let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
 
