@@ -3,6 +3,8 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg?cacheSeconds=2592000&style=for-the-badge)
 ![botlib](https://img.shields.io/badge/powered_by-discord.js-blue?style=for-the-badge)
+[!invite](https://img.shields.io/badge/INVITE-ELPHA-yellow?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=916613852362330133&permissions=8&scope=bot%20applications.commands)
+
 
 
 ## Installing the modules
