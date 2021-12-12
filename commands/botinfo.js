@@ -91,6 +91,7 @@ module.exports = {
 
             .addField('🤵 Total Users', '' + (totalPeople - botNumber), true) // repl with -test cmd contents
 
+            .addField('🤵 Developer :' , 'Pranshu05#4726', true)
 
             // .addField(`:heart: Upvote ${config.name}`, `[Discord Bot List (discordbots.org)](https://discordbots.org/bot/460610749283172353)\n[Discord Bot List](https://discordbotlist.com/bots/460610749283172353)\n[Bots on Discord](https://bots.ondiscord.xyz/bots/460610749283172353)\n[Bots for Discord](https://botsfordiscord.com/bots/460610749283172353)`, true) // check if this is working with the custom emoji
 

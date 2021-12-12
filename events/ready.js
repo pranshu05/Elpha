@@ -25,10 +25,17 @@ module.exports = {
 
     (async ()  => {
         try{
-            await rest.put(Routes.applicationCommands(CLIENT_ID), {
-                body : commands
-            });
-            console.log("Succesfully registered commands globally !");
+            if(process.env.ENV === "productio"){
+                await rest.put(Routes.applicationCommands(CLIENT_ID), {
+                    body : commands
+                });
+                console.log("Succesfully registered commands globally !");
+            } else {
+                await rest.put(Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILD_ID), {
+                    body : commands
+                });
+                console.log("Succesfully registered commands locally !");
+            }
         } catch (err) {
           if (err)  console.error(err);
         }

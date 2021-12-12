@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 module.exports = {
 	name: "guildMemberRemove",
 	async execute(member) {
@@ -11,9 +13,12 @@ module.exports = {
 			.setThumbnail(member.user.displayAvatarURL())
 			.setTimestamp();
 		
-			member.guild.channels.cache.get("862296895665340467").send({
-				embeds: [newMemberEmbed] 
-			})
+			if(member.guild.id === "754381521854398595"){
+				member.guild.channels.cache.get("862296895665340467").send({
+					embeds: [newMemberEmbed] 
+				})
+			}
+			
 	}
 
 }
