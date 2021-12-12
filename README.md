@@ -25,5 +25,5 @@ Elpha uses Discord slash commands however the custom command's prefix will be ad
 
 ## Open Source
 
-***Elpha is an open source discord bot ***
-*** You can contribute to my code or make a bot from my code it's free!!!***
+***Elpha is an open source discord bot .
+You can contribute to my code or make a bot from my code it's free!!!***
