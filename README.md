@@ -24,7 +24,7 @@ However you can install the nodemon package by
 ```sh
 npm install nodemon
 ```
-And run the bot once and it will autometically re run the but after changes in the files
+And run the bot once and it will autometically re-run the bot after changes in the files
 
 ## .env file
 
