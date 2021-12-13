@@ -30,8 +30,8 @@ And run the bot once and it will autometically re-run the bot after changes in t
 
 .env file contains secret like token,prefix....etc
 never share the .env to anyone
-## .env file
-```json
+
+```sh
 prefix=
 token=
 GUILD_ID=
