@@ -4,7 +4,7 @@
 <p><img src = "https://raw.githubusercontent.com/pranshu05/Elpha/main/img/b.png"></p>
 <br />
   
-[![Discord](https://img.shields.io/discord/754381521854398595?style=for-the-badge?logo=discord?logoColor=white)](https://discord.gg/CVyx9qyYPF)
+[![Discord](https://img.shields.io/discord/754381521854398595?color=white&label=DISCORD&logo=discord&style=for-the-badge)](https://discord.gg/CVyx9qyYPF)
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg?cacheSeconds=2592000&style=for-the-badge)
 ![botlib](https://img.shields.io/badge/powered_by-discord.js-blue?style=for-the-badge)
 [![invite](https://img.shields.io/badge/INVITE-ELPHA-yellow?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=916613852362330133&permissions=8&scope=bot%20applications.commands)
