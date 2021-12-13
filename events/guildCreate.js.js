@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const Discord = require('discord.js')
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
@@ -10,11 +10,11 @@ module.exports = {
 			.setColor("00FFFF")
 			.setTitle("Hello I am Elpha")
 			.setDescription(`thanks for choosing me!`)
-			.setTimestamp();
+			.setTimestamp()
 
 			channel.send({ embeds: [embed] })
 
-        console.log(`Server joined: ${guild.name}`);
+        console.log(`Server joined: ${guild.name}`)
 		
 	}
 }

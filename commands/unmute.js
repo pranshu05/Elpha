@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const  Interaction  = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders")
+const  Interaction  = require("discord.js")
 const Discord = require('discord.js')
 
 module.exports = {
@@ -35,5 +35,5 @@ module.exports = {
             interaction.reply('Insufficant Permissions')
         }
        
-    },
-};
+    }
+}

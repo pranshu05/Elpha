@@ -31,7 +31,7 @@ module.exports = {
             'Love the life you live. Live the life you love. -Bob Marley            ',
             'Money can not buy life. -Bob Marley',
         ]
-        let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
+        let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
         .setTitle(eightball[index] )

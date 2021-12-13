@@ -1,6 +1,6 @@
-require("dotenv").config();
-const fs = require("fs");
-const {Client, Intents, Collection} = require("discord.js");
+require("dotenv").config()
+const fs = require("fs")
+const {Client, Intents, Collection} = require("discord.js")
 const client = new Client({ 
     intents: [
         'GUILDS',
@@ -15,31 +15,30 @@ const client = new Client({
         'GUILD_VOICE_STATES',
         'GUILD_PRESENCES',
     ] 
-});
+})
 
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
 
 for (const file of eventFiles) {
-	const event = require(`./events/${file}`);
+	const event = require(`./events/${file}`)
 
     if (event.once){
-        client.once(event.name, (...args) => event.execute(...args, commands));
+        client.once(event.name, (...args) => event.execute(...args, commands))
     } else {
-        client.on(event.name, (...args) => event.execute(...args, commands));
+        client.on(event.name, (...args) => event.execute(...args, commands))
     }
     
 }
 
-const commands = [];
+const commands = []
 
-client.commands = new Collection();
+client.commands = new Collection()
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-    commands.push(command.data.toJSON());
-	client.commands.set(command.data.name, command);
+	const command = require(`./commands/${file}`)
+    commands.push(command.data.toJSON())
+	client.commands.set(command.data.name, command)
 }
 
 

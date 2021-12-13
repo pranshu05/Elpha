@@ -88,8 +88,8 @@ module.exports = {
             'Yeah Right', 
             'You Wish', 
             'You\'ve Got To Be Kidding...',
-        ];
-        let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
+        ]
+        let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
 
@@ -99,5 +99,5 @@ module.exports = {
         
         interaction.reply({ embeds: [embed] })
 			
-	},
-};
+	}
+}

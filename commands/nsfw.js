@@ -31,7 +31,7 @@ module.exports = {
             'https://c.tenor.com/zK6-iEBjjcEAAAAS/no-nooo.gif',
                 ]
 
-        let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
+        let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
 
         const embed = new Discord.MessageEmbed()
         .setColor('#00ffff')

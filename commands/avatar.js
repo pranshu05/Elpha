@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const  Interaction  = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders")
+const  Interaction  = require("discord.js")
 const Discord = require('discord.js')
 
 module.exports = {
@@ -20,5 +20,5 @@ module.exports = {
         .setTitle(`Avatar`)
         .setImage(user.displayAvatarURL({size: 2048}))
         interaction.reply({ embeds: [embed] })
-    },
-};
+    }
+}

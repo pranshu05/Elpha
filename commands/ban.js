@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const  Interaction  = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders")
+const  Interaction  = require("discord.js")
 const Discord = require('discord.js')
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
 
         var reason = interaction.options.getString('reason')
         var user = interaction.options.getUser('user')
-        let modRole = interaction.guild.roles.cache.find(val => val.name === 'Moder');
+        let modRole = interaction.guild.roles.cache.find(val => val.name === 'Moder')
         
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === config.OWNER || interaction.user.id === '754381104034742415') {
             if (user === interaction.user) return interaction.reply('You cannot ban yourself')
@@ -38,9 +38,9 @@ module.exports = {
              .setDescription(`reason: ${reason}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
-        } else {
+        }else {
             interaction.reply('Insufficant Permissions')
         }
        
-    },
-};
+    }
+}

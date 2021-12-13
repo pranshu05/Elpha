@@ -1,10 +1,5 @@
-
-
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const fs = require('fs')
-const dir = './commands'
-let commandsLength = 0
 const pkg = require('../package.json')
 const os = require('os')
 
@@ -19,8 +14,8 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setColor('#00ffff')
             .setTimestamp()
-            .setTitle(`Pong!`)
-            .addField('🏓 Ping', `${(interaction.client.ws.ping).toFixed(0)} ms`, true)
+            .setTitle(`Pong 🏓`)
+            .addField('Latancy:', `${(interaction.client.ws.ping).toFixed(0)} ms`, true)
         interaction.reply({ embeds: [embed] })
     }
 }

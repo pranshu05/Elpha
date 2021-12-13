@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const  Interaction  = require("discord.js");
-const Discord = require('discord.js');
-const moment = require('moment');
+const { SlashCommandBuilder } = require("@discordjs/builders")
+const  Interaction  = require("discord.js")
+const Discord = require('discord.js')
+const moment = require('moment')
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("userinfor")
+    .setName("userinfo")
     .setDescription("sends user's info")
     .addUserOption(option =>
         option.setName('user')
@@ -35,5 +35,5 @@ module.exports = {
         .setFooter(`Replying to ${user.username}#${user.discriminator}`)
 
         interaction.reply({ embeds: [embed] })
-    },
-};
+    }
+}

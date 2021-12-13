@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { Interaction } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders")
+const { Interaction } = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,7 +13,7 @@ module.exports = {
         ),
     async execute(interaction){
         interaction.reply({
-            content: interaction.options.getString("message"),
+            content: interaction.options.getString("message")
         })
     }
 }
