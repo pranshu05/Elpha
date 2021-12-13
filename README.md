@@ -49,7 +49,7 @@ Elpha uses Discord slash commands however the custom command's prefix will be ad
 ## Bug finder and Helper
 
 📜 [**Fad The Chad**](https://github.com/FadTheChad)
-📜 [**TonyG**](https://github.com/TonyG)
+📜 [**TonyG**](https://github.com/tonyG433)
 
 ## Github
 
