@@ -3,12 +3,13 @@
 <h1>Elpha! The bot being developed</h1>
 <p><img src = "https://raw.githubusercontent.com/pranshu05/Elpha/main/img/b.png"></p>
 <br />
-<p>
+
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg?cacheSeconds=2592000&style=for-the-badge)
 ![botlib](https://img.shields.io/badge/powered_by-discord.js-blue?style=for-the-badge)
 [![invite](https://img.shields.io/badge/INVITE-ELPHA-yellow?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=916613852362330133&permissions=8&scope=bot%20applications.commands)
-</p>
+
 </div>
+
 ## Elpha's prefix
 
 Elpha uses Discord slash commands however the custom command's prefix will be added soon! 
