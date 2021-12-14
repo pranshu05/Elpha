@@ -8,8 +8,7 @@ module.exports = {
     async execute(interaction) {
         function getDefaultChannel(guild) {
             if (guild.channels.cache.some(name1 => name1.name === 'general')) { return guild.channels.cache.find(name => name.name === 'general') }
-            // Now we get into the heavy stuff: first channel in order where the bot can speak
-            // hold on to your hats!
+           
             return guild.channels.cache
                 .filter(c => c.type === 'GUILD_TEXT' &&
                     c.permissionsFor(guild.client.user).has(Discord.Permissions.FLAGS.SEND_MESSAGES))
