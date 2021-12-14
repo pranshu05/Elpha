@@ -67,3 +67,8 @@ You can contribute to my code or make a bot from my code it's free!!!***
 # 📝 License
 
 Copyright © 2021 [Pranshu Patel](https://github.com/pranshu05)
+
+
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+
+***
