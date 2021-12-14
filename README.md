@@ -42,7 +42,7 @@ GUILD_ID=
 
 Elpha uses Discord slash commands however the custom command's prefix will be added soon! 
 
-## Contributors
+## Developer
 
 📜 [**Pranshu05**](https://github.com/pranshu05)
 
