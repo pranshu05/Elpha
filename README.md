@@ -11,15 +11,15 @@
 
 </div>
 
-# What is Elpha?
+# 🤖 What is Elpha?
 
 ### Elpha is an open source discord bot which developed from discord.js and based on slash commands. Anyone can contribute to this open source repo to make the bot more powerful.
 
-# How to install packages?
+# 💻 How to install packages?
 ```sh
 npm install
 ```
-# How to run the bot?
+# 💻 How to run the bot?
 ```sh
 node .bot.js
 ```
@@ -29,8 +29,8 @@ npm install nodemon
 ```
 And run the bot once and it will autometically re-run the bot after changes in the files
 
-# .env file
-
+# 💻 .env file
+ 
 .env file contains secret like token,prefix....etc
 never share the .env to anyone
 
@@ -44,11 +44,11 @@ GUILD_ID=
 
 Elpha uses Discord slash commands however the custom command's prefix will be added soon! 
 
-# Developer
+# 👥 Developer
 
 📜 [**Pranshu05**](https://github.com/pranshu05)
 
-# Bug finder and Helper
+# 🤝 Bug finder and Helper
 
 📜 [**Fad The Chad**](https://github.com/FadTheChad)
 📜 [**TonyG**](https://github.com/tonyG433)
