@@ -1,4 +1,6 @@
+const { MessageEmbed } = require('discord.js')
 const Discord = require('discord.js')
+
 
 module.exports = {
 	name: "guildCreate",
@@ -12,10 +14,6 @@ module.exports = {
 			.setTimestamp()
 
 			abc.send({ embeds: [embed] })
-
-        console.log(`Server joined: ${guild.name}`)
-
-		
-		
+			
 	}
 }

@@ -1,6 +1,7 @@
 require("dotenv").config()
 const fs = require("fs")
-const {Client, Intents, Collection} = require("discord.js")
+const {Client,Collection} = require("discord.js")
+const { MessageEmbed } = require('discord.js')
 const client = new Client({ 
     intents: [
         'GUILDS',
@@ -30,11 +31,47 @@ const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`)
     if (event.once){
-        client.once(event.name, (...args) => event.execute(...args))
+        client.once(event.name, (...args) => event.execute(...args, commands))
     } else {
-        client.on(event.name, (...args) => event.execute(...args))
+        client.on(event.name, (...args) => event.execute(...args, commands))
     }
     
 }
+
+client.on('guildCreate' , guild => {
+    
+    const traffic = new MessageEmbed()
+    .setColor("00FFFF")
+    .setTitle("New Guild!")
+    .setDescription(`Elpha has joined the server ${guild.name}`)
+    .addField('Members:' , `${guild.memberCount.toString()}`)
+    .addField("Guild owner:", `@${guild.ownerId}> \`[${guild.ownerId}]\``)
+    .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
+    .setThumbnail(guild.iconURL())
+    .setTimestamp()
+
+		client.channels.cache.get("919799899929841694").send(
+				{
+					 embeds: [traffic]
+			})	
+})
+
+client.on('guildDelete' , guild => {
+    
+    const traffic = new MessageEmbed()
+    .setColor("00FFFF")
+    .setTitle("Guild Left")
+    .setDescription(`Elpha has left the server ${guild.name}`)
+    .addField('Members:' , `${guild.memberCount.toString()}`)
+    .addField("Guild owner:", `@${guild.ownerId}> \`[${guild.ownerId}]\``)
+    .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
+    .setThumbnail(guild.iconURL())
+    .setTimestamp()
+
+		client.channels.cache.get("919799899929841694").send(
+				{
+					 embeds: [traffic]
+			})	
+})
 
 client.login(process.env.token)
