@@ -22,7 +22,7 @@ module.exports = {
         var user = interaction.options.getUser('user')
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === config.OWNER || interaction.user.id === '754381104034742415') {
+        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
             if (user.id === '754381104034742415') {return interaction.reply('You cannot mute my developer')}
             if (user === interaction.user) return interaction.reply('You cannot mute yourself')
             if (user === interaction.client.user) return interaction.reply('You cannot mute me')

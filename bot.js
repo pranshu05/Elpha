@@ -40,37 +40,37 @@ for (const file of eventFiles) {
 
 client.on('guildCreate' , guild => {
     
-    const traffic = new MessageEmbed()
+    const embed = new MessageEmbed()
     .setColor("00FFFF")
     .setTitle("New Guild!")
     .setDescription(`Elpha has joined the server ${guild.name}`)
     .addField('Members:' , `${guild.memberCount.toString()}`)
-    .addField("Guild owner:", `@${guild.ownerId}> \`[${guild.ownerId}]\``)
+    .addField("Guild owner:", `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
     .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
     .setThumbnail(guild.iconURL())
     .setTimestamp()
 
 		client.channels.cache.get("919799899929841694").send(
 				{
-					 embeds: [traffic]
+					 embeds: [embed]
 			})	
 })
 
 client.on('guildDelete' , guild => {
     
-    const traffic = new MessageEmbed()
+    const embed = new MessageEmbed()
     .setColor("00FFFF")
     .setTitle("Guild Left")
     .setDescription(`Elpha has left the server ${guild.name}`)
     .addField('Members:' , `${guild.memberCount.toString()}`)
-    .addField("Guild owner:", `@${guild.ownerId}> \`[${guild.ownerId}]\``)
+    .addField("Guild owner:", `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
     .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
     .setThumbnail(guild.iconURL())
     .setTimestamp()
 
 		client.channels.cache.get("919799899929841694").send(
 				{
-					 embeds: [traffic]
+					 embeds: [embed]
 			})	
 })
 
