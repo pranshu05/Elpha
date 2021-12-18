@@ -9,7 +9,7 @@
 ![botlib](https://img.shields.io/badge/powered_by-discord.js-blue?style=for-the-badge)
 ![Licence](https://img.shields.io/badge/license-MIT-orange?style=for-the-badge)
 [![invite](https://img.shields.io/badge/INVITE-ELPHA-yellow?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=916613852362330133&permissions=8&scope=bot%20applications.commands)
-[![wakatime](https://wakatime.com/badge/github/Elphabot/Elpha.svg)](https://wakatime.com/badge/github/Elphabot/Elpha)
+[![wakatime](https://wakatime.com/badge/github/Elphabot/Elpha.svg&style=for-the-badge)](https://wakatime.com/badge/github/Elphabot/Elpha)
   
 </div>
 
