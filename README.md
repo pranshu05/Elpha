@@ -73,3 +73,4 @@ Copyright © 2021 [Pranshu Patel](https://github.com/pranshu05)
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
 
 ***
+<figure><embed src="https://wakatime.com/share/@pranshu05/83417c75-32d8-4bad-9a51-ecc0845f319d.svg"></embed></figure>
