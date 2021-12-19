@@ -61,12 +61,6 @@ module.exports = {
         
     async execute(interaction) {
 
-
-
-        const config = interaction.client.config
-
-        const args = interaction.options.getString('flags')
-
         let totalPeople = 0
 
         let botNumber = 0
