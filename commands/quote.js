@@ -8,7 +8,7 @@ module.exports = {
     .setDescription('sends rendom quote'),
 
     async execute(interaction) {
-        let eightball = [
+        let quote = [
             'Spread love everywhere you go. Let no one ever come to you without leaving happier. -Mother Teresa',
             'When you reach the end of your rope, tie a knot in it and hang on. -Franklin D. Roosevelt ',
             'Always remember that you are absolutely unique. Just like everyone else. -Margaret Mead ',
@@ -31,10 +31,10 @@ module.exports = {
             'Love the life you live. Live the life you love. -Bob Marley            ',
             'Money can not buy life. -Bob Marley',
         ]
-        let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
+        let index = (Math.floor(Math.random() * Math.floor(quote.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
-        .setTitle(eightball[index] )
+        .setTitle(quote[index] )
         interaction.reply({ embeds: [embed] })
 
     }

@@ -22,7 +22,7 @@ module.exports = {
         })
             const embed = new Discord.MessageEmbed()
             .setColor('#00ffff')
-             .setTitle(`Unmuted ${user}`)
+             .setTitle(`Unmuted ${user.username}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
         } else {

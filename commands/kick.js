@@ -32,7 +32,7 @@ module.exports = {
         })
             const embed = new Discord.MessageEmbed()
             .setColor('#00ffff')
-             .setTitle(`Kicked ${user}`)
+             .setTitle(`Kicked ${user.username}`)
              .setDescription(`reason: ${reason}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
