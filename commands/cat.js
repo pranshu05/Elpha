@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-const  Interaction  = require("discord.js")
 const Discord = require('discord.js')
-const fetch = require('node-fetch')
+const got = require('got')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,28 +8,27 @@ module.exports = {
     .setDescription("Random cat's pic"),
 
     async execute(interaction) {
-
-
-        
-        const subreddits = [
-	        'catspics',
-	        'catpics',
-	        'kittenspics'
-        ]
-
-        const data = await fetch(`https://imgur.com/r/${subreddits[Math.floor(Math.random() * subreddits.length)]}/hot.json`)
-			.then(response => response.json())
-			.then(body => body.data)
-		
-		const selected = data[Math.floor(Math.random() * data.length)]
-
         const embed = new Discord.MessageEmbed()
-
-       .setColor('#00ffff')
-        .setTitle(`Meow!`)
-        .setImage(`https://imgur.com/${selected.hash}${selected.ext.replace(/\?.*/, '')}`)
-        
-        interaction.reply({ embeds: [embed] })
+        got('https://www.reddit.com/r/catpics/random/.json')
+            .then(response => {
+                const [list] = JSON.parse(response.body)
+                const [post] = list.data.children
+    
+                const permalink = post.data.permalink
+                const memeUrl = `https://reddit.com${permalink}`
+                const memeImage = post.data.url
+                const memeTitle = post.data.title
+                const memeUpvotes = post.data.ups
+                const memeNumComments = post.data.num_comments
+    
+                embed.setTitle(`${memeTitle}`)
+                embed.setColor('#00FFFF')
+                embed.setImage(memeImage)
+                embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`)
+    
+                interaction.reply({ embeds: [embed] });
+            })
+            .catch(console.error);
         
     }
     

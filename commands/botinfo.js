@@ -75,6 +75,8 @@ module.exports = {
 
             .setColor('00FFFF')
 
+            .setAuthor(`Elpha's info`, interaction.client.user.displayAvatarURL())
+
             .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' )
 
             .setDescription(interaction.client.user.username + ' has been awake for ' + timeCon(process.uptime()))
@@ -85,7 +87,7 @@ module.exports = {
 
             .addField('🤵 Total Users', '' + (totalPeople - botNumber), true) // repl with -test cmd contents
 
-            .addField('🤵 Developer :' , 'Pranshu05#4726', true)
+            .addField('🤵 Developer' , 'Pranshu05#4726', true)
 
             .addField('🐏 RAM Usage', `${((process.memoryUsage().rss / 1024) / 1024).toFixed(2)} MB`, true)
 
@@ -97,9 +99,13 @@ module.exports = {
 
             .addField(':computer: Node.js ', `${process.version}`, true)
 
-            .addField(':regional_indicator_h: :regional_indicator_o: :regional_indicator_s: :regional_indicator_t: Host Name', `${os.hostname}`, true)
+            .addField(':globe_with_meridians: Host Name', `${os.hostname}`, true)
 
             .addField(':white_check_mark: Host OS', `${os.platform} ${os.release}`, true)
+
+            .addField("Server", "[Click here](https://discord.gg/uJCX5yfuTf)" , true)
+
+            .addField("Github", "[Click here](https://github.com/Elphabot/Elpha)")
 
             interaction.reply({ embeds: [embed] })
 

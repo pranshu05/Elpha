@@ -6,6 +6,7 @@ module.exports = {
 
 		console.log(member.user)
 
+		const abc = member.guild.systemChannel
 		const newMemberEmbed = new Discord.MessageEmbed()
 			.setColor("00FFFF")
 			.setTitle("Member left")
@@ -17,6 +18,8 @@ module.exports = {
 				member.guild.channels.cache.get("862296895665340467").send({
 					embeds: [newMemberEmbed] 
 				})
+			}else{
+				abc.send({ embeds: [newMemberEmbed] })
 			}
 			
 	}

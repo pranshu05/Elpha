@@ -9,10 +9,11 @@ module.exports = {
         console.log('ready!');
 
     client.user.setPresence({
-        status: 'idle',
+        status: 'online',
         activities: [{ 
        name: `Pranshu developing me 👀`,
-        type: "WATCHING",
+        type: "STREAMING",
+        url: 'https://www.twitch.tv/pranshu2005'
         }
        ],
        },);
