@@ -25,7 +25,7 @@ module.exports = {
             .setDescription("Number of cases may differ from other sources")
             .addField("Cases", `**`+ json.confirmed['value'] +`**`, true)
             .addField("Deaths", `**`+ json.deaths['value'] +`**`, true)
-            .addField("Recovered", `**`+ json.recovered['value'] +`**`, true)
+            .addField("Recovered", `**`+ "Do maths and find out XD" +`**`)
             .setFooter("Last Update", + json.lastUpdate)
             .setTimestamp()
               

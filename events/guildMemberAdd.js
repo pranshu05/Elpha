@@ -1,12 +1,16 @@
 const Discord = require('discord.js')
+const GuildSettings = require("../models/GuildSettings")
 
 module.exports = {
 	name: "guildMemberAdd",
 	async execute(member) {
 		
 		console.log(member.user)
+		const guildSettings = await GuildSettings.findOne({guild_id: member.guild.id})
+		if (!guildSettings && !guildSettings.welcome_channel_id) {
+			return
+		}
 
-		const abc = member.guild.systemChannel
 		const newMemberEmbed = new Discord.MessageEmbed()
 			.setColor("00FFFF")
 			.setTitle("New Member!")
@@ -14,13 +18,9 @@ module.exports = {
 			.setThumbnail(member.user.displayAvatarURL())
 			.setTimestamp()
 			
-		if(member.guild.id === "754381521854398595"){
-			member.guild.channels.cache.get("862296895665340467").send({
+			member.guild.channels.cache.get(guildSettings.welcome_channel_id).send({
 				embeds: [newMemberEmbed] 
-			})
-		}else{
-			abc.send({ embeds: [newMemberEmbed] })
-		}
+			})	
 			
 	}
 }

@@ -1,6 +1,9 @@
 require("dotenv").config()
 const fs = require("fs")
 const {Client,Collection} = require("discord.js")
+const Database = require("./config/Database")
+const db = new Database()
+db.connect()
 const { MessageEmbed } = require('discord.js')
 const client = new Client({ 
     intents: [
