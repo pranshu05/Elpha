@@ -85,7 +85,7 @@ module.exports = {
 
             .addField('📄 Channels', '' + interaction.client.channels.cache.size, true)
 
-            .addField('🤵 Total Users', '' + (totalPeople - botNumber), true) // repl with -test cmd contents
+            .addField('🤵 Total Users', '' + (totalPeople), true) // repl with -test cmd contents
 
             .addField('🤵 Developer' , 'Pranshu05#4726', true)
 

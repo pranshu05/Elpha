@@ -11,7 +11,8 @@ module.exports = {
 		const embed = new Discord.MessageEmbed()
 			.setColor("00FFFF")
 			.setTitle("Hello I am Elpha")
-			.setDescription(`thanks for choosing me! And please dont forget to set the welcome-channel by `/setwelcomechannel`command`)
+			.addField('Setup instructions', '1) Setup the welcome channel by `/setwelcomechannel` command!')
+			.setDescription(`thanks for choosing me!`)
 			.setTimestamp()
 
 			abc.send({ embeds: [embed] })
