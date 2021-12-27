@@ -7,10 +7,10 @@ module.exports = {
 
 		console.log(member.user)
 		const guildSettings = await GuildSettings.findOne({guild_id: member.guild.id})
-		if (!guildSettings ) {
+		if (!guildSettings) {
 			return
 		}else{
-			const newMemberEmbed = new Discord.MessageEmbed()
+				const newMemberEmbed = new Discord.MessageEmbed()
 			.setColor("00FFFF")
 			.setTitle("Member left")
 			.setDescription(`${member.user} had left the srver`)

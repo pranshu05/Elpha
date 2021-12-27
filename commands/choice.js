@@ -24,10 +24,9 @@ module.exports = {
         let index = (Math.floor(Math.random() * Math.floor(choose.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
-        .setTitle('I choose')
+        .setTitle('I choose' + ' ' + choose[index])
         .addField('First choice', '' + interaction.options.getString('1st') )
         .addField(' Second choice ','' +  interaction.options.getString('2nd'))
-        .setDescription(choose[index])    
         interaction.reply({ embeds: [embed] })
         
     }

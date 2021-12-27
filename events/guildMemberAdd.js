@@ -7,7 +7,7 @@ module.exports = {
 		
 		console.log(member.user)
 		const guildSettings = await GuildSettings.findOne({guild_id: member.guild.id})
-		if (!guildSettings ) {
+		if (!guildSettings) {
 			return
 		}else{
 			const newMemberEmbed = new Discord.MessageEmbed()
@@ -20,6 +20,6 @@ module.exports = {
 			member.guild.channels.cache.get(guildSettings.welcome_channel_id).send({
 				embeds: [newMemberEmbed] 
 			})	
-			}
+		}
 	}
 }

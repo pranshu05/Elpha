@@ -16,6 +16,7 @@ module.exports = {
             .setTimestamp()
             .setTitle(`Pong 🏓`)
             .addField('Latancy:', `${(interaction.client.ws.ping).toFixed(0)} ms`, true)
+            .addField('API Latancy:', `${Date.now() - interaction.createdTimestamp}ms`)
         interaction.reply({ embeds: [embed] })
     }
 }
