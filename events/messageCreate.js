@@ -1,6 +1,6 @@
 const General = require("../models/General")
 const Discord = require('discord.js')
-const fetch = require('node-fetch')
+const fetch = require('node-fetch').default
 
 module.exports = {
     name: "messageCreate",
@@ -19,6 +19,8 @@ module.exports = {
           .then(response => response.json())
           .then(data =>{
              message.reply(data.response)
+          }).catch(()=>{
+            message.reply('I have no reply for this!')
           })
          
           if (elpha.some(word => msg.content.includes(word))) {
