@@ -50,7 +50,7 @@ module.exports = {
                         warning: interaction.options.getString('warning')
                     });
                 } else {
-                    settings.warning = interaction.options.getString('warning');
+                    settings.warning = interaction.options.getString('warning')
                 }
                 settings.save(err => {
                     if (err) {

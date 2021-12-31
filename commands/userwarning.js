@@ -25,7 +25,6 @@ module.exports = {
 			.setTitle(`${user.username}'s warnings`)
 			.setDescription(`${warning.warning}`)
 			.setThumbnail(user.displayAvatarURL())
-			.setTimestamp()
 			
 			interaction.reply({
 				embeds: [Embed] 

@@ -46,6 +46,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setColor('00FFFF')
+            .setThumbnail(interaction.client.user.displayAvatarURL())
             .setAuthor(`Elpha's info`, interaction.client.user.displayAvatarURL())
             .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' )
             .setDescription(interaction.client.user.username + ' has been awake for ' + timeCon(process.uptime()))
