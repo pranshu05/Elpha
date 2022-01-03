@@ -6,30 +6,25 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("cat")
     .setDescription("Random cat's pic"),
-
     async execute(interaction) {
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/catpics/random/.json')
             .then(response => {
                 const [list] = JSON.parse(response.body)
                 const [post] = list.data.children
-    
                 const permalink = post.data.permalink
                 const memeUrl = `https://reddit.com${permalink}`
                 const memeImage = post.data.url
                 const memeTitle = post.data.title
                 const memeUpvotes = post.data.ups
                 const memeNumComments = post.data.num_comments
-    
                 embed.setTitle(`${memeTitle}`)
                 embed.setColor('#00FFFF')
                 embed.setImage(memeImage)
-                embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`)
-    
-                interaction.reply({ embeds: [embed] });
+                embed.setFooter(`👍 ${memeUpvotes} | 💬 ${memeNumComments}`)
+                interaction.reply({ embeds: [embed] })
             })
-            .catch(console.error);
-        
+            .catch(console.error)
     }
     
 }

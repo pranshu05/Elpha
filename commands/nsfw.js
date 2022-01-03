@@ -1,13 +1,10 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('nsfw')
         .setDescription('WARNING! nsfw content 18+'),
-
     async execute(interaction) {
-
         let eightball = [
             'https://c.tenor.com/LJKTSD9hZHQAAAAM/shame-on-you-how-dare-you.gif',
             'https://c.tenor.com/sign51fHK0kAAAAM/smh-kanyewest.gif',
@@ -29,10 +26,8 @@ module.exports = {
             'https://c.tenor.com/OvCO9wv3qWcAAAAM/raise-eyebrow-sexy.gif',
             'https://c.tenor.com/DfSs6KiP6-kAAAAM/akshay-kumar-smile.gif',
             'https://c.tenor.com/zK6-iEBjjcEAAAAS/no-nooo.gif',
-                ]
-
+            ]
         let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
-
         const embed = new Discord.MessageEmbed()
         .setColor('#00ffff')
         .setImage(eightball[index])

@@ -28,8 +28,6 @@ for (const file of commandFiles) {
     commands.push(command.data.toJSON())
 	client.commands.set(command.data.name, command)
 }
-
-
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`)
@@ -38,11 +36,8 @@ for (const file of eventFiles) {
     } else {
         client.on(event.name, (...args) => event.execute(...args, commands))
     }
-    
 }
-
-client.on('guildCreate' , guild => {
-    
+client.on('guildCreate' , guild => {   
     const embed = new MessageEmbed()
     .setColor("00FFFF")
     .setTitle("New Guild!")
@@ -52,15 +47,12 @@ client.on('guildCreate' , guild => {
     .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
     .setThumbnail(guild.iconURL())
     .setTimestamp()
-
 		client.channels.cache.get("919799899929841694").send(
 				{
 					 embeds: [embed]
 			})	
 })
-
 client.on('guildDelete' , guild => {
-    
     const embed = new MessageEmbed()
     .setColor("00FFFF")
     .setTitle("Guild Left")
@@ -70,7 +62,6 @@ client.on('guildDelete' , guild => {
     .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
     .setThumbnail(guild.iconURL())
     .setTimestamp()
-
 		client.channels.cache.get("919799899929841694").send(
 				{
 					 embeds: [embed]

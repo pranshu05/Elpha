@@ -19,7 +19,6 @@ module.exports = {
     ),
 
     async execute(interaction) {
-
         var reason = interaction.options.getString('warning')
         var user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
@@ -31,7 +30,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
             .setColor('#00ffff')
              .setTitle(`Warned ${user.username}`)
-             .setDescription(`warning: ${reason}`)
+             .setDescription(`warning: ${reason}\n` + `moderator: ${interaction.user.username}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ 
                  embeds: [embed] ,
@@ -39,27 +38,25 @@ module.exports = {
                 })
              Warning.findOne({ user_id: user.id , guild_id: interaction.guild.id}, (err, settings) => {
                 if (err) {
-                    console.log(err);
-                    interaction.reply("An error occurred while adding warning to user's database!");
-                    return;
-                }
-                if (!settings) {
+                    console.log(err)
+                    interaction.reply("An error occurred while adding warning to user's database!")
+                    return
+                }else {
                     settings = new Warning({
                         guild_id: interaction.guild.id,
                         user_id: user.id,
-                        warning: interaction.options.getString('warning')
-                    });
-                } else {
-                    settings.warning = interaction.options.getString('warning')
-                }
+                        warning: interaction.options.getString('warning'),
+                        moderatorId: interaction.user.id
+                    })
+                } 
                 settings.save(err => {
                     if (err) {
-                        console.log(err);
-                        interaction.reply("An error occurred while adding warning to user's database!");
-                        return;
+                        console.log(err)
+                        interaction.reply("An error occurred while adding warning to user's database!")
+                        return
                     }
     
-                    interaction.channel.send(`Warning given to ${user.username}`);
+                    interaction.channel.send(`Warning given to ${user.username}`)
                 })
                 
                 if (!modlog) {

@@ -6,11 +6,8 @@ module.exports = {
     .setName('dank')
     .setDescription('How dank are you?'),
         async execute(interaction) {
-
         const rate = Math.floor(Math.random() * 100) + 1
-
         const embed = new Discord.MessageEmbed()
-
         .setColor('#00FFFF')
         .setTitle('Ratemachine Dank')
         .setDescription(`${interaction.member} is ${rate.toString()} % dank`)

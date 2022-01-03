@@ -8,7 +8,6 @@ module.exports = {
     async execute(interaction) {
         function getDefaultChannel(guild) {
             if (guild.channels.cache.some(name1 => name1.name === 'general')) { return guild.channels.cache.find(name => name.name === 'general') }
-           
             return guild.channels.cache
                 .filter(c => c.type === 'GUILD_TEXT' &&
                     c.permissionsFor(guild.client.user).has(Discord.Permissions.FLAGS.SEND_MESSAGES))
@@ -16,6 +15,6 @@ module.exports = {
                     Long.fromString(a.id).sub(Long.fromString(b.id)).toNumber())
                 .first()
         }
-        getDefaultChannel(interaction.guild).createInvite({ maxAge: 300 }).then(inv => interaction.reply(inv.url ? inv.url : 'discord.gg/' + inv.code))
+        getDefaultChannel(interaction.guild).createInvite().then(inv => interaction.reply(inv.url ? inv.url : 'discord.gg/' + inv.code))
     }
 }

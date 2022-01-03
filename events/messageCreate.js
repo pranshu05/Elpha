@@ -1,6 +1,5 @@
 const General = require("../models/General")
 const Discord = require('discord.js')
-
 module.exports = {
     name: "messageCreate",
     async execute(message){
@@ -29,7 +28,6 @@ module.exports = {
         u=["u r","no u","you r","no you","you are"],
         rick=['rick','rick roll','Rick','Rick rolled'],
         ng=['never gonna','Never gonna','Never Gonna']
-
         if(msg.channel.id === general.general_channel_id){
           if (greeeting.some(word => msg.content.startsWith(word))) {
             msg.reply('hello! How r you?')

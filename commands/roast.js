@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-
 module.exports = {
 
     data: new SlashCommandBuilder()
@@ -11,7 +10,6 @@ module.exports = {
             .setDescription('user id')
             .setRequired(true)
     ),
-
     async execute(interaction) {
         var user = interaction.options.getUser('user')
         let roast = [
@@ -63,6 +61,5 @@ module.exports = {
         .setColor('00FFFF')
         .setTitle(user.username + roast[index] )
         interaction.reply({ embeds: [embed] })
-
     }
 }

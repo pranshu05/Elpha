@@ -9,7 +9,6 @@ const Discord = require('discord.js')
 const pkg = require('../package.json')
 const os = require('os')
 function timeCon(time) {
-
     time = time * 1000
     let days = 0
     let hours = 0
@@ -31,19 +30,13 @@ function timeCon(time) {
 }
 
 module.exports = {
-
     data: new SlashCommandBuilder()
-
         .setName('botinfo')
-
         .setDescription('Basic Information About Elpha'),
-
-        
     async execute(interaction) {
 
         let totalPeople = 0
         totalPeople = interaction.client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)
-
         const embed = new Discord.MessageEmbed()
             .setColor('00FFFF')
             .setThumbnail(interaction.client.user.displayAvatarURL())
@@ -63,8 +56,6 @@ module.exports = {
             .addField(':white_check_mark: Host OS', `${os.platform} ${os.release}`, true)
             .addField("Server", "[Click here](https://discord.gg/uJCX5yfuTf)" , true)
             .addField("Github", "[Click here](https://github.com/Elphabot/Elpha)")
-
             interaction.reply({ embeds: [embed] })
     }
-
 }

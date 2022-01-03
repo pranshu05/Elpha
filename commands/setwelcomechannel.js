@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { Permissions } = require("discord.js");
-const GuildSettings = require("../models/GuildSettings");
+const { SlashCommandBuilder } = require("@discordjs/builders")
+const { Permissions } = require("discord.js")
+const GuildSettings = require("../models/GuildSettings")
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -14,36 +14,36 @@ module.exports = {
 	async execute(interaction) {
 		
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
-			interaction.reply("You do not have permission to use this command!");
-			return;
+			interaction.reply("You do not have permission to use this command!")
+			return
 		} 
 		if (interaction.options.getChannel("welcome").type !== 'GUILD_TEXT') {
 			interaction.reply('This command is only applicable for text channels')
 			return}
 		GuildSettings.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
 			if (err) {
-				console.log(err);
-				interaction.reply("An error occurred while trying to set the welcome channel!");
-				return;
+				console.log(err)
+				interaction.reply("An error occurred while trying to set the welcome channel!")
+				return
 			}
 
 			if (!settings) {
 				settings = new GuildSettings({
 					guild_id: interaction.guild.id,
 					welcome_channel_id: interaction.options.getChannel("welcome").id
-				});
+				})
 			} else {
-				settings.welcome_channel_id = interaction.options.getChannel("welcome").id;
+				settings.welcome_channel_id = interaction.options.getChannel("welcome").id
 			}
 
 			settings.save(err => {
 				if (err) {
-					console.log(err);
-					interaction.reply("An error occurred while trying to set the welcome channel!");
-					return;
+					console.log(err)
+					interaction.reply("An error occurred while trying to set the welcome channel!")
+					return
 				}
 
-				interaction.reply(`Welcome channel has been set to ${interaction.options.getChannel("welcome")}`);
+				interaction.reply(`Welcome channel has been set to ${interaction.options.getChannel("welcome")}`)
 			})
 		})
 

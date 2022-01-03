@@ -25,6 +25,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
             .setColor('#00ffff')
              .setTitle(`Unmuted ${user.username}`)
+             .setDescription( `moderator: ${interaction.user.username}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
              if (!modlog) {

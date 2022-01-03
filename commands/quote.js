@@ -1,12 +1,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-
 module.exports = {
-
     data: new SlashCommandBuilder()
     .setName('quote')
     .setDescription('sends rendom quote'),
-
     async execute(interaction) {
         let quote = [
             'Spread love everywhere you go. Let no one ever come to you without leaving happier. -Mother Teresa',
@@ -36,6 +33,5 @@ module.exports = {
         .setColor('00FFFF')
         .setTitle(quote[index] )
         interaction.reply({ embeds: [embed] })
-
     }
 }

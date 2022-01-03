@@ -1,5 +1,4 @@
 const Discord = require('discord.js')
-
 module.exports = {
 	name: "guildCreate",
 	async execute(guild,client) {
@@ -10,7 +9,7 @@ module.exports = {
 			.addField('Setup instructions', '1) Setup the welcome channel by `/setwelcomechannel` command! \n' + '2) Setup the general channel by `/setgeneralchannel` command!\n' + '3) Setup the modlog channel by `/setmodlogchannel` command\n' + '4) Setup the goodbye channel by `/setgoodbyechannel` command! \n')
 			.setDescription(`thanks for choosing me!`)
 			.setTimestamp()
-
 			channel.send({ embeds: [embed] })
+			console.log(`Server joined: ${guild.name}`)
 	}
 }

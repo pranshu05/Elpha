@@ -11,13 +11,11 @@ module.exports = {
             .setDescription('user avatar')
             .setRequired(true)
     ),
-
     async execute(interaction) {
-
         var user = interaction.options.getUser('user')
         const embed = new Discord.MessageEmbed()
        .setColor('#00ffff')
-        .setTitle(`Avatar`)
+        .setTitle(`${user.username}'s Avatar`)
         .setImage(user.displayAvatarURL({size: 2048}))
         interaction.reply({ embeds: [embed] })
     }

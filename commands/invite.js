@@ -6,7 +6,6 @@ module.exports = {
         .setName('invite')
         .setDescription('Invite Link for Elpha'),
     async execute(interaction) {
-     
         const embed = new Discord.MessageEmbed()
             .setColor('#00ffff')
             .setTimestamp()

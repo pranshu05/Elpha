@@ -1,7 +1,6 @@
 const discord = require('discord.js')
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const fetch = require("node-fetch")
-
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("covid")
@@ -12,13 +11,9 @@ module.exports = {
         .setDescription("location")
         .setRequired(true)
         ),
-    
         async execute(interaction){
-
            const country = interaction.options.getString("country")
-           
            fetch(`https://covid19.mathdro.id/api/countries/${country}`).then(res => res.json()).then(json => {
-
             let embed = new discord.MessageEmbed()
             .setColor('#00FFFF')
             .setTitle(`${country}'s covid stats`)
