@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js')
 const Modlog = require("../models/Modlog")
+const Banned = require("../models/Banned")
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("ban")
@@ -34,6 +35,28 @@ module.exports = {
              .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
+             
+            Banned.findOne({guild_id: interaction.guild.id}, (err, settings) => {
+                if (err) {
+                    console.log(err)
+                    interaction.reply("An error occurred while adding banned user to database!")
+                    return
+                }else {
+                    settings = new Banned({
+                        guild_id: interaction.guild.id,
+                        user_id: user.id,
+                        reason: interaction.options.getString('reason'),
+                        moderatorId: interaction.user.id
+                    })
+                } 
+                settings.save(err => {
+                    if (err) {
+                        console.log(err)
+                        interaction.reply("An error occurred while adding banned user to database!")
+                        return
+                    }
+                })
+            })
              if (!modlog) {
                 return
             }else{

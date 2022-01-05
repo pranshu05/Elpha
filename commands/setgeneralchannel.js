@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions } = require("discord.js")
+const { Permissions, DiscordAPIError } = require("discord.js")
 const General = require("../models/General")
+const Modlog = require("../models/Modlog")
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("setgeneralchannel")
@@ -11,7 +12,7 @@ module.exports = {
 			.setRequired(true)
 		),
 	async execute(interaction) {
-		
+		const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
 			interaction.reply("You do not have permission to use this command!")
 			return
@@ -41,9 +42,16 @@ module.exports = {
 					interaction.reply("An error occurred while trying to set the general channel!")
 					return
 				}
-
 				interaction.reply(`General channel has been set to ${interaction.options.getChannel("general")}`)
+				interaction.channel.send("You can undo this by `/removegeneralchannel` command")
+			
 			})
+			if (!modlog) {
+				return
+			}else{
+				const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
+				abc.send(`General chnnel has been set to ${interaction.options.getChannel("general")} by ${interaction.user}`)	
+			}
 		})
 
 	}

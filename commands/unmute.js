@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js') 
 const Modlog = require("../models/Modlog")
+const Muted = require("../models/Muted")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -28,6 +29,13 @@ module.exports = {
              .setDescription( `moderator: ${interaction.user.username}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
+             Muted.deleteOne({guild_id: interaction.guild.id}, (err, settings) => {
+                if (err) {
+                    console.log(err)
+                    interaction.reply("An error occurred while adding data of unmuting user to database!")
+                    return
+                }
+            })
              if (!modlog) {
                 return
             }else{

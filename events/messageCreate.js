@@ -2,7 +2,7 @@ const General = require("../models/General")
 const Discord = require('discord.js')
 module.exports = {
     name: "messageCreate",
-    async execute(message){
+    async execute(message ,client){
         const msg = message
         if(!message) return
         if (msg.author.bot) return
@@ -82,6 +82,9 @@ module.exports = {
           }
           if (ng.some(word => msg.content.startsWith(word))) {
             msg.reply('Give You Up')
+          }
+          if (message.mentions.has(client.user)) {
+            message.reply(`Don't ping me mf, ${message.author}`);
           }
         }else{
           return

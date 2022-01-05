@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js') 
 const Modlog = require("../models/Modlog")
+const Muted = require("../models/Muted")
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("mute")
@@ -37,6 +38,27 @@ module.exports = {
              .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
+             Muted.findOne({guild_id: interaction.guild.id}, (err, settings) => {
+                if (err) {
+                    console.log(err)
+                    interaction.reply("An error occurred while adding muted user to database!")
+                    return
+                }else {
+                    settings = new Muted({
+                        guild_id: interaction.guild.id,
+                        user_id: user.id,
+                        reason: interaction.options.getString('reason'),
+                        moderatorId: interaction.user.id
+                    })
+                } 
+                settings.save(err => {
+                    if (err) {
+                        console.log(err)
+                        interaction.reply("An error occurred while adding muted user to database!")
+                        return
+                    }
+                })
+            })
              if (!modlog) {
                 return
             }else{
