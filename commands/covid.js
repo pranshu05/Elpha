@@ -23,7 +23,6 @@ module.exports = {
             .addField("Recovered", `**`+ "Do maths and find out XD" +`**`)
             .setFooter("Last Update", + json.lastUpdate)
             .setTimestamp()
-              
             interaction.reply({ embeds: [embed] })
         })
     }

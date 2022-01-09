@@ -11,6 +11,7 @@ module.exports = {
             .setTitle(`Pong 🏓`)
             .addField('Latancy:', `${(interaction.client.ws.ping).toFixed(0)} ms`, true)
             .addField('API Latancy:', `${Date.now() - interaction.createdTimestamp}ms`)
+            .setFooter(`counted for ${interaction.user.username}`)
         interaction.reply({ embeds: [embed] })
     }
 }

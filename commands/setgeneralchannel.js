@@ -26,7 +26,6 @@ module.exports = {
 				interaction.reply("An error occurred while trying to set the general channel!")
 				return
 			}
-
 			if (!settings) {
 				settings = new General({
 					guild_id: interaction.guild.id,
@@ -35,7 +34,6 @@ module.exports = {
 			} else {
 				settings.general_channel_id = interaction.options.getChannel("general").id
 			}
-
 			settings.save(err => {
 				if (err) {
 					console.log(err)
@@ -53,6 +51,5 @@ module.exports = {
 				abc.send(`General chnnel has been set to ${interaction.options.getChannel("general")} by ${interaction.user}`)	
 			}
 		})
-
 	}
 }

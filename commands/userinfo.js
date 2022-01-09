@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js') 
 const moment = require('moment')
-
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("userinfo")
@@ -11,9 +10,7 @@ module.exports = {
             .setDescription('user id')
             .setRequired(true)
     ),
-
     async execute(interaction) {
-
         var user = interaction.options.getUser('user')
         const embed = new Discord.MessageEmbed()
        .setColor('#00ffff')
@@ -32,8 +29,7 @@ module.exports = {
         .addField("Joined The Server On:", `${moment.utc(user.joinedAt).format("dddd, MMMM Do YYYY")}`, true)
         .addField("Account Created On:", `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`, true) 
         .addField("Roles:", `${user.roles}`, true)
-        .setFooter(`Replying to ${user.username}#${user.discriminator}`)
-
+        .setFooter(`Info of ${user.username}#${user.discriminator} requested by ${interaction.user.username}`)
         interaction.reply({ embeds: [embed] })
     }
 }

@@ -17,9 +17,8 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-
-        var reason = interaction.options.getString('reason')
-        var user = interaction.options.getUser('user')
+        const reason = interaction.options.getString('reason')
+        const user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
              if (user.id === '754381104034742415') {return interaction.reply('You cannot ban my developer')}
@@ -35,7 +34,6 @@ module.exports = {
              .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
              .setThumbnail(user.displayAvatarURL())
              interaction.reply({ embeds: [embed] })
-             
             Banned.findOne({guild_id: interaction.guild.id}, (err, settings) => {
                 if (err) {
                     console.log(err)
@@ -45,8 +43,8 @@ module.exports = {
                     settings = new Banned({
                         guild_id: interaction.guild.id,
                         user_id: user.id,
-                        reason: interaction.options.getString('reason'),
-                        moderatorId: interaction.user.id
+                        moderatorId: interaction.user.id,
+                        reason: interaction.options.getString('reason'),                       
                     })
                 } 
                 settings.save(err => {
@@ -61,8 +59,6 @@ module.exports = {
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-                if(!abc)return
-                if (abc.type === 'voice') return
                 abc.send({
                     embeds: [embed] 
                 })	

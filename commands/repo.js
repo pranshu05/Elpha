@@ -9,7 +9,7 @@ module.exports = {
         .setColor('#00ffff')
         .setTimestamp()
         .setTitle(`Github Repo`)
-        .addField('Repo link ', `[Here](https://github.com/Elphabot/Elpha) | Star this repo!`)
+        .addField('Repo link ', `[Here](https://github.com/pranshu05/Elpha) | Star this repo!`)
     interaction.reply({ embeds: [embed] })
     }
 }

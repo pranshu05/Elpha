@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js')
 const got = require('got')
-
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("cat")
@@ -13,18 +12,17 @@ module.exports = {
                 const [list] = JSON.parse(response.body)
                 const [post] = list.data.children
                 const permalink = post.data.permalink
-                const memeUrl = `https://reddit.com${permalink}`
-                const memeImage = post.data.url
-                const memeTitle = post.data.title
-                const memeUpvotes = post.data.ups
-                const memeNumComments = post.data.num_comments
-                embed.setTitle(`${memeTitle}`)
+                const catUrl = `https://reddit.com${permalink}`
+                const catImage = post.data.url
+                const catTitle = post.data.title
+                const catUpvotes = post.data.ups
+                const catNumComments = post.data.num_comments
+                embed.setTitle(`${catTitle}`)
                 embed.setColor('#00FFFF')
-                embed.setImage(memeImage)
-                embed.setFooter(`👍 ${memeUpvotes} | 💬 ${memeNumComments}`)
+                embed.setImage(catImage)
+                embed.setFooter(`👍 ${catUpvotes} | 💬 ${catNumComments}`)
                 interaction.reply({ embeds: [embed] })
             })
             .catch(console.error)
     }
-    
 }

@@ -31,7 +31,8 @@ module.exports = {
         let index = (Math.floor(Math.random() * Math.floor(quote.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
-        .setTitle(quote[index] )
+        .setTitle(quote[index])
+        .setFields(`Quote for ${interaction.user.username}`)
         interaction.reply({ embeds: [embed] })
     }
 }

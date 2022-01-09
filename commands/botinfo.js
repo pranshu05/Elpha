@@ -28,13 +28,11 @@ function timeCon(time) {
     seconds = seconds > 9 ? seconds : '' + seconds
     return (parseInt(days) > 0 ? days + ' days ' : ' ') + (parseInt(hours) === 0 && parseInt(days) === 0 ? '' : hours + ' hours ') + minutes + ' minutes ' + seconds + ' seconds.'
 }
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('botinfo')
         .setDescription('Basic Information About Elpha'),
     async execute(interaction) {
-
         let totalPeople = 0
         totalPeople = interaction.client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)
         const embed = new Discord.MessageEmbed()

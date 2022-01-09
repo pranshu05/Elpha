@@ -5,7 +5,7 @@ module.exports = {
         .setName('roll')
         .setDescription('Roll a dice'),
     async execute(interaction) {
-        let eightball = [
+        let dicenum = [
             ':one:',
             ':two:',
             ':three:',
@@ -13,10 +13,10 @@ module.exports = {
             ':five:',
             ':six:',
         ]
-        let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
+        let index = (Math.floor(Math.random() * Math.floor(dicenum.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
-        .setTitle(eightball[index] )
+        .setTitle(dicenum[index] )
         interaction.reply({ embeds: [embed] })
     }
 }

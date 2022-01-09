@@ -20,6 +20,7 @@ module.exports = {
             .addField(':man_in_tuxedo: Server Owner ID', '' + interaction.guild.ownerId, true)
             .addField(':closed_lock_with_key: Server Verification Level', interaction.guild.verificationLevel, true)
             .addField(':joystick: Roles Size', '' + interaction.guild.roles.cache.size, true)
+            .setFooter(`requested by ${interaction.user.username}`)
         interaction.reply({ embeds: [embed] })
         // Enable this if you want server roles to be printed interaction.reply("Roles List:\n" + interaction.guild.roles.map(e => e.toString()).join(" "), { code: 'js' })
     }

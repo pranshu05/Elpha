@@ -17,8 +17,8 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-        var reason = interaction.options.getString('reason')
-        var user = interaction.options.getUser('user')
+        const reason = interaction.options.getString('reason')
+        const user = interaction.options.getUser('user')
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
@@ -47,8 +47,8 @@ module.exports = {
                     settings = new Muted({
                         guild_id: interaction.guild.id,
                         user_id: user.id,
+                        moderatorId: interaction.user.id,
                         reason: interaction.options.getString('reason'),
-                        moderatorId: interaction.user.id
                     })
                 } 
                 settings.save(err => {
@@ -63,8 +63,6 @@ module.exports = {
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-                if(!abc)return
-                if (abc.type === 'voice') return
                 abc.send({
                     embeds: [embed] 
                 })

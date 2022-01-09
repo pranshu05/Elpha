@@ -3,9 +3,9 @@ const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('nsfw')
-        .setDescription('WARNING! nsfw content 18+'),
+        .setDescription('WARNING! nsfw content 18+ only'),
     async execute(interaction) {
-        let eightball = [
+        let egif = [
             'https://c.tenor.com/LJKTSD9hZHQAAAAM/shame-on-you-how-dare-you.gif',
             'https://c.tenor.com/sign51fHK0kAAAAM/smh-kanyewest.gif',
             'https://c.tenor.com/CwHsyBGtIr4AAAAM/dwight-schrute-the-office.gif',
@@ -27,10 +27,10 @@ module.exports = {
             'https://c.tenor.com/DfSs6KiP6-kAAAAM/akshay-kumar-smile.gif',
             'https://c.tenor.com/zK6-iEBjjcEAAAAS/no-nooo.gif',
             ]
-        let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
+        let index = (Math.floor(Math.random() * Math.floor(egif.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('#00ffff')
-        .setImage(eightball[index])
-    interaction.reply({ embeds: [embed] })
+        .setImage(egif[index])
+        interaction.reply({ embeds: [embed] })
     }
 }

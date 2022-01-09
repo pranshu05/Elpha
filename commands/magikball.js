@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('8ball')
@@ -12,7 +11,7 @@ module.exports = {
         .setRequired(true)
         ),
 	async execute(interaction) {
-        let eightball = [
+        let eball = [
             'It is certain.',
             'It is decidedly so.',
             'Without a doubt.',
@@ -87,11 +86,11 @@ module.exports = {
             'You Wish', 
             'You\'ve Got To Be Kidding...',
         ]
-        let index = (Math.floor(Math.random() * Math.floor(eightball.length)))
+        let index = (Math.floor(Math.random() * Math.floor(eball.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
         .setTitle(interaction.options.getString("question") )
-        .setDescription(eightball[index])
+        .setDescription(eball[index])
         interaction.reply({ embeds: [embed] })
 	}
 }
