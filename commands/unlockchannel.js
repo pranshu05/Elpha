@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js')
 const Modlog = require("../models/Modlog")
+const Locked = require("../models/Locked")
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("unlockchannel")
@@ -30,6 +31,13 @@ module.exports = {
              .setTitle(`unlocked ${channel.name}`)
              .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
              interaction.reply({ embeds: [embed] })
+             Locked.deleteOne({guild_id: interaction.guild.id}, (err, settings) => {
+                if (err) {
+                    console.log(err)
+                    interaction.reply("An error occurred while adding data of unlocked channel to database!")
+                    return
+                }
+            })
              if (!modlog) {
                 return
             }else{

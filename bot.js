@@ -1,6 +1,6 @@
 require("dotenv").config()
 const fs = require("fs")
-const {Client,Collection} = require("discord.js")
+const {Client,Collection, DiscordAPIError} = require("discord.js")
 const Database = require("./config/Database")
 const db = new Database()
 db.connect()
