@@ -1,5 +1,6 @@
 const General = require("../models/General")
 const Discord = require('discord.js')
+const fetch = require('node-fetch').default
 module.exports = {
     name: "messageCreate",
     async execute(message ,client){
@@ -11,17 +12,8 @@ module.exports = {
             return
         }else{
         question = ["why","when","where","whome", "which","how"],
-        greeeting = ["hi","hello","sup","whatsup"],
-        bye = ["bye","gtg","see u later","see u","seeya","gotta go"],
-        yes=["yes ","yeah ","ye","really","joking","kidding"],
-        no=["no","nah","you know what"],
         elpha =["elpha"],
         shut=["stfu","shut up","shut","shut the fuck up"],
-        bw=["fuck","bitch","shit","piss off","asshole","dick head","basterd","ass","dick"],
-        gn=["good night","gn"],
-        gm=["good morning","morning","gm"],
-        good=["good",'nice',"pog","excelent","genius","gud","nic"],
-        thanks=["thank","thx"],
         lol=["lmao","lmfao","lol","rofl"],
         ded=["ded chat","ded","dead","dead chat"],
         have=["have","i have","i hav"],
@@ -29,41 +21,21 @@ module.exports = {
         rick=['rick','rick roll'],
         ng=['never gonna']
         if(msg.channel.id === general.general_channel_id){
-          if (greeeting.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('hello! How r you?')
-          }
+          fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
+          .then(response => response.json())
+          .then(data =>{
+             message.reply(data.response)
+          }).catch(()=>{
+            message.reply('I have no reply for this!')
+          })
           if (question.some(word => msg.content.toLowerCase().startsWith(word))) {
             msg.reply('Why are u asking me?')
-          }
-          if (bye.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('bye!')
-          }
-          if (yes.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('no')
-          }
-          if (no.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('yes')
           }
           if (elpha.some(word => msg.content.toLowerCase().startsWith(word))) {
             msg.reply('yes?')
           }
           if (shut.some(word => msg.content.toLowerCase().includes(word))) {
             msg.reply('you shut the fuck up')
-          }
-          if (bw.some(word => msg.content.toLowerCase().includes(word))) {
-            msg.reply('mind your language mf')
-          }
-          if (gm.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('Good Morning!')
-          }
-          if (gn.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('Good Night!')
-          }
-          if (good.some(word => msg.content.toLowerCase().includes(word))) {
-            msg.reply('thanks!')
-          }
-          if (thanks.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('welcome!')
           }
           if (lol.some(word => msg.content.toLowerCase().startsWith(word))) {
             msg.reply('lmao')

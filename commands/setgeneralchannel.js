@@ -13,7 +13,7 @@ module.exports = {
 		),
 	async execute(interaction) {
 		const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
-		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
+		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS ])) {
 			interaction.reply("You do not have permission to use this command!")
 			return
 		} 

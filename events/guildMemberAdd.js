@@ -4,12 +4,13 @@ const Role = require("../models/Role")
 module.exports = {
 	name: "guildMemberAdd",
 	async execute(member , guild) {
-		console.log(member.user)
+		console.log(`${member.user.username} joined ${member.guild.name}`)
 		const roles = await Role.findOne({guild_id: member.guild.id})
 		const guildSettings = await GuildSettings.findOne({guild_id: member.guild.id})
 		if (!guildSettings) {
 			return
 		}else{ 
+			if(!guildSettings.welcome_channel_id) return
 			const newMemberEmbed = new Discord.MessageEmbed()
 			.setColor("00FFFF")
 			.setTitle("New Member!")

@@ -3,7 +3,7 @@ const Leave = require("../models/Leave")
 module.exports = {
 	name: "guildMemberRemove",
 	async execute(member , guild) {
-		console.log(member.user)
+		console.log(`${member.user.username} left ${member.guild.name}`)
 		const guildSettings = await Leave.findOne({guild_id: member.guild.id})
 		if (!guildSettings) {
 			return
