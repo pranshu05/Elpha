@@ -21,12 +21,12 @@ module.exports = {
         const user = interaction.options.getUser('user')
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
+        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)) {
+            if (!muteRole) return ('Please make a role named **Mute**')
             if (user.id === '754381104034742415') {return interaction.reply('You cannot mute my developer')}
             if (user === interaction.user) return interaction.reply('You cannot mute yourself')
             if (user === interaction.client.user) return interaction.reply('You cannot mute me')
             if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot mute Moder')}
-            if (!muteRole) return interaction.reply('Mute Role required')
             if (user.id === '754381104034742415') {return interaction.reply('You cannot mute my developer')}
         interaction.guild.members.fetch(user.id).then(member => {
             member.roles.add(muteRole).catch(err => console.error(err))
@@ -67,6 +67,7 @@ module.exports = {
                     embeds: [embed] 
                 })
             }
+            user.send(`You were muted in ${interaction.guild.name}`)
         } else {
             interaction.reply('Insufficant Permissions')
         }

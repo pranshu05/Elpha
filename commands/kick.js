@@ -20,7 +20,7 @@ module.exports = {
         const reason = interaction.options.getString('reason')
         const user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
+        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)) {
              if (user.id === '754381104034742415') {return interaction.reply('You cannot kick my developer')}
              if (user === interaction.user) return interaction.reply('You cannot kick yourself')
              if (user === interaction.client.user) return interaction.reply('You cannot kick me')
@@ -63,6 +63,7 @@ module.exports = {
                     embeds: [embed] 
                 })
             }
+            user.send(`You were kicked from ${interaction.guild.name}`)
         } else {
             interaction.reply('Insufficant Permissions')
         } 

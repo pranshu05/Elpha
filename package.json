@@ -17,6 +17,7 @@
     "canvacord": "^5.2.3",
     "canvas": "^2.8.0",
     "discord-api-types": "^0.25.2",
+    "discord-logs": "^2.0.1",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
     "got": "^11.8.3",
@@ -30,7 +31,5 @@
     "pngjs": "^6.0.0",
     "superagent": "^6.1.0",
     "weather-js": "^2.0.0"
-  },
-  "devDependencies": {
   }
 }

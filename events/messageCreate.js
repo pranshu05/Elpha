@@ -13,8 +13,6 @@ module.exports = {
         }else{
         question = ["why","when","where","whome", "which","how"],
         elpha =["elpha"],
-        shut=["stfu","shut up","shut","shut the fuck up"],
-        lol=["lmao","lmfao","lol","rofl"],
         ded=["ded chat","ded","dead","dead chat"],
         have=["have","i have","i hav"],
         u=["u r","no u","you r","no you","you are"],
@@ -33,12 +31,6 @@ module.exports = {
           }
           if (elpha.some(word => msg.content.toLowerCase().startsWith(word))) {
             msg.reply('yes?')
-          }
-          if (shut.some(word => msg.content.toLowerCase().includes(word))) {
-            msg.reply('you shut the fuck up')
-          }
-          if (lol.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('lmao')
           }
           if (ded.some(word => msg.content.toLowerCase().startsWith(word))) {
             msg.reply('Now Alive!')

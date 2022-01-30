@@ -21,7 +21,7 @@ module.exports = {
         const reason = interaction.options.getString('warning')
         const user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
+        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)) {
             if (user.id === '754381104034742415') {return interaction.reply('You cannot warn my developer')}
             if (user === interaction.user) return interaction.reply('You cannot warn yourself')
             if (user === interaction.client.user) return interaction.reply('You cannot warn me')
@@ -87,6 +87,7 @@ module.exports = {
                         embeds: [embed] 
                     })	
                 }
+                user.send(`You were warned in ${interaction.guild.name}`)
             })
         } else {
             interaction.reply('Insufficant Permissions')

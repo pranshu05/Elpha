@@ -4,7 +4,6 @@ const {Client,Collection} = require("discord.js")
 const Database = require("./config/Database")
 const db = new Database()
 db.connect()
-const { MessageEmbed } = require('discord.js')
 const client = new Client({ 
     intents: [
         'GUILDS',
@@ -20,6 +19,9 @@ const client = new Client({
         'GUILD_PRESENCES',
     ] 
 })
+const { MessageEmbed } = require('discord.js')
+const logs = require('discord-logs')
+logs(client)
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 const commands = []
 client.commands = new Collection()
