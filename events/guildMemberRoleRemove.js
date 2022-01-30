@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const Modlog = require("../models/Modlog")
 module.exports = {
 	name: "guildMemberRoleRemove",
-	async execute(member) {
+	async execute(member, role) {
          const modlog = await Modlog.findOne({guild_id: member.guild.id})
           if (!modlog) {
                 return
