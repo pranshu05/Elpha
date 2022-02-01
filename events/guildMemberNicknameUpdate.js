@@ -10,8 +10,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                 .setColor("#00FFFF")
                 .setTitle(member.user.tag+"'s nickname is now "+newNickname)
-                .addField("Old nickname" ,  oldNickname)
-                .addField("New nickname" ,  newNickname)
+                .addField("Old nickname" ,  `${oldNickname}`)
+                .addField("New nickname" ,  `${newNickname}`)
                 const abc = member.guild.channels.cache.get(modlog.modlog_channel_id)
                 abc.send({
                     embeds: [embed]

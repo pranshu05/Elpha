@@ -10,8 +10,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                 .setColor("#00FFFF")
                 .setTitle(channel.name+"'s permissions updated!")
-                .addField(`Old permission`,  oldPermissions)
-                .addField(`New permission`,  newPermissions)
+                .addField(`Old permission`,  `${oldPermissions}`)
+                .addField(`New permission`,  `${newPermissions}`)
                 const abc = channel.guild.channels.cache.get(modlog.modlog_channel_id)
                 abc.send({
                     embeds: [embed]

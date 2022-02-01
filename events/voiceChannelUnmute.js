@@ -9,8 +9,8 @@ module.exports = {
             }else{
                 const embed = new Discord.MessageEmbed()
                 .setColor("#00FFFF")
-                .setTitle(member.user.tag+" was muted in VC")
-                .addField(`Mute`, OldMuteType)
+                .setTitle(member.user.tag+" was unmuted in VC")
+                .addField(`Old Mute`, OldMuteType)
                 const abc = member.guild.channels.cache.get(modlog.modlog_channel_id)
                 abc.send({
                     embeds: [embed]

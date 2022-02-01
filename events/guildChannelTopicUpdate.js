@@ -10,8 +10,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                 .setColor("#00FFFF")
                 .setTitle(channel.name+"'s topic updated!")
-                .addField(`Old topic`,  oldTopic)
-                .addField(`New topic`,  newTopic)
+                .addField(`Old topic`,  `${oldTopic}`)
+                .addField(`New topic`,  `${newTopic}`)
                 const abc = channel.guild.channels.cache.get(modlog.modlog_channel_id)
                 abc.send({
                     embeds: [embed]
