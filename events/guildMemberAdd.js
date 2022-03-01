@@ -17,6 +17,7 @@ module.exports = {
 			.setDescription(`${member.user} has joined the server! We hope you enjoy your stay!`)
 			.setThumbnail(member.user.displayAvatarURL())
 			.setTimestamp()
+			.setFooter(`membercount : ${member.guild.members.cache.filter(member => !member.user.bot).size}`)
 			member.guild.channels.cache.get(guildSettings.welcome_channel_id).send({
 				embeds: [newMemberEmbed] 
 			})	
@@ -24,6 +25,7 @@ module.exports = {
 		if(!roles){
 			return
 		}else{
+			if(member.user.bot) return
 			const role = member.guild.roles.cache.find(x => x.name == roles.role)
 			if(!role){
 				return

@@ -14,6 +14,7 @@ module.exports = {
 			.setDescription(`${member.user} left the srver`)
 			.setThumbnail(member.user.displayAvatarURL())
 			.setTimestamp()
+			.setFooter(`membercount : ${member.guild.members.cache.filter(member => !member.user.bot).size}`)
 			member.guild.channels.cache.get(guildSettings.goodbye_channel_id).send({
 				embeds: [newMemberEmbed] 
 			})	

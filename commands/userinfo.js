@@ -26,7 +26,7 @@ module.exports = {
         //.addField("Permissons:", interaction.guild.members.cache.get(user).permissions)
        // .addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
         .addField("Bot:", `${user.bot}`, true)
-        .addField("Joined The Server On:", `${moment.utc(user.joinedAt).format("dddd, MMMM Do YYYY")}`, true)
+        .addField("Joined The Server On:", `${moment.utc(user.joinedAt).format('DD/MM/YY')}`, true)
         .addField("Account Created On:", `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`, true) 
         //
         .setFooter(`Info of ${user.username}#${user.discriminator} requested by ${interaction.user.username}`)

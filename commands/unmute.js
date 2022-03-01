@@ -42,7 +42,8 @@ module.exports = {
                     embeds: [embed] 
                 })	
             }
-        } else {
+            user.send(`You were unmuted in ${interaction.guild.name}`)
+        } else { 
             interaction.reply('Insufficant Permissions')
         }
     }

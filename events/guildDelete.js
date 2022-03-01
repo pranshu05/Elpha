@@ -1,6 +1,8 @@
 module.exports = {
 	name: "guildDelete",
 	async execute(guild) {
-        console.log(`Server left: ${guild.name}`)
+		if(guild.available){
+			console.log(`Server left: ${guild.name}`)
+		}
 	}
 }

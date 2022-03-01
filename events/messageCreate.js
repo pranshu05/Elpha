@@ -1,57 +1,42 @@
 const General = require("../models/General")
-const Discord = require('discord.js')
 const fetch = require('node-fetch').default
+const Gif = require('../models/Gif')
 module.exports = {
     name: "messageCreate",
-    async execute(message ,client){
+    async execute(message){
+        const prefix = 'elp'
         const msg = message
-        if(!message) return
+        const args = message.content.slice(prefix.length).trim().split(' ')
+        const command = args.shift().toLowerCase()
+        if(!msg) return
         if (msg.author.bot) return
         const general = await General.findOne({guild_id: msg.guild.id})
-		if (!general) {
+        const gif =  await Gif.find({guild_id: msg.guild.id})
+        if (command === 'gif') {
+          if(!gif){
+            return
+          }else{
+            if (!args.length) {
+              return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+            }else{
+              const name = await Gif.findOne({guild_id: msg.guild.id , gif_name: args[0]})
+              if(!name){
+                msg.reply(`No GIF found named `+ args[0])
+              }else{
+                const url = name.gif_url
+                msg.reply(url)
+              }
+            }
+          }
+        }
+		    if (!general) {
             return
         }else{
-        question = ["why","when","where","whome", "which","how"],
-        elpha =["elpha"],
-        ded=["ded chat","ded","dead","dead chat"],
-        have=["have","i have","i hav"],
-        u=["u r","no u","you r","no you","you are"],
-        rick=['rick','rick roll'],
-        ng=['never gonna']
         if(msg.channel.id === general.general_channel_id){
-          fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
-          .then(response => response.json())
-          .then(data =>{
-             message.reply(data.response)
-          }).catch(()=>{
-            message.reply('I have no reply for this!')
-          })
-          if (question.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('Why are u asking me?')
-          }
-          if (elpha.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('yes?')
-          }
-          if (ded.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('Now Alive!')
-          }
-          if (u.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('No you')
-          }
-          if (have.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('I have money :sunglasses:')
-          }
-          if (rick.some(word => msg.content.toLowerCase().includes(word))) {
-            msg.reply('Never Gonna Give You Up')
-          }
-          if (ng.some(word => msg.content.toLowerCase().startsWith(word))) {
-            msg.reply('Give You Up')
-          }
-          if (message.mentions.has(client.user)) {
-            message.reply(`Don't ping me mf, ${message.author}`);
-          }
-        }else{
-          return
+          fetch(`http://api.brainshop.ai/get?bid=163720&key=wN0HGDiinarW8Rle&uid=${message.author.id}&msg=${message.content.toLowerCase()}`).then(res => res.json()).then(json => {
+            const rep = json.cnt
+            msg.channel.send(rep)
+        }).catch(()=>{message.channel.send('API timeout')})
         }
     }
   }

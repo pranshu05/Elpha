@@ -44,9 +44,9 @@ client.on('guildCreate' , guild => {
     .setColor("00FFFF")
     .setTitle("New Guild!")
     .setDescription(`Elpha has joined the server ${guild.name}`)
-    .addField('Members:' , `${guild.memberCount.toString()}`)
+    .addField('Members:' , `${guild.memberCount}`)
     .addField("Guild owner:", `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
-    .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
+    .addField('Total servers:', `${client.guilds.cache.size}`)
     .setThumbnail(guild.iconURL())
     .setTimestamp()
 		client.channels.cache.get("919799899929841694").send(
@@ -55,18 +55,21 @@ client.on('guildCreate' , guild => {
 			})	
 })
 client.on('guildDelete' , guild => {
-    const embed = new MessageEmbed()
-    .setColor("00FFFF")
-    .setTitle("Guild Left")
-    .setDescription(`Elpha has left the server ${guild.name}`)
-    .addField('Members:' , `${guild.memberCount.toString()}`)
-    .addField("Guild owner:", `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
-    .addField('Total servers:', `${client.guilds.cache.size.toString()}`)
-    .setThumbnail(guild.iconURL())
-    .setTimestamp()
-		client.channels.cache.get("919799899929841694").send(
-				{
-					 embeds: [embed]
-			})	
-})
+    if(guild.available){
+        const embed = new MessageEmbed()
+        .setColor("00FFFF")
+        .setTitle("Guild Left")
+        .setDescription(`Elpha has left the server ${guild.name}`)
+        .addField('Members:' , `${guild.memberCount}`)
+        .addField("Guild owner:", `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
+        .addField('Total servers:', `${client.guilds.cache.size}`)
+        .setThumbnail(guild.iconURL())
+        .setTimestamp()
+            client.channels.cache.get("919799899929841694").send(
+                    {
+                         embeds: [embed]
+                })	
+    }
+        
+    })
 client.login(process.env.token)
