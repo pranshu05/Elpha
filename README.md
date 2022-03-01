@@ -5,7 +5,7 @@
 <br />
   
 [![Discord](https://img.shields.io/discord/754381521854398595?color=white&label=DISCORD&logo=discord&style=for-the-badge)](https://discord.gg/CVyx9qyYPF)
-![Version](https://img.shields.io/badge/version-1.1.0-green.svg?cacheSeconds=2592000&style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.2.0-green.svg?cacheSeconds=2592000&style=for-the-badge)
 ![botlib](https://img.shields.io/badge/powered_by-discord.js-blue?style=for-the-badge)
 ![Licence](https://img.shields.io/badge/license-MIT-orange?style=for-the-badge)
 ![Made with love in India](https://madewithlove.now.sh/in?colorB=%23ff5900&template=for-the-badge)
