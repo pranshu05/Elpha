@@ -32,7 +32,6 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
         .setTitle(quote[index])
-        .addField(`Quote for ${interaction.user.username}`)
         interaction.reply({ embeds: [embed] })
     }
 }
