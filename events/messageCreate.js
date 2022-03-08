@@ -3,7 +3,7 @@ const fetch = require('node-fetch').default
 const Gif = require('../models/Gif')
 module.exports = {
     name: "messageCreate",
-    async execute(message, client){
+    async execute(message){
         const prefix = 'elp'
         const msg = message
         const args = message.content.slice(prefix.length).trim().split(' ')
@@ -33,12 +33,12 @@ module.exports = {
             return
         }else{
         if(msg.channel.id === general.general_channel_id){
-	client.startTyping(message.channel)
+	message.channel.startTyping()
           fetch(`http://api.brainshop.ai/get?bid=163720&key=wN0HGDiinarW8Rle&uid=${message.author.id}&msg=${message.content.toLowerCase()}`).then(res => res.json()).then(json => {
             const rep = json.cnt
             msg.channel.send(rep)
         }).catch(()=>{message.channel.send('API timeout')})
-		client.stopTyping(message.channel)
+		message.channel.stopTyping()
         }
     }
   }
