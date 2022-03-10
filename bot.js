@@ -70,18 +70,5 @@ client.on('guildDelete' , guild => {
                          embeds: [embed]
                 })	
     }
-	client.once('ready' , () =>{
-    client.guilds.cache.forEach((guild) => {
-        console.log(guild.name)
-        try {
-         guild.channels.cache.find(channel => channel.type === 'GUILD_TEXT').send(
-	 `Hey guys please support me by \n following on twitter **https://twitter.com/elpha_bot** \n And voting us on DBL **https://discordbotlist.com/bots/916613852362330133/upvote**`
-	 );
-        } catch {
-         console.log("Message wasn't sent for " + guild.name);
-        }
-       });
 })
-        
-    })
 client.login(process.env.token)
