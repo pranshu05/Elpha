@@ -70,5 +70,6 @@ client.on('guildDelete' , guild => {
                          embeds: [embed]
                 })	
     }
-})
+        
+    })
 client.login(process.env.token)
