@@ -17,7 +17,7 @@ module.exports = {
            interaction.channel.setRateLimitPerUser(time)
             const embed = new Discord.MessageEmbed()
             .setColor('#00ffff')
-             .setTitle(`Slowmode for this channel is set for ${time} seconds`)
+             .setTitle(`Slowmode for ${interaction.channel} is set for ${time} seconds`)
              interaction.reply({ embeds: [embed] })
              if (!modlog) {
                 return
