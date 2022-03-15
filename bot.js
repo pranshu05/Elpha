@@ -8,12 +8,6 @@ db.connect()
 const express = require('express')
 const app = express()
 const port = 8080
-app.get('/', (req, res) => res.send('Yo boi!!'))
-
-app.listen(port, () =>
-	console.log(`Your app is listening to http://localhost:${port}`)
-)
-
 
 const client = new Client({ 
     intents: [
