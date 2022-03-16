@@ -4,11 +4,6 @@ const {Client,Collection} = require("discord.js")
 const Database = require("./config/Database")
 const db = new Database()
 db.connect()
-
-const express = require('express')
-const app = express()
-const port = 8080
-
 const client = new Client({ 
     intents: [
         'GUILDS',
