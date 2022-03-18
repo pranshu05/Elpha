@@ -18,13 +18,13 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-        if(interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply(`I don't have permission to ban!`)
+        if(interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)) {return interaction.reply(`I don't have permission to ban!`)}
             const reason = interaction.options.getString('reason')
             const user = interaction.options.getUser('user')
             const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
             if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)) {
                  if (user.id === '754381104034742415') {return interaction.reply('You cannot ban my developer')}
-                 if (user === interaction.user) return interaction.reply('You cannot ban yourself')
+                 if (user === interaction.user) {return interaction.reply('You cannot ban yourself')}
                  if (user === interaction.client.user) return interaction.reply('You cannot ban me')
                  if (user === interaction.guild.owner) return interaction.reply('You cannot ban owner of this server!')
                  if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {return interaction.reply('You cannot ban Moder')}
