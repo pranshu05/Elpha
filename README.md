@@ -38,9 +38,8 @@ And run the bot once and it will autometically re-run the bot after changes in t
 never share the .env to anyone
 
 ```sh
-prefix=
+MONGO_URL=
 token=
-GUILD_ID=
 ```
 
 # Elpha's prefix
