@@ -3,7 +3,7 @@ const fetch = require('node-fetch').default
 const Gif = require('../models/Gif')
 module.exports = {
     name: "messageCreate",
-    async execute(message){
+    async execute(message,args){
         const msg = message
         if(!msg) return
         if(msg.author.bot) return
