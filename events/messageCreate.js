@@ -3,17 +3,19 @@ const fetch = require('node-fetch').default
 const Gif = require('../models/Gif')
 module.exports = {
     name: "messageCreate",
-    async execute(message,args){
+    async execute(message){
         const msg = message
+        const sts = `elp gif`
         if(!msg) return
         if(msg.author.bot) return
         if (!message.guild) return
         const general = await General.findOne({guild_id: msg.guild.id})
         const gif =  await Gif.find({guild_id: msg.guild.id})
-        if (message.content.startsWith(`elp gif `+ args[0])) {
+        if (message.content.startsWith(sts+ args[0])) {
             if (!args[0]) {
               return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
             }else{
+              console.log(args[0])
               const name = await Gif.findOne({guild_id: msg.guild.id , gif_name: args[0]})
               if(!name){
                 msg.reply(`No GIF found named `+ args[0])
