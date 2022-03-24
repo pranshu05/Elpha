@@ -4,19 +4,14 @@ const Gif = require('../models/Gif')
 module.exports = {
     name: "messageCreate",
     async execute(message){
-        const prefix = 'elp'
         const msg = message
-        const args = message.content.slice(prefix.length).trim().split(' ')
-        const command = args.shift().toLowerCase()
         if(!msg) return
-        if (msg.author.bot) return
+        if(msg.author.bot) return
+        if (!message.guild) return
         const general = await General.findOne({guild_id: msg.guild.id})
         const gif =  await Gif.find({guild_id: msg.guild.id})
-        if (command === 'gif') {
-          if(!gif){
-            return
-          }else{
-            if (!args.length) {
+        if (message.content.startsWith(`elp gif `+ args[0])) {
+            if (!args[0]) {
               return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
             }else{
               const name = await Gif.findOne({guild_id: msg.guild.id , gif_name: args[0]})
@@ -27,7 +22,7 @@ module.exports = {
                 msg.reply(url)
               }
             }
-          }
+          
         }
 		    if (!general) {
             return
