@@ -3,7 +3,7 @@ const fetch = require('node-fetch').default
 const Gif = require('../models/Gif')
 module.exports = {
     name: "messageCreate",
-    async execute(message){
+    async execute(message, args){
         const msg = message
         const sts = `elp gif`
         if(!msg) return
@@ -24,9 +24,8 @@ module.exports = {
                 msg.reply(url)
               }
             }
-          
         }
-		    if (!general) {
+	if (!general) {
             return
         }else{
         if(msg.channel.id === general.general_channel_id){
