@@ -25,7 +25,7 @@ module.exports = {
                 embed.setTitle(`Eat or Pass`)
                 embed.setColor('#00FFFF')
                 embed.setImage(foodImage)
-		const message = await interaction.reply({ embeds: [embed] })
+		const message = interaction.reply({ embeds: [embed] })
 		message.react(':regional_indicator_e:')
 			.then(() => message.react(':regional_indicator_p:'))
 			.catch(error => console.error('One of the emojis failed to react:', error))
