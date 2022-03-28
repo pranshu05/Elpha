@@ -26,7 +26,7 @@ module.exports = {
                 embed.setColor('#00FFFF')
                 embed.setImage(foodImage)
                 interaction.reply({ embeds: [embed] })
-                const message = await interaction.fetchReply()
+                let message = await interaction.fetchReply()
 		            message.react(':regional_indicator_e:')
 		            message.react(':regional_indicator_p:')
             })
