@@ -11,8 +11,9 @@ module.exports = {
     ),
     async execute(interaction) {
         var user = interaction.options.getUser('user')
+        const mention = user.user
         if (user.id === '754381104034742415') {return interaction.reply('My developer isnt Gay')}
         if (user === interaction.client.user) return interaction.reply('im not gay')
-        interaction.reply(`${interaction.user} imagine being a nerd`)
+        interaction.reply(`${mention} imagine being a nerd`)
     }
 }
