@@ -13,6 +13,6 @@ module.exports = {
         var user = interaction.options.getUser('user')
         if (user.id === '754381104034742415') {return interaction.reply('My developer isnt Gay')}
         if (user === interaction.client.user) return interaction.reply('im not gay')
-        interaction.channel.send(`<@user.id> imagine being nerd`)
+        interaction.reply(`${interaction.user} imagine being a nerd`)
     }
 }
