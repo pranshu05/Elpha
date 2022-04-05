@@ -3,7 +3,7 @@ const fetch = require('node-fetch').default
 const Gif = require('../models/Gif')
 module.exports = {
     name: "messageCreate",
-    async execute(message){
+    async execute(message, client){
         const prefix = 'elp'
         const msg = message
         const args = message.content.slice(prefix.length).trim().split(' ')
@@ -12,6 +12,11 @@ module.exports = {
         if (msg.author.bot) return
         const general = await General.findOne({guild_id: msg.guild.id})
         const gif =  await Gif.find({guild_id: msg.guild.id})
+	 if (message.mentions.has(client.user)) {
+        	message.author.reply(`${message.author.user}, Don't ping :eyes:`).then(ping=>{
+			ping.reply(`${message.author.user}`)
+		})
+    	}
         if (command === 'gif') {
           if(!gif){
             return
