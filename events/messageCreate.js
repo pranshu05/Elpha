@@ -12,7 +12,7 @@ module.exports = {
         if (msg.author.bot) return
         const general = await General.findOne({guild_id: msg.guild.id})
         const gif =  await Gif.find({guild_id: msg.guild.id})
-	 if (message.content === '<@916613852362330133>')) {
+	 if (message.content === '<@916613852362330133>') {
         	message.author.reply(`${message.author.user}, Don't ping :eyes:`).then(ping=>{
 			ping.reply(`${message.author.user}`)
 		})
