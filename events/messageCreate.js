@@ -13,8 +13,8 @@ module.exports = {
         const general = await General.findOne({guild_id: msg.guild.id})
         const gif =  await Gif.find({guild_id: msg.guild.id})
 	if (message.mentions.has(client.user)) {
-		await message.reply(`${message.author.user}, Don't ping :eyes:`).then(piing =>{
-			 message.reply(`${message.author.user}`)
+		await message.reply(`${message.author}, Don't ping :eyes:`).then(piing =>{
+			 message.reply(`${message.author}`)
 		})
 	}
         if (command === 'gif') {
