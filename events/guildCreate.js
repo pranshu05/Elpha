@@ -9,7 +9,7 @@ module.exports = {
 			.addField('Setup instructions', '1) Setup the welcome channel by `/setwelcomechannel` command! \n' + '2) Setup the general channel by `/setgeneralchannel` command!\n' + '3) Setup the modlog channel by `/setmodlogchannel` command\n' + '4) Setup the goodbye channel by `/setgoodbyechannel` command! \n' + '5) Setup autorole by `/setdefaultrole` command! \n')
 			.setDescription(`thanks for choosing me!`)
 			.setTimestamp()
-			channel.send({ embeds: [embed] })
+			channel.send({ embeds: [embed] }).catch((err) => console.log(err))
 			console.log(`Server joined: ${guild.name}`)
 	}
 }
