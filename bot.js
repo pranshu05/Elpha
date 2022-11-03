@@ -20,8 +20,6 @@ const client = new Client({
     ] 
 })
 const { MessageEmbed } = require('discord.js')
-const logs = require('discord-logs')
-logs(client)
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 const commands = []
 client.commands = new Collection()
