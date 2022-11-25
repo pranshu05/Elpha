@@ -52,7 +52,7 @@ Elpha uses Discord slash commands however the custom command's prefix will be ad
 
 # 🤝 Contributors
 
-<img src = "https://contrib.rocks/image?repo = pranshu05/elpha"/>
+[![Contributors](https://contrib.rocks/image?repo=pranshu05/Elpha)](https://github.com/pranshu05/Elpha/graphs/contributors)
 
 # Github
 
