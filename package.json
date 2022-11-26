@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon bot.js",
     "start": "node ./bot.js",
-    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+    "test": "jest",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
