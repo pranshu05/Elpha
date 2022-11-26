@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "nodemon bot.js",
     "start": "node ./bot.js",
-    "test": "jest",
-    "build": "tsc"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
