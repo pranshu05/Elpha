@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon bot.js",
     "start": "node ./bot.js",
-    "test": "jest"
+    "lint": "eslint \"{src,apps,libs,test}/**/*.js\"",
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.js\" --fix"
   },
   "keywords": [],
   "author": "",
