@@ -1,6 +1,6 @@
 <div align="center">
 <br />
-<h1>Elpha! The bot being developed</h1>
+<h1>Elpha! The open-source discord bot</h1>
 <p><img src = "https://raw.githubusercontent.com/pranshu05/Elpha/main/img/b.png"></p>
 <br />
   
@@ -16,7 +16,7 @@
 
 # 🤖 What is Elpha?
 
-### Elpha is an open source discord bot which developed from discord.js and based on slash commands. Anyone can contribute to this open source repo to make the bot more powerful.
+### Elpha is an open source discord bot which developed from discord.js and based on slash commands. Contribute to this open-source repo to make the bot more powerful.
 
 # 💻 How to install packages?
 ```sh
@@ -46,24 +46,15 @@ token=
 
 Elpha uses Discord slash commands however the custom command's prefix will be added soon! 
 
-# 👥 Developer
 
-📜 [**Pranshu05**](https://github.com/pranshu05)
+# 🤝 Contributors
 
-# 🤝 Bug finder and Helper
-
-📜 [**Fad The Chad**](https://github.com/FadTheChad)
-📜 [**TonyG**](https://github.com/tonyG433)
+[![Contributors](https://contrib.rocks/image?repo=pranshu05/Elpha)](https://github.com/pranshu05/Elpha/graphs/contributors)
 
 # Github
 
 * Github: [@Elphabot](https://github.com/Elphabot)
 
-
-# Open Source
-
-***Elpha is an open source discord bot .
-You can contribute to my code or make a bot from my code it's free!!!***
 
 # 📝 License
 
