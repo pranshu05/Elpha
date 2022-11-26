@@ -24,7 +24,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 const commands = []
 client.commands = new Collection()
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`)
+	const command = require(`./commands/${file}) 
     commands.push(command.data.toJSON())
 	client.commands.set(command.data.name, command)
 }
@@ -50,7 +50,7 @@ client.on('guildCreate' , guild => {
 		client.channels.cache.get("919799899929841694").send(
 				{
 					 embeds: [embed]
-			})	
+			}	
 })
 client.on('guildDelete' , guild => {
     if(guild.available){
@@ -67,7 +67,7 @@ client.on('guildDelete' , guild => {
                     {
                          embeds: [embed]
                 })	
-    }
+    
         
     })
 client.login(process.env.token)
