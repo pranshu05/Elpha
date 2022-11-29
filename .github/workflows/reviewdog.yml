@@ -1,4 +1,4 @@
-name: test
+name: reviewdog
 
 on:
   pull_request:
