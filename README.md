@@ -9,10 +9,9 @@
 ![Version](https://img.shields.io/badge/version-1.2.0-green.svg?cacheSeconds=2592000)
 ![botlib](https://img.shields.io/badge/powered_by-discord.js-blue)
 ![GitHub repo size](https://img.shields.io/github/repo-size/pranshu05/elpha)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 ![PRs](https://img.shields.io/github/issues-pr/pranshu05/elpha) 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F) 
-
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg) 
 ![Licence](https://img.shields.io/badge/license-MIT-orange)
 
