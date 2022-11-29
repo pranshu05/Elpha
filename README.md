@@ -4,11 +4,18 @@
 <p><img src = "https://raw.githubusercontent.com/pranshu05/Elpha/main/img/b.png"></p>
 <br />
   
-[![Discord](https://img.shields.io/discord/754381521854398595?color=white&label=DISCORD&logo=discord&style=for-the-badge)](https://discord.gg/CVyx9qyYPF)
-![Version](https://img.shields.io/badge/version-1.2.0-green.svg?cacheSeconds=2592000&style=for-the-badge)
-![botlib](https://img.shields.io/badge/powered_by-discord.js-blue?style=for-the-badge)
-![Licence](https://img.shields.io/badge/license-MIT-orange?style=for-the-badge)
-[![invite](https://img.shields.io/badge/INVITE-ELPHA-yellow?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=916613852362330133&permissions=8&scope=bot%20applications.commands)
+[![Discord](https://img.shields.io/discord/754381521854398595?color=white&label=DISCORD&logo=discord)](https://discord.gg/CVyx9qyYPF)
+[![invite](https://img.shields.io/badge/INVITE-ELPHA-yellow)](https://discord.com/oauth2/authorize?client_id=916613852362330133&permissions=8&scope=bot%20applications.commands)
+![Version](https://img.shields.io/badge/version-1.2.0-green.svg?cacheSeconds=2592000)
+![botlib](https://img.shields.io/badge/powered_by-discord.js-blue)
+![GitHub repo size](https://img.shields.io/github/repo-size/pranshu05/elpha)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
+![PRs](https://img.shields.io/github/issues-pr/pranshu05/elpha) 
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F) 
+
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg) 
+![Licence](https://img.shields.io/badge/license-MIT-orange)
+
 
 </div>
 
