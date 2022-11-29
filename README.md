@@ -24,15 +24,15 @@
 
 # 💻 How to install packages?
 ```sh
-npm install
+npm i
 ```
 # 💻 How to run the bot?
 ```sh
-node .bot.js
+node ./bot.js
 ```
 However you can install the nodemon package by
 ```sh
-npm install nodemon
+npm i nodemon
 ```
 And run the bot once and it will autometically re-run the bot after changes in the files
 
