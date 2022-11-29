@@ -12,7 +12,7 @@ const client = new Client({
         'GUILD_MESSAGE_REACTIONS',
         'GUILD_MESSAGE_TYPING',
         'GUILD_BANS',
-        'GUILD_EMOJIS_AND_STICKERS',
+        'GUILD_EMOJIS_AND_STICKERS'
         'GUILD_INTEGRATIONS',
         'GUILD_INVITES',
         'GUILD_VOICE_STATES',
@@ -27,7 +27,7 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`)
     commands.push(command.data.toJSON())
 	client.commands.set(command.data.name, command)
-}
+
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`)
@@ -50,7 +50,7 @@ client.on('guildCreate' , guild => {
 		client.channels.cache.get("919799899929841694").send(
 				{
 					 embeds: [embed]
-			})	
+			)	
 })
 client.on('guildDelete' , guild => {
     if(guild.available){
@@ -69,5 +69,5 @@ client.on('guildDelete' , guild => {
                 })	
     }
         
-    })
+    )
 client.login(process.env.token)
