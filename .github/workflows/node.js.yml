@@ -17,3 +17,4 @@ jobs:
     steps:
     - name: Setup reviewdog
       uses: reviewdog/action-setup@v1.0.3
+    - run: reviewdog v1.0.3
