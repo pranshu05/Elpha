@@ -1,7 +1,7 @@
 <div align="center">
 <br />
 <h1>Elpha! The open-source discord bot</h1>
-<p><img src = "https://raw.githubusercontent.com/pranshu05/Elpha/main/img/b.png"></p>
+![Elpha](https://raw.githubusercontent.com/pranshu05/Elpha/main/img/b.png) 
 <br />
   
 [![Discord](https://img.shields.io/discord/754381521854398595?color=white&label=DISCORD&logo=discord)](https://discord.gg/CVyx9qyYPF)
