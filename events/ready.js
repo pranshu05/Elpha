@@ -1,43 +1,45 @@
-const Discord = require("discord.js")
-const {REST} = require("@discordjs/rest")
-const {Routes} = require("discord-api-types/v9")
-const dotenv = require("dotenv")
-dotenv.config()
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+require("dotenv").config();
 
-const version = "9"
-const CLIENT_ID = process.env.CLIENT_ID
-const rest = new REST({version}).setToken(process.env.TOKEN)
-
-const registerCommands = async (client, commands) => {
-    try {
-        await rest.put(Routes.applicationCommands(CLIENT_ID), { body: commands });
-        console.debug(`Succesfully registered commands globally`);
-    } catch (err) {
-        console.error(err);
-    }
-}
+const watching = [
+    "Pranshu developing me 👀",
+    `Over ${client.guilds.cache.size} servers`,
+    `Over ${client.guilds.cache.map((person) => person.memberCount).reduce((s, v) => s + (v || 0), 0)} users`,
+    "Pranshu developing me 👀",
+];
 
 module.exports = {
     name: "ready",
     once: true,
-    async execute(client) {
-        console.debug('Bot is ready!');
-        client.user.setStatus('dnd')
-        const watching = [
-            `Pranshu developing me 👀`,
-            `Over ${client.guilds.cache.size} servers`,
-            `Over ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users`,
-            `Pranshu developing me 👀`
-        ]
-          let index = 0
-        setInterval(() => {
-        if(index === watching.length) index = 0
-        const status = watching[index]
-        client.user.setStatus('dnd')
-        client.user.setActivity(status, { type: "WATCHING"})
-        index++
-    }, 7000) 
+    execute(client, commands) {
+        console.log("Ready!");
 
-       await registerCommands(client, commands);
-    }
-}
+        // Set the bot's activity status
+        let index = 0;
+        setInterval(() => {
+            if (index === watching.length) index = 0;
+            const status = watching[index];
+            client.user.setStatus("dnd");
+            client.user.setActivity(status, { type: "WATCHING" });
+            index++;
+        }, 7000);
+
+        // Register commands globally
+        const CLIENT_ID = client.user.id;
+        const rest = new REST({ version: "9" }).setToken(process.env.token);
+        (async () => {
+            try {
+                await rest.put(Routes.applicationCommands(CLIENT_ID), {
+                    body: commands,
+                });
+                console.log(
+                    `Successfully registered commands globally with ${client.guilds.cache.map((person) => person.memberCount).reduce((s, v) => s + (v || 0), 0)} users and ${client.guilds.cache.size} servers`
+                );
+            } catch (err) {
+                console.error(err);
+            }
+        })();
+    },
+};
+
