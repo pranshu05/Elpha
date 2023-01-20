@@ -29,13 +29,14 @@ module.exports = {
             `Over ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users`,
             `Pranshu developing me 👀`
         ]
-        let index = 0
-        client.setInterval(() => {
-            if(index === watching.length) index = 0
-            const status = watching[index]
-            client.user.setActivity(status, { type: "WATCHING"})
-            index++
-        }, 7000)
+          let index = 0
+        setInterval(() => {
+        if(index === watching.length) index = 0
+        const status = watching[index]
+        client.user.setStatus('dnd')
+        client.user.setActivity(status, { type: "WATCHING"})
+        index++
+    }, 7000) 
 
         const commands = []
         // Fetch commands from all the servers
