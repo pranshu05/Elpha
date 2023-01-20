@@ -3,8 +3,8 @@
 <h1>Elpha! The open-source discord bot</h1>
 <br />
   
-![Elpha](https://raw.githubusercontent.com/pranshu05/Elpha/main/img/b.png) 
-  
+![Elpha](https://user-images.githubusercontent.com/70943732/213678287-d3c9a9c9-4fa5-44e6-99d7-0976d91cdad6.png)
+
   
 [![Discord](https://img.shields.io/discord/754381521854398595?color=white&label=DISCORD&logo=discord)](https://discord.gg/CVyx9qyYPF)
 [![invite](https://img.shields.io/badge/INVITE-ELPHA-yellow)](https://discord.com/oauth2/authorize?client_id=916613852362330133&permissions=8&scope=bot%20applications.commands)
