@@ -38,12 +38,6 @@ module.exports = {
         index++
     }, 7000) 
 
-        const commands = []
-        // Fetch commands from all the servers
-        await Promise.all(client.guilds.cache.map(async guild => {
-            commands.push(await guild.fetchCommands())
-        }))
-
-        await registerCommands(client, commands);
+       await registerCommands(client, commands);
     }
 }
