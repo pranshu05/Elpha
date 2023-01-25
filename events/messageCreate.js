@@ -34,6 +34,11 @@ module.exports = {
             }
           }
         }
+        if (command === 'leave'){
+          if(message.author.id !=='754381104034742415') 
+            return message.channel.send(`**»** ${message.author}, you don't have permission to do that!`);
+            message.guild.leave()
+        }
 		    if (!general) {
             return
         }else{
