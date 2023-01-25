@@ -7,10 +7,10 @@ module.exports = {
     execute(client, commands){
         console.debug('ready!')
         let watching = [
-            `Pranshu developing me 👀`,
+            `Contributors developing me 👀`,
             `Over ${client.guilds.cache.size} servers`,
             `Over ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users`,
-            `Pranshu developing me 👀`
+            `Contributors developing me 👀`
        ]
         let index = 0
         setInterval(() => {
