@@ -18,7 +18,9 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-        if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)) {return interaction.reply(`I don't have permission to ban!`)}
+        if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)){
+            return interaction.reply(`I don't have permission to ban!`)
+        }
             const reason = interaction.options.getString('reason')
             const user = interaction.options.getUser('user')
             const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
@@ -27,12 +29,12 @@ module.exports = {
                  if (user === interaction.user) {return interaction.reply('You cannot ban yourself')}
                  if (user === interaction.client.user) return interaction.reply('You cannot ban me')
                  if (user === interaction.guild.owner) return interaction.reply('You cannot ban owner of this server!')
-                 if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {return interaction.reply('You cannot ban Moder')}
-            interaction.guild.members.fetch(user.id).then(member => {
-                member.ban().catch(err => console.error(err))
+                 if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {return interaction.reply('You cannot ban member with higher roles!')}
+                    interaction.guild.members.fetch(user.id).then(member => {
+                    member.ban().catch(err => console.error(err))
             })
                 const embed = new Discord.MessageEmbed()
-                .setColor('#00ffff')
+                 .setColor('#00ffff')
                  .setTitle(`banned ${user.username}`)
                  .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
                  .setThumbnail(user.displayAvatarURL())
@@ -62,11 +64,14 @@ module.exports = {
                     return
                 }else{
                     const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
+                    if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                        return interaction.reply(`I don't have permission to send message in modlogs channel`)
+                    }
                     abc.send({
                         embeds: [embed] 
                     })	
                 }
-                 user.send(`You were banned from ${interaction.guild.name}`)
+                 user.send(`You were banned from ${interaction.guild.name}`).catch(console.error)
             } else {
                 interaction.reply('Insufficant Permissions')
             }

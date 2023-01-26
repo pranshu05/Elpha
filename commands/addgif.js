@@ -42,7 +42,7 @@ module.exports = {
                 }
             })
         })
-
         interaction.reply(`GIF named `+ name +` added!\n` + `type **elp gif **`+name +` to send gif\n` + `You can undo this by **/removegif** command`)
+        .catch(console.error)
     }
 }

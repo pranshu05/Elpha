@@ -7,11 +7,10 @@ module.exports = {
     .setDescription("sends banned users"),
     async execute(interaction) {
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
-        const banned =  await Banned.find({guild_id: interaction.guild.id})
+              const banned =  await Banned.find({guild_id: interaction.guild.id})
 		    if (!banned) {
-            return
-            interaction.reply(`There are no banned users in the server`)
-		    }else{
+            return interaction.reply(`There are no banned users in the server`)
+		    }
             const embedDescription = banned.map((ban) => {
             const moderator = interaction.guild.members.cache.get(
                   ban.moderatorId
@@ -23,16 +22,15 @@ module.exports = {
               ].join('\n');
               })
               .join('\n\n')
-			const Embed = new Discord.MessageEmbed()
-			.setColor("00FFFF")
-			.setTitle(`banned users in ${interaction.guild.name}`)
-			.setDescription(embedDescription)
-			.setThumbnail(interaction.guild.iconURL())
-			interaction.reply({
-				embeds: [Embed] 
-			})	
-		  }
-        } else{
+			          const Embed = new Discord.MessageEmbed()
+			            .setColor("00FFFF")
+			            .setTitle(`banned users in ${interaction.guild.name}`)
+			            .setDescription(embedDescription)
+			            .setThumbnail(interaction.guild.iconURL())
+			        interaction.reply({
+				          embeds: [Embed] 
+			      })	
+		  }else{
             interaction.reply('Insufficant Permissions')
         }
     }
