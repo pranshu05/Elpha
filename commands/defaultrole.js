@@ -15,9 +15,12 @@ module.exports = {
         const role = interaction.options.getString('role')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
+            if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
+                return interaction.reply(`I don't have permission to manage roles!`)
+            }
             interaction.guild.roles.create({ name: role})
             const embed = new Discord.MessageEmbed()
-            .setColor('#00ffff')
+             .setColor('#00ffff')
              .setTitle(`created default role`)
              .setDescription(`role: ${role}`)
              interaction.reply({ embeds: [embed] })
@@ -46,9 +49,16 @@ module.exports = {
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-                abc.send({
-                    embeds: [embed] 
-                })	
+                    if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                        if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                              interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                              return 
+                        }
+                        return 
+                    }
+                    abc.send({
+                        embeds: [embed] 
+                    })		
             }
         } else {
             interaction.reply('Insufficant Permissions')

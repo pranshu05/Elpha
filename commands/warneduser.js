@@ -8,10 +8,10 @@ module.exports = {
     async execute(interaction) {
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
         const warned =  await Warned.find({guild_id: interaction.guild.id})
-		if (!warned) {
+		    if (!warned) {
             interaction.reply(`There are no warned users in the server`)
-			return
-		}else{
+			      return
+		    }else{
             const embedDescription = warned.map((warna) => {
             const moderator = interaction.guild.members.cache.get(
             warna.moderatorId

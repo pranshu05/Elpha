@@ -81,13 +81,18 @@ module.exports = {
                     return
                 }else{
                     const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-                    if(!abc)return
-                    if (abc.type === 'voice') return
+                    if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                        if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                              interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                              return 
+                        }
+                        return 
+                    }
                     abc.send({
                         embeds: [embed] 
                     })	
                 }
-                user.send(`You were warned in ${interaction.guild.name}`)
+                user.send(`You were warned in ${interaction.guild.name}`).catch(console.error)
             })
         } else {
             interaction.reply('Insufficant Permissions')

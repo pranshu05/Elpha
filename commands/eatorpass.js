@@ -4,12 +4,7 @@ const got = require('got')
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("eat-or-pass")
-    .setDescription("send eat or pass poll")
-      .addChannelOption(option => option
-			.setName("channel")
-			.setDescription("The channel to send the poll")
-			.setRequired(true)
-		),
+    .setDescription("send eat or pass poll"),
     async execute(interaction) {
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/food/random/.json')
@@ -25,10 +20,10 @@ module.exports = {
                 embed.setTitle(`Eat or Pass`)
                 embed.setColor('#00FFFF')
                 embed.setImage(foodImage)
-		const message = interaction.reply({ embeds: [embed] })
-		message.react(':regional_indicator_e:')
-			.then(() => message.react(':regional_indicator_p:'))
-			.catch(error => console.error('One of the emojis failed to react:', error))
+		              interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
+                    sentEmbed.react("👍")
+                    sentEmbed.react("👎")
+                })
             })
             .catch(console.error)
     }

@@ -46,7 +46,14 @@ module.exports = {
 				return
 			}else{
 				const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-				abc.send(`Modlog chnnel has been set to ${interaction.options.getChannel("modlog")} by ${interaction.user}`)	
+				if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+					if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+						  interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+						  return 
+					}
+					return 
+				}
+								abc.send(`Modlog chnnel has been set to ${interaction.options.getChannel("modlog")} by ${interaction.user}`)	
 			}
 		})
 	}

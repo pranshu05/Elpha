@@ -24,6 +24,7 @@ module.exports = {
             .setFooter("Last Update", + json.lastUpdate)
             .setTimestamp()
             interaction.reply({ embeds: [embed] })
+            .catch(console.error)
         })
     }
 }
