@@ -6,6 +6,10 @@ module.exports = {
     .setName("eat-or-pass")
     .setDescription("send eat or pass poll"),
     async execute(interaction) {
+        if(!interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+            interaction.reply('I dont have permission to send message in this channel')
+            return
+        }
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/food/random/.json')
             .then(response => {
@@ -20,7 +24,8 @@ module.exports = {
                 embed.setTitle(`Eat or Pass`)
                 embed.setColor('#00FFFF')
                 embed.setImage(foodImage)
-		              interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
+                interaction.reply({ content: 'Done!', ephemeral: true })
+		        interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
                     sentEmbed.react("👍")
                     sentEmbed.react("👎")
                 })
