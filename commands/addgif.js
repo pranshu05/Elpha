@@ -48,4 +48,5 @@ module.exports = {
         .catch(console.error)
     }
 }
+const name = interaction.options.getString('name')
 module.exports.name = name
