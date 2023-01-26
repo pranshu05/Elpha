@@ -19,6 +19,7 @@ module.exports = {
     ),
     async execute(interaction) {
         const name = interaction.options.getString('name')
+        module.exports.name = name
         const url = interaction.options.getString('url')
         if(!url.startsWith('https://')){
             interaction.reply('Please provide a valid URL')
@@ -48,5 +49,3 @@ module.exports = {
         .catch(console.error)
     }
 }
-const name = interaction.options.getString('name')
-module.exports.name = name
