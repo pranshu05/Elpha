@@ -42,7 +42,11 @@ module.exports = {
                 }
             })
         })
-        interaction.reply(`GIF named `+ name +` added!\n` + `type **elp gif **`+name +` to send gif\n` + `You can undo this by **/removegif** command`)
+        const embed = new Discord.MessageEmbed()
+        .setColor('#00FF00')
+	    .setTitle(':white_check_mark: GIF added')
+        .setDescription(`GIF named `+ name +` added!\n` + `type elp gif `+name +` to send gif\n` + `You can undo this by **/removegif** command`)
+        interaction.reply({ embeds: [embed] })
         .catch(console.error)
     }
 }
