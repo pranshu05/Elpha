@@ -24,7 +24,8 @@ module.exports = {
                 embed.setTitle(`Eat or Pass`)
                 embed.setColor('#00FFFF')
                 embed.setImage(foodImage)
-		              interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
+                interaction.reply({ content: 'Done!', ephemeral: true })
+		        interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
                     sentEmbed.react("👍")
                     sentEmbed.react("👎")
                 })
