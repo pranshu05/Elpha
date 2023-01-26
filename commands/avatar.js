@@ -17,5 +17,6 @@ module.exports = {
         .setTitle(`${user.username}'s Avatar`)
         .setImage(user.displayAvatarURL({size: 2048}))
         interaction.reply({ embeds: [embed] })
+        .catch(console.error)
     }
 }

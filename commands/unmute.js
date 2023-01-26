@@ -16,7 +16,10 @@ module.exports = {
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
-        interaction.guild.members.fetch(user.id).then(member => {
+            if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
+                return interaction.reply(`I don't have permission to manage roles!`)
+            }
+            interaction.guild.members.fetch(user.id).then(member => {
             member.roles.remove(muteRole).catch(err => console.error(err))
         })
             const embed = new Discord.MessageEmbed()
@@ -36,13 +39,18 @@ module.exports = {
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-                if(!abc)return
-                if (abc.type === 'voice') return
+                    if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                        if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                              interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                              return 
+                        }
+                        return 
+                    }
                 abc.send({
                     embeds: [embed] 
                 })	
             }
-            user.send(`You were unmuted in ${interaction.guild.name}`)
+            user.send(`You were unmuted in ${interaction.guild.name}`).catch(console.error)
         } else { 
             interaction.reply('Insufficant Permissions')
         }

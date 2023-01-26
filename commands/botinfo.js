@@ -44,6 +44,7 @@ module.exports = {
             .addField('🏠 Guilds', '' + interaction.client.guilds.cache.size, true)
             .addField('📄 Channels', '' + interaction.client.channels.cache.size, true)
             .addField('🤵 Total Users', '' + (totalPeople ), true)
+            .addField(':robot: Total Commands', '' + (commandsLength ), true)
             .addField('🤵 Developer' , 'Pranshu05#4726', true)
             .addField('🐏 RAM Usage', `${((process.memoryUsage().rss / 1024) / 1024).toFixed(2)} MB`, true)
             .addField(':clock: System Uptime', timeCon(os.uptime()), true)
@@ -53,7 +54,7 @@ module.exports = {
             .addField(':globe_with_meridians: Host Name', `${os.hostname}`, true)
             .addField(':white_check_mark: Host OS', `${os.platform} ${os.release}`, true)
             .addField("Server", "[Click here](https://discord.gg/uJCX5yfuTf)" , true)
-            .addField("Github", "[Click here](https://github.com/Elphabot/Elpha)")
+            .addField("Github", "[Click here](https://github.com/pranshu05/Elpha)")
             interaction.reply({ embeds: [embed] })
     }
 }

@@ -21,7 +21,7 @@ module.exports = {
         const user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)) {
-             if (user.id === '754381104034742415') {return interaction.reply('You cannot kick my developer')}
+             if (user.id === '754381104034742415') return interaction.reply('You cannot kick my developer')
              if (user === interaction.user) return interaction.reply('You cannot kick yourself')
              if (user === interaction.client.user) return interaction.reply('You cannot kick me')
              if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot kick Moder')}
@@ -59,11 +59,18 @@ module.exports = {
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-                abc.send({
-                    embeds: [embed] 
-                })
+                    if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                        if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                              interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                              return 
+                        }
+                        return 
+                    }
+                    abc.send({
+                        embeds: [embed] 
+                    })	
             }
-            user.send(`You were kicked from ${interaction.guild.name}`)
+            user.send(`You were kicked from ${interaction.guild.name}`).catch(console.error)
         } else {
             interaction.reply('Insufficant Permissions')
         } 

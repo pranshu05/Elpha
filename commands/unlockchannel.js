@@ -21,13 +21,16 @@ module.exports = {
         const channel = interaction.options.getChannel('channel')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
+            if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
+                return interaction.reply(`I don't have permission to manage chanels!`)
+            }
             if (interaction.options.getChannel("channel").type !== 'GUILD_TEXT') {
 			interaction.reply('This command is only applicable for text channels')
 			return
             }  
             channel.permissionOverwrites.edit(channel.guild.roles.everyone, {SEND_MESSAGES: true })
             const embed = new Discord.MessageEmbed()
-            .setColor('#00ffff')
+             .setColor('#00ffff')
              .setTitle(`unlocked ${channel.name}`)
              .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
              interaction.reply({ embeds: [embed] })
@@ -42,7 +45,14 @@ module.exports = {
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
-                abc.send({
+                if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                    if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                          interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                          return 
+                    }
+                    return 
+                }
+                    abc.send({
                     embeds: [embed] 
                 })	
             }
