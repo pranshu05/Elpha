@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const name = require("../commands/addgif")
 const gif_success = new Discord.MessageEmbed()
         .setColor('#00FF00')
 	    .setTitle(':white_check_mark: GIF added')

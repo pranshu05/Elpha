@@ -48,3 +48,4 @@ module.exports = {
         .catch(console.error)
     }
 }
+module.exports.name = name
