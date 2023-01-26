@@ -1,8 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js')
 const Gif = require("../models/Gif")
-const gif_success = require("../utils/gif_success")
-const gif_fail = require('../utils/gif_fail')
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("addgif")
@@ -19,7 +17,6 @@ module.exports = {
     ),
     async execute(interaction) {
         const name = interaction.options.getString('name')
-        module.exports.name = name
         const url = interaction.options.getString('url')
         if(!url.startsWith('https://')){
             interaction.reply('Please provide a valid URL')
@@ -28,7 +25,7 @@ module.exports = {
         Gif.findOne({guild_id: interaction.guild.id}, (err, settings) => {
             if (err) {
                 console.log(err)
-                interaction.reply({ embeds: [gif_fail] })
+                interaction.reply("An error occurred while adding gif to database!")
                 return
             }else {
                 settings = new Gif({
@@ -40,12 +37,16 @@ module.exports = {
             settings.save(err => {
                 if (err) {
                     console.log(err)
-                    interaction.reply({ embeds: [gif_fail] })
+                    interaction.reply("An error occurred while adding gif to database!")
                     return
                 }
             })
         })
-        interaction.reply({ embeds: [gif_success] })
-        .catch(console.error)
+        const embed = new Discord.MessageEmbed()
+        .setColor('#00FF00')
+	    .setTitle(':white_check_mark: GIF added')
+        .setDescription(`GIF named `+ name +` added!\n` + `type elp gif `+name +` to send gif\n` + `You can undo this by **/removegif** command`)
+        interaction.reply({ embeds: [embed] })
+                .catch(console.error)
     }
 }
