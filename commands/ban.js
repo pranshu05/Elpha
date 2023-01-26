@@ -65,7 +65,11 @@ module.exports = {
                 }else{
                     const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                     if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                        return interaction.reply(`I don't have permission to send message in modlogs channel`)
+                        return 
+                        if(!interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                            return
+                            interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                        }
                     }
                     abc.send({
                         embeds: [embed] 
