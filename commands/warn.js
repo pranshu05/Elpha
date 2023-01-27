@@ -18,6 +18,10 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+		const modlog_perms = new Discord.MessageEmbed()
+		.setColor('#FF0000')
+		.setTitle(`**:x: Message Error!**`)
+		.setDescription(`I don't have permission to send message in modlogs channel!`)
         const reason = interaction.options.getString('warning')
         const user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
@@ -83,7 +87,7 @@ module.exports = {
                     const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                     if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                         if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                              interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                              interaction.channel.send({emebds: [modlog_perms]})
                               return 
                         }
                         return 
