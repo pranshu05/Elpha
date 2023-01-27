@@ -4,7 +4,7 @@ module.exports = {
 	name: "guildCreate",
 	async execute(guild,client) {
 		const channel = guild.channels.cache.find(channel => channel.type === 'GUILD_TEXT' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
-		if(!channel) return
+		
 		const row = new MessageActionRow()
 			.addComponents(
 					new MessageButton()
