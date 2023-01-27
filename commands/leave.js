@@ -10,9 +10,9 @@ module.exports = {
             .setDescription('id of guild')
             .setRequired(true)
     ),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const guild_id = interaction.options.getString('guild_id')
-        const guild = client.guilds.cache.get(guild_id)
+        const guild = interaction.client.guilds.cache.get(guild_id)
         if(interaction.user.id === '754381104034742415'){
             if (!guild) return interaction.reply("Invalid Guild ID. I'm not in this server.")
 
