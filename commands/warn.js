@@ -65,10 +65,12 @@ module.exports = {
                     console.log(err)
                     interaction.reply("An error occurred while adding warning to user's database!")
                     return
-                }else {
+                    
+                } else {
+                    const userid = user.id
                     settings = new Warning({
                         guild_id: interaction.guild.id,
-                        user_id: user.id,
+                        user_id: `<@${userid}>`,
                         warning: interaction.options.getString('warning'),
                         moderatorId: interaction.user.id
                     })
