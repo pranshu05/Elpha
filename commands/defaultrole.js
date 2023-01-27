@@ -12,6 +12,8 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction, guild) {
+        const role = interaction.options.getString('role')
+        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const no_role_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Couldn't create the role!**`)
@@ -28,8 +30,6 @@ module.exports = {
         .setColor('#FF0000')
 	    .setTitle(`**:x: Message Error!**`)
         .setDescription(`I don't have permission to send message in modlogs channel!`)
-        const role = interaction.options.getString('role')
-        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
                 return interaction.reply({embeds: [no_role_perms]})

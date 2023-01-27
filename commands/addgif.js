@@ -16,6 +16,8 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const name = interaction.options.getString('name')
+        const url = interaction.options.getString('url')
         const gif_success = new Discord.MessageEmbed()
         .setColor('#00FF00')
 	    .setTitle('**:white_check_mark: GIF added**')
@@ -24,8 +26,6 @@ module.exports = {
         .setColor('#FF0000')
 	    .setTitle(`**:x: Couldn't add GIF**`)
         .setDescription(`An error occurred while adding gif to database!`)
-        const name = interaction.options.getString('name')
-        const url = interaction.options.getString('url')
         if(!url.startsWith('https://')){
             interaction.reply('Please provide a valid URL')
             return

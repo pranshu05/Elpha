@@ -12,6 +12,9 @@ module.exports = {
 				.setRequired(true)
 		),
 	async execute(interaction) {
+		const modlog_perms = new Discord.MessageEmbed()
+		const name = interaction.options.getString('name')
+		const gif =  await Gif.find({guild_id: interaction.guild.id, gif_name: name})
 		const gif_rem_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
 		.setTitle(`**:white_check_mark: Removed General Channel**`)
@@ -19,9 +22,6 @@ module.exports = {
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
 		.setDescription(`An error occurred while removing channel data from database!`)
-		const modlog_perms = new Discord.MessageEmbed()
-		const name = interaction.options.getString('name')
-		const gif =  await Gif.find({guild_id: interaction.guild.id, gif_name: name})
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
 			interaction.reply("Only mods can use this command")
 			return

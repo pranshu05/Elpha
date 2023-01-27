@@ -12,6 +12,9 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const user = interaction.options.getUser('user')
+        const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
+        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const no_mute_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle(`**:x: Couldn't Unmute Member!**`)
@@ -29,9 +32,6 @@ module.exports = {
         .setColor('#FF0000')
         .setTitle(`**:x: Message Error!**`)
         .setDescription(`I don't have permission to send message in modlogs channel!`)
-        const user = interaction.options.getUser('user')
-        const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
-        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
                 return interaction.reply({embeds: [no_mute_perms]})

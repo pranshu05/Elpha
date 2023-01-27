@@ -11,6 +11,8 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const time = interaction.options.getString('time')
+        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const no_channel_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Couldn't set Slowmode!**`)
@@ -22,8 +24,6 @@ module.exports = {
 		.setColor('#FF0000')
 		.setTitle(`**:x: Message Error!**`)
 		.setDescription(`I don't have permission to send message in modlogs channel!`)
-        const time = interaction.options.getString('time')
-        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)) {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
                 return interaction.reply({embeds: [no_channel_perms]})

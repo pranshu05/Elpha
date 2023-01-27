@@ -18,6 +18,9 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const reason = interaction.options.getString('reason')
+        const user = interaction.options.getUser('user')
+        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const no_ban_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Couldn't Ban Member!**`)
@@ -38,9 +41,6 @@ module.exports = {
         if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)){
             return interaction.reply({embeds: [no_ban_perms]})
         }
-            const reason = interaction.options.getString('reason')
-            const user = interaction.options.getUser('user')
-            const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
             if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.BAN_MEMBERS)) {
                  if (user.id === '754381104034742415') {return interaction.reply('**You cannot ban my developer**')}
                  if (user === interaction.user) {return interaction.reply('**You cannot ban yourself**')}

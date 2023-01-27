@@ -17,6 +17,10 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const reason = interaction.options.getString('reason')
+        const user = interaction.options.getUser('user')
+        const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
+        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
          const no_mute_perms = new Discord.MessageEmbed()
          .setColor('#FF0000')
 	     .setTitle(`**:x: Couldn't Mute Member!**`)
@@ -38,10 +42,6 @@ module.exports = {
          if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
              return interaction.reply({embeds: [no_mute_perms]})
          }
-        const reason = interaction.options.getString('reason')
-        const user = interaction.options.getUser('user')
-        const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
-        const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)) {
             if (!muteRole) return ('Please make a role named **Mute**')
             if (user === interaction.user) return interaction.reply('You cannot mute yourself')
