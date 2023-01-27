@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions, Discord} = require("discord.js")
+const { Permissions} = require("discord.js")
+const Discord = require('discord.js') 
 const Gif = require("../models/Gif")
 module.exports = {
 	data: new SlashCommandBuilder()
