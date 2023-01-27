@@ -11,6 +11,14 @@ module.exports = {
 				.setRequired(true)
 		),
 	async execute(interaction) {
+		const gif_rem_embed = new Discord.MessageEmbed()
+		.setColor('#00ff00')
+		.setTitle(`**:white_check_mark: Removed General Channel**`)
+		const gif_rem_db_fail = new Discord.MessageEmbed()
+		.setColor('#FF0000')
+		.setTitle(`**:x: DataBase Error!**`)
+		.setDescription(`An error occurred while removing channel data from database!`)
+		const modlog_perms = new Discord.MessageEmbed()
 		const name = interaction.options.getString('name')
 		const gif =  await Gif.find({guild_id: interaction.guild.id, gif_name: name})
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
@@ -24,14 +32,14 @@ module.exports = {
 			Gif.deleteOne({ guild_id: interaction.guild.id, gif_name: name }, (err, settings) => {
 				if (err) {
 					console.log(err)
-					interaction.reply("An error occurred while trying to remove the gif!")
+					interaction.reply({embeds: [gif_rem_db_fail]})
 					return
 				}
 				if (!settings) {
 					interaction.reply('There is no gif to remove from this server!')
 					return
 				} 
-				interaction.reply(`Gif has been removed`)
+				interaction.reply({embeds: [gif_rem_embed]})
 			})
 		}
 	}
