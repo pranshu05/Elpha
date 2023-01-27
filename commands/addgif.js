@@ -16,6 +16,14 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const gif_success = new Discord.MessageEmbed()
+        .setColor('#00FF00')
+	    .setTitle('**:white_check_mark: GIF added**')
+        .setDescription(`GIF named `+ name +` added!\n` + `type elp gif `+name +` to send gif\n` + `You can undo this by **/removegif** command`)
+        const gif_fail = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Couldn't add GIF**`)
+        .setDescription(`An error occurred while adding gif to database!`)
         const name = interaction.options.getString('name')
         const url = interaction.options.getString('url')
         if(!url.startsWith('https://')){
@@ -25,7 +33,7 @@ module.exports = {
         Gif.findOne({guild_id: interaction.guild.id}, (err, settings) => {
             if (err) {
                 console.log(err)
-                interaction.reply("An error occurred while adding gif to database!")
+                interaction.reply({ embeds: [gif_fail] })
                 return
             }else {
                 settings = new Gif({
@@ -37,16 +45,12 @@ module.exports = {
             settings.save(err => {
                 if (err) {
                     console.log(err)
-                    interaction.reply("An error occurred while adding gif to database!")
+                    interaction.reply({ embeds: [gif_fail] })
                     return
                 }
             })
         })
-        const embed = new Discord.MessageEmbed()
-        .setColor('#00FF00')
-	    .setTitle(':white_check_mark: GIF added')
-        .setDescription(`GIF named `+ name +` added!\n` + `type elp gif `+name +` to send gif\n` + `You can undo this by **/removegif** command`)
-        interaction.reply({ embeds: [embed] })
+        interaction.reply({ embeds: [gif_success] })
                 .catch(console.error)
     }
 }

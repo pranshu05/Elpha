@@ -17,27 +17,43 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const no_channel_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Couldn't Lock the Channel!**`)
+        .setDescription(`I don't have permission to manage channels.`)
+        const invalid_channel = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Invalid Channel**`)
+        .setDescription(`This command is only applicable for text channels`)
+        const locked_embed = new Discord.MessageEmbed()
+         .setColor('#00ff00')
+         .setTitle(`**:white_check_mark: Locked ${channel.name}**`)
+         .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
+        const lock_db_fail = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: DataBase Error!**`)
+        .setDescription(`An error occurred while adding locked channel to database!`)
+        const modlog_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Message Error!**`)
+        .setDescription(`I don't have permission to send message in modlogs channel!`)
         const reason = interaction.options.getString('reason')
         const channel = interaction.options.getChannel('channel')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
-                return interaction.reply(`I don't have permission to manage chanels!`)
+                return interaction.reply({embeds: [no_channel_perms]})
             }
             if (interaction.options.getChannel("channel").type !== 'GUILD_TEXT') {
-			interaction.reply('This command is only applicable for text channels')
+			interaction.reply({embeds: [invalid_channel]})
 			return
             } 
             channel.permissionOverwrites.edit(channel.guild.roles.everyone, {SEND_MESSAGES: false })
-            const embed = new Discord.MessageEmbed()
-             .setColor('#00ffff')
-             .setTitle(`locked ${channel.name}`)
-             .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
-             interaction.reply({ embeds: [embed] })
+             interaction.reply({ embeds: [locked_embed] })
              Locked.findOne({guild_id: interaction.guild.id}, (err, settings) => {
                 if (err) {
                     console.log(err)
-                    interaction.reply("An error occurred while adding locked channel to database!")
+                    interaction.reply({embeds: [lock_db_fail]})
                     return
                 }else {
                     settings = new Locked({
@@ -50,7 +66,7 @@ module.exports = {
                 settings.save(err => {
                     if (err) {
                         console.log(err)
-                        interaction.reply("An error occurred while adding locked channel to database!")
+                        interaction.reply({embeds: [lock_db_fail]})
                         return
                     }
                 })
@@ -61,13 +77,13 @@ module.exports = {
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                     if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                         if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                              interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                              interaction.channel.send({embeds: [modlog_perms]})
                               return 
                         }
                         return 
                     }
                     abc.send({
-                        embeds: [embed] 
+                        embeds: [locked_embed] 
                     })		
             }
         } else {

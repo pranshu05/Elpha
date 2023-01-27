@@ -17,6 +17,26 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const no_kick_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Couldn't Kick Member!**`)
+        .setDescription(`I don't have permission to kick members.`)
+        const kicked_embed = new Discord.MessageEmbed()
+        .setColor('#00ffff')
+        .setTitle(`Kicked ${user.username}`)
+        .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
+        .setThumbnail(user.displayAvatarURL())
+        const kick_db_fail = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: DataBase Error!**`)
+        .setDescription(`An error occurred while adding kicked user to database!`)
+        const modlog_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Message Error!**`)
+        .setDescription(`I don't have permission to send message in modlogs channel!`)
+        if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.KICK_MEMBERS)){
+            return interaction.reply({embeds: [no_kick_perms]})
+        }
         const reason = interaction.options.getString('reason')
         const user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
@@ -28,16 +48,11 @@ module.exports = {
         interaction.guild.members.fetch(user.id).then(member => {
             member.kick().catch(err => console.error(err))
         })
-            const embed = new Discord.MessageEmbed()
-             .setColor('#00ffff')
-             .setTitle(`Kicked ${user.username}`)
-             .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
-             .setThumbnail(user.displayAvatarURL())
-             interaction.reply({ embeds: [embed] })
+             interaction.reply({ embeds: [kicked_embed] })
              Kicked.findOne({guild_id: interaction.guild.id}, (err, settings) => {
                 if (err) {
                     console.log(err)
-                    interaction.reply("An error occurred while adding kicked user to database!")
+                    interaction.reply({embeds: [kick_db_fail]})
                     return
                 }else {
                     settings = new Kicked({
@@ -50,7 +65,7 @@ module.exports = {
                 settings.save(err => {
                     if (err) {
                         console.log(err)
-                        interaction.reply("An error occurred while adding kicked user to database!")
+                        interaction.reply({embeds: [kick_db_fail]})
                         return
                     }
                 })
@@ -61,13 +76,13 @@ module.exports = {
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                     if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                         if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                              interaction.channel.send(`I don't have permission to send message in modlogs channel`)
+                              interaction.channel.send({embeds: [modlog_perms]})
                               return 
                         }
                         return 
                     }
                     abc.send({
-                        embeds: [embed] 
+                        embeds: [kicked_embed] 
                     })	
             }
             user.send(`You were kicked from ${interaction.guild.name}`).catch(console.error)
