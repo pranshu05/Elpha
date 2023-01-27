@@ -14,7 +14,7 @@ module.exports = {
 	async execute(interaction) {
 		const modlog_perms = new Discord.MessageEmbed()
 		const name = interaction.options.getString('name')
-		const gif =  await Gif.find({guild_id: interaction.guild.id, gif_name: name})
+		const gif =  await Gif.findOne({guild_id: interaction.guild.id, gif_name: name})
 		const gif_rem_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
 		.setTitle(`**:white_check_mark: Removed General Channel**`)
