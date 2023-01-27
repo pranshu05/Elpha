@@ -15,8 +15,8 @@ module.exports = {
         const guild = interaction.client.guilds.cache.get(guild_id)
         if(interaction.user.id === '754381104034742415'){
             if (!guild) return interaction.reply("Invalid Guild ID. I'm not in this server.")
-
             guild.leave()
+            interaction.reply('Done!')
             .catch(console.error)
         }else {
             interaction.reply('Insufficant Permissions')
