@@ -18,7 +18,7 @@ module.exports = {
             )
               return [ 
                 `Moderator: ${moderator}`,
-                `User: ${warna.user_id}`,
+                `User: <@${warna.user_id}>`,
                 `warning: ${warna.warning}`
               ].join('\n');
               })
