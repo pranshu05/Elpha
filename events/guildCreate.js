@@ -16,7 +16,7 @@ module.exports = {
 			.setColor("00FFFF")
 			.setTitle("Hello I am Elpha,thanks for choosing me!")
 			.setDescription(`**I'm an open-source discord bot! Developed by contributors.Contribute to my code to Make me more powerful 💪🏻**`)
-			.addField('Setup instructions', '')
+			.addField('Setup instructions', '👇')
 			.addField('Setup Welcome Channel', '**Use Slashcommand**\n  >\`\`\`/setwelcomechannel\`\`\`')
 			.addField('Setup General Channel', '**Use Slashcommand**\n  >\`\`\`/setgeneralchannel\`\`\`')
 			.addField('Setup Modlogs Channel', '**Use Slashcommand**\n  >\`\`\`/setmodlogchannel\`\`\`')
