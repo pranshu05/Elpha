@@ -18,7 +18,7 @@ module.exports = {
             )
               return [ 
                 `Moderator: ${moderator}`,
-                `User: ${mute.user_id}`,
+                `User: <@${mute.user_id}>`,
                 `Reason: ${mute.reason}`
               ].join('\n');
               })
