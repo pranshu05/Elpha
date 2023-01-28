@@ -14,7 +14,7 @@ module.exports = {
 	async execute(interaction) {
 		const modlog_perms = new Discord.MessageEmbed()
 		const name = interaction.options.getString('name')
-		const gif =  await Gif.findOne({guild_id: interaction.guild.id, gif_name: name})
+		const gif =  await Gif.find({guild_id: interaction.guild.id, gif_name: name})
 		const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
@@ -30,7 +30,7 @@ module.exports = {
 			interaction.reply({embeds: [insf_perms]})
 			return
 		}
-		if(!gif){
+		if(gif.length === 0){
 			interaction.reply('No gif found named ' + name)
 			return
 		}else{

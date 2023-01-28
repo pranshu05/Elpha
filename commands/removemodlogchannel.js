@@ -18,10 +18,15 @@ module.exports = {
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
 		.setDescription(`An error occurred while removing channel data from database!`)
+		const channel = await Modlog.findOne({guild_id: interaction.guild.id})
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
 			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
+		if(channel.length === 0){
+			interaction.reply(`There isn't any modlog channel in this server!`)
+			return
+		}
 		Modlog.deleteOne({ guild_id: interaction.guild.id }, (err, settings) => {
 			if (err) {
 				console.log(err)

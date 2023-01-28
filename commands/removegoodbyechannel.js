@@ -24,10 +24,15 @@ module.exports = {
 		.setTitle(`**:x: Message Error!**`)
 		.setDescription(`I don't have permission to send message in modlogs channel!`)
 		const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
+		const channel = await Leave.findOne({guild_id: interaction.guild.id})
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
 			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
+		if(channel.length === 0){
+			interaction.reply(`There isn't any goodbye channel in this server!`)
+			return
+		}
 		Leave.deleteOne({ guild_id: interaction.guild.id }, (err, settings) => {
 			if (err) {
 				console.log(err)
