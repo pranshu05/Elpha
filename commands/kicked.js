@@ -18,7 +18,7 @@ module.exports = {
             )
                 return [ 
                     `Moderator: ${moderator}`,
-                    `User: ${kick.user_id}`,
+                    `User: <@${kick.user_id}>`,
                     `Reason: ${kick.reason}`
                 ].join('\n');
               })
