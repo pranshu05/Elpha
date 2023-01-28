@@ -12,6 +12,10 @@ module.exports = {
 			.setRequired(true)
 		),
 	async execute(interaction) {
+		const msg_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`I don't have permission to send message in that channel.`)
 		const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
@@ -38,7 +42,12 @@ module.exports = {
 		} 
 		if (interaction.options.getChannel("modlog").type !== 'GUILD_TEXT') {
 			interaction.reply({embeds: [invalid_channel]})
-			return}
+			return
+		}
+		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel("modlog")).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+			interaction.reply({embeds: [msg_perms]})
+			return
+		}
 		Modlog.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
 			if (err) {
 				console.log(err)

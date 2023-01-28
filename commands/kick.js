@@ -19,6 +19,7 @@ module.exports = {
     async execute(interaction) {
         const reason = interaction.options.getString('reason')
         const user = interaction.options.getUser('user')
+        const targetMember = interaction.guild.members.cache.get(user.id)
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -49,7 +50,7 @@ module.exports = {
              if (user === interaction.user) return interaction.reply('You cannot kick yourself')
              if (user === interaction.client.user) return interaction.reply('You cannot kick me')
              if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot kick Moder')}
-                user.kick().catch(err => console.error(err))
+                targetMember.kick().catch(err => console.error(err))
                 interaction.reply({ embeds: [kicked_embed] })
                 Kicked.findOne({guild_id: interaction.guild.id}, (err, settings) => {
                 if (err) {
