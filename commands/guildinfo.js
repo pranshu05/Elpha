@@ -11,6 +11,10 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
         const guild_id = interaction.options.getString('guild_id')
         const guild = interaction.client.guilds.cache.get(guild_id)
         if(interaction.user.id === '754381104034742415'){
@@ -26,7 +30,7 @@ module.exports = {
         interaction.reply({ embeds: [embed] })
             .catch(console.error)
         }else {
-            interaction.reply('Insufficant Permissions')
+            interaction.reply({embeds: [insf_perms]})
         }
     }
 }

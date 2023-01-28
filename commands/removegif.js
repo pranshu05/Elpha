@@ -15,6 +15,10 @@ module.exports = {
 		const modlog_perms = new Discord.MessageEmbed()
 		const name = interaction.options.getString('name')
 		const gif =  await Gif.findOne({guild_id: interaction.guild.id, gif_name: name})
+		const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
 		const gif_rem_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
 		.setTitle(`**:white_check_mark: Removed General Channel**`)
@@ -23,7 +27,7 @@ module.exports = {
 		.setTitle(`**:x: DataBase Error!**`)
 		.setDescription(`An error occurred while removing channel data from database!`)
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
-			interaction.reply("Only mods can use this command")
+			interaction.reply({embeds: [insf_perms]})
 			return
 		}
 		if(!gif){

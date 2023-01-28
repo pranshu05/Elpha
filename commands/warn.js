@@ -18,6 +18,10 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
+        const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
 		const modlog_perms = new Discord.MessageEmbed()
 		.setColor('#FF0000')
 		.setTitle(`**:x: Message Error!**`)
@@ -101,7 +105,7 @@ module.exports = {
                 user.send(`You were warned in ${interaction.guild.name}`).catch(console.error)
             })
         } else {
-            interaction.reply('Insufficant Permissions')
+            interaction.reply({embeds: [insf_perms]})
         }
     }
 }

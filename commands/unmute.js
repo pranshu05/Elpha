@@ -15,6 +15,10 @@ module.exports = {
         const user = interaction.options.getUser('user')
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
+        const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
         const no_mute_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle(`**:x: Couldn't Unmute Member!**`)
@@ -64,7 +68,7 @@ module.exports = {
             }
             user.send(`You were unmuted in ${interaction.guild.name}`).catch(console.error)
         } else { 
-            interaction.reply('Insufficant Permissions')
+            interaction.reply({embeds: [insf_perms]})
         }
     }
 }

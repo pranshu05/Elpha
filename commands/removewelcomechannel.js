@@ -8,6 +8,10 @@ module.exports = {
 		.setName("removewelcomechannel")
 		.setDescription("Remove the welcome message channel"),
 	async execute(interaction) {
+		const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
 		const wc_rem_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
 		.setTitle(`**:white_check_mark: Removed Welcome Channel**`)
@@ -21,7 +25,7 @@ module.exports = {
 		.setDescription(`I don't have permission to send message in modlogs channel!`)
 		const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
-			interaction.reply("You do not have permission to use this command!")
+			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
 		GuildSettings.deleteOne({ guild_id: interaction.guild.id }, (err, settings) => {

@@ -5,7 +5,7 @@ module.exports = {
         const err_embed = new Discord.MessageEmbed()
         .setColor('FF0000')
         .setAuthor(`Error Occured! `, interaction.client.user.displayAvatarURL())
-        .setTitle('An error accured while executing the command')
+        .setTitle('An error occured while executing the command')
         if(!interaction.isCommand()) return
             const command = interaction.client.commands.get(interaction.commandName)
         if(!command) return

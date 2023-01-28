@@ -21,6 +21,10 @@ module.exports = {
         const reason = interaction.options.getString('reason')
         const user = interaction.options.getUser('user')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
+        const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
         const no_ban_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Couldn't Ban Member!**`)
@@ -89,7 +93,7 @@ module.exports = {
                 }
                  user.send(`You were banned from ${interaction.guild.name}`).catch(console.error)
             } else {
-                interaction.reply('Insufficant Permissions')
+                interaction.reply({embeds: [insf_perms]})
             }
     }
 }

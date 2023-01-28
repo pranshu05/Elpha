@@ -13,6 +13,10 @@ module.exports = {
 			.setRequired(true)
 		),
 	async execute(interaction) {
+		const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
 		const invalid_channel = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Invalid Channel**`)
@@ -30,7 +34,7 @@ module.exports = {
 		.setDescription(`I don't have permission to send message in modlogs channel!`)
 		const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS ])) {
-			interaction.reply("You do not have permission to use this command!")
+			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
 		if (interaction.options.getChannel("general").type !== 'GUILD_TEXT') {

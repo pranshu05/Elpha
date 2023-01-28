@@ -6,6 +6,10 @@ module.exports = {
     .setName("warneduser")
     .setDescription("sends warned users"),
     async execute(interaction) {
+        const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	      .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
         const warned =  await Warned.find({guild_id: interaction.guild.id})
 		    if (!warned) {
@@ -33,7 +37,7 @@ module.exports = {
 			})	
 		  }
         } else{
-            interaction.reply('Insufficant Permissions')
+            interaction.reply({embeds: [insf_perms]})
         }
     }
 }

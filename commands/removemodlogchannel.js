@@ -7,6 +7,10 @@ module.exports = {
 		.setName("removemodlogchannel")
 		.setDescription("Remove the modlog message channel"),
 	async execute(interaction) {
+		const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.`)
 		const ml_rem_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
 		.setTitle(`**:white_check_mark: Removed Moglog Channel**`)
@@ -15,7 +19,7 @@ module.exports = {
 		.setTitle(`**:x: DataBase Error!**`)
 		.setDescription(`An error occurred while removing channel data from database!`)
 		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
-			interaction.reply("You do not have permission to use this command!")
+			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
 		Modlog.deleteOne({ guild_id: interaction.guild.id }, (err, settings) => {
