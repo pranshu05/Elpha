@@ -52,9 +52,7 @@ module.exports = {
             if (user === interaction.client.user) return interaction.reply('You cannot mute me')
             if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot mute Moder')}
             if (user.id === '754381104034742415') return interaction.reply('You cannot mute my developer')
-            if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
-                return interaction.reply(`I don't have permission to manage roles!`)
-            }
+            
         interaction.guild.members.fetch(user.id).then(member => {
             member.roles.add(muteRole).catch(err => console.error(err))
         })
