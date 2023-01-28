@@ -21,7 +21,7 @@ module.exports = {
         .setDescription(`You don't have permission to use this command.`)
 		const gif_rem_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
-		.setTitle(`**:white_check_mark: Removed General Channel**`)
+		.setTitle(`**:white_check_mark: Removed gif!**`)
 		const gif_rem_db_fail = new Discord.MessageEmbed()
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
