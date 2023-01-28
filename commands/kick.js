@@ -45,11 +45,9 @@ module.exports = {
              if (user === interaction.user) return interaction.reply('You cannot kick yourself')
              if (user === interaction.client.user) return interaction.reply('You cannot kick me')
              if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot kick Moder')}
-        interaction.guild.members.fetch(user.id).then(member => {
-            member.kick().catch(err => console.error(err))
-        })
-             interaction.reply({ embeds: [kicked_embed] })
-             Kicked.findOne({guild_id: interaction.guild.id}, (err, settings) => {
+                user.kick().catch(err => console.error(err))
+                interaction.reply({ embeds: [kicked_embed] })
+                Kicked.findOne({guild_id: interaction.guild.id}, (err, settings) => {
                 if (err) {
                     console.log(err)
                     interaction.reply({embeds: [kick_db_fail]})
