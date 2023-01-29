@@ -19,7 +19,7 @@ module.exports = {
     async execute(interaction) {
         const reason = interaction.options.getString('reason')
         const user = interaction.options.getUser('user')
-        const muteRole = interaction.guild.roles.get('Mute')
+        const muteRole = interaction.guild.roles.cache.find(role => role.name == 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
