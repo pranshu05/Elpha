@@ -47,7 +47,7 @@ module.exports = {
              return interaction.reply({embeds: [no_mute_perms]})
          }
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)) {
-            if (!muteRole) return ('Please make a role named **Mute**')
+            if (!muteRole) return interaction.reply('Please make a role named **Mute**')
             if (user === interaction.user) return interaction.reply('You cannot mute yourself')
             if (user === interaction.client.user) return interaction.reply('You cannot mute me')
             if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot mute Moder')}
