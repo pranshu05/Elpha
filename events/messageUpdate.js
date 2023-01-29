@@ -16,7 +16,7 @@ module.exports = {
                 .setDescription(`Well well well, <@${oldMessage.author.id}> decided to edit their ghost pinged message...`)
                 .addField('Their OldMessage was', `${oldMessage.content}`)
                 .addField('Their NewMessage ', `${newMessage.content}`)
-              oldMessage.channel.send({
+                oldMessage.channel.send({
                   embeds: [embed] 
               })
         }
