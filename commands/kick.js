@@ -19,7 +19,7 @@ module.exports = {
     async execute(interaction) {
         const reason = interaction.options.getString('reason')
         const user = interaction.options.getUser('user')
-        const targetMember = interaction.guild.members.cache.get(user.id)
+        const targetMember = await interaction.guild.members.fetch(user.id)
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
