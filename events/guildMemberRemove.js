@@ -15,6 +15,9 @@ module.exports = {
 			.setThumbnail(member.user.displayAvatarURL())
 			.setTimestamp()
 			.setFooter(`membercount : ${member.guild.members.cache.filter(member => !member.user.bot).size}`)
+			if(!member.guild.me.permissionsIn(guildSettings.goodbye_channel_id).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+				return console.log('Couldnt send msg')
+			}
 			member.guild.channels.cache.get(guildSettings.goodbye_channel_id).send({
 				embeds: [newMemberEmbed] 
 			})	
