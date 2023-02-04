@@ -40,7 +40,7 @@ module.exports = {
         { name: 'Bot', value: "`" + `${status2[user.bot]}` + "`", inline: true }, 
         { name: 'Account Created', value: `<t:` + `${Math.floor(user.createdTimestamp/1000)}` + `:R>`, inline: true }, 
         { name: 'Joined', value: `<t:` + `${Math.floor(member.joinedTimestamp/1000)}` + `:R>`, inline: true }, 
-        { name: 'Status', value: "`" + `${status[member.presence.status]}` + "`", inline: true }, 
+        //{ name: 'Status', value: "`" + `${status[member.presence.status]}` + "`", inline: true }, 
         { name: 'Server Boosting Since', value: "`" + `${member.premiumSince?.toLocaleDateString("en-US", options) || "Not Boosting"}` + "`", inline: true }, 
         { name: 'Last Timeout', value: "`" + `${member.communicationDisabledUntil?.toLocaleDateString("en-US", options) || "Never Timed Out"}` + "`", inline: true }, 
         { name: 'Voice Channel', value: `${member.voice.channel || "`Currently not in a Voice Channel`"}`, inline: true },
