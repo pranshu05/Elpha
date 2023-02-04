@@ -11,7 +11,7 @@ module.exports = {
             .setRequired(true)
     ),
     async execute(interaction) {
-        var user = interaction.options.getUser('user')
+        const user = interaction.options.getUser('user')
         const embed = new Discord.MessageEmbed()
        .setColor('#00ffff')
         .setTitle(`User info`)
