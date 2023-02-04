@@ -34,18 +34,18 @@ module.exports = {
         .setColor("00FFFF")
         .setThumbnail(user.displayAvatarURL())
         .addFields(
-        { name: 'Name', value: "`" + `${user.username}` + "`", inline: true }, 
-        { name: 'ID', value: "`" + `${user.id}` + "`", inline: true }, 
-        { name: 'Nickname', value: "`" + `${member.nickname || "No Nickname"}` + "`", inline: true }, 
-        { name: 'Bot', value: "`" + `${status2[user.bot]}` + "`", inline: true }, 
-        { name: 'Account Created', value: `<t:` + `${Math.floor(user.createdTimestamp/1000)}` + `:R>`, inline: true }, 
-        { name: 'Joined', value: `<t:` + `${Math.floor(member.joinedTimestamp/1000)}` + `:R>`, inline: true }, 
-        //{ name: 'Status', value: "`" + `${status[member.presence.status]}` + "`", inline: true }, 
-        { name: 'Server Boosting Since', value: "`" + `${member.premiumSince?.toLocaleDateString("en-US", options) || "Not Boosting"}` + "`", inline: true }, 
-        { name: 'Last Timeout', value: "`" + `${member.communicationDisabledUntil?.toLocaleDateString("en-US", options) || "Never Timed Out"}` + "`", inline: true }, 
-        { name: 'Voice Channel', value: `${member.voice.channel || "`Currently not in a Voice Channel`"}`, inline: true },
-		{ name: 'Roles', value: rolemap, inline: true },
-		{ name: 'Permissions', value: "`"+`${member.permissions.toArray()}`+"`", inline: false },
+        { name: 'Name', value: "`" + `${user.username}` + "`"  }, 
+        { name: 'ID', value: "`" + `${user.id}` + "`"  }, 
+        { name: 'Nickname', value: "`" + `${member.nickname || "No Nickname"}` + "`"  }, 
+        { name: 'Bot', value: "`" + `${status2[user.bot]}` + "`"  }, 
+        { name: 'Account Created', value: `<t:` + `${Math.floor(user.createdTimestamp/1000)}` + `:R>`  }, 
+        { name: 'Joined', value: `<t:` + `${Math.floor(member.joinedTimestamp/1000)}` + `:R>`  }, 
+        //{ name: 'Status', value: "`" + `${status[member.presence.status]}` + "`"  }, 
+        { name: 'Server Boosting Since', value: "`" + `${member.premiumSince?.toLocaleDateString("en-US", options) || "Not Boosting"}` + "`"  }, 
+        { name: 'Last Timeout', value: "`" + `${member.communicationDisabledUntil?.toLocaleDateString("en-US", options) || "Never Timed Out"}` + "`"  }, 
+        { name: 'Voice Channel', value: `${member.voice.channel || "`Currently not in a Voice Channel`"}`  },
+		{ name: 'Roles', value: rolemap  },
+		{ name: 'Permissions', value: "`"+`${member.permissions.toArray()}`+"`"},
 	    )
 	    .setTimestamp()
         .setFooter(`Info of ${user.username}#${user.discriminator} requested by ${interaction.user.username}`)
