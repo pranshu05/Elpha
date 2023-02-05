@@ -16,7 +16,6 @@ const client = new Client({
         'GUILD_INTEGRATIONS',
         'GUILD_INVITES',
         'GUILD_VOICE_STATES',
-        'GUILD_PRESENCES',
     ] 
 })
 const { MessageEmbed } = require('discord.js')
