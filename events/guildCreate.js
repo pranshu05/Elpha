@@ -5,13 +5,20 @@ module.exports = {
 	async execute(guild,client) {
 		const channel = guild.channels.cache.find(channel => channel.type === 'GUILD_TEXT' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
 		
-		const row = new MessageActionRow()
+		const repo = new MessageActionRow()
 			.addComponents(
 					new MessageButton()
     				.setLabel('Github Repository')
     				.setURL("https://github.com/pranshu05/elpha")
     				.setStyle('LINK'),
-);
+				)
+		const web = new MessageActionRow()
+			.addComponents(
+					new MessageButton()
+    				.setLabel('Website')
+    				.setURL("https://elphabot.github.io")
+    				.setStyle('LINK'),
+				)
 		const embed = new Discord.MessageEmbed()
 			.setColor("00FFFF")
 			.setTitle("Hello I am Elpha,thanks for choosing me!")
@@ -23,7 +30,7 @@ module.exports = {
 			.addField('Setup Goodbye Channel', '**Use Slashcommand**\n  \`\`\`/setgoodbyechannel\`\`\`')
 			.addField('Create Default Role', '**Use Slashcommand**\n  \`\`\`/setdefaultrole\`\`\`')
 			.setTimestamp()
-			channel.send({ embeds: [embed], components: [row] }).catch((err) => console.log(err))
+			channel.send({ embeds: [embed], components: [repo, web] }).catch((err) => console.log(err))
 			console.log(`Server joined: ${guild.name}`)
 	}
 }
