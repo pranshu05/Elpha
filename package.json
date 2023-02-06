@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "nodemon bot.js",
     "start": "node ./bot.js"
-
   },
   "keywords": [],
   "author": "",
@@ -21,6 +20,7 @@
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.3",
+    "glob": "^8.1.0",
     "got": "^11.8.3",
     "long": "^5.2.0",
     "moment": "^2.29.1",
