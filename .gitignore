@@ -137,5 +137,4 @@ replit.nix
 package-lock.json
 .prettierrc.json
 
-# vscode
-.vscode
+#test commit from replit
