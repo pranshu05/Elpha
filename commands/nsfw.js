@@ -37,6 +37,6 @@ module.exports = {
           );
         }
       })
-      .catch(console.error);
+      .catch(interaction.reply('an error occurred'));
   },
 };
