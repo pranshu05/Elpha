@@ -24,10 +24,7 @@ module.exports = {
         const memeNumComments = post.data.num_comments;
         const extension = path.extname(memeImage);
         if (
-          extension === ".jpg" ||
-          extension === ".png" ||
-          extension === ".jpeg"
-        ) {
+          extension === ".jpg" || extension === ".png" || extension === ".jpeg") {
           const embed = new Discord.MessageEmbed();
           embed.setTitle(`${memeTitle}`);
           embed.setColor("#00FFFF");
@@ -36,7 +33,7 @@ module.exports = {
           interaction.reply({ embeds: [embed] });
         } else {
           interaction.reply(
-            `${memeTitle}\n${memevideo}\n👍 ${memeUpvotes} 💬 ${memeNumComments}`
+            `${memeTitle} \n ${memevideo}\n 👍 ${memeUpvotes} 💬 ${memeNumComments}`
           );
         }
       })
