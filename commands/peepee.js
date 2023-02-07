@@ -6,6 +6,7 @@ module.exports = {
     .setDescription('How long is your pp?'),
     async execute(interaction) {
         let pp = [
+            "Sorry, You Don't have one Lmao",
             '8==D',
             '8===D',
             '8====D',
