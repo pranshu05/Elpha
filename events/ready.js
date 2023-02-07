@@ -6,8 +6,14 @@ module.exports = {
     once: true,
     execute(client, commands){
         console.debug('ready!')
+//         let watching = [
+//             `Contributors developing me 👀`,
+//             `Over ${client.guilds.cache.size} servers`,
+//             `Over ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users`,
+//             `Contributors developing me 👀`
+//        ]
         let watching = [
-            `Contributors developing me 👀`,
+            `with my Contributors 👀`,
             `Over ${client.guilds.cache.size} servers`,
             `Over ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users`,
             `Contributors developing me 👀`
@@ -17,7 +23,7 @@ module.exports = {
         if(index === watching.length) index = 0
         const status = watching[index]
         client.user.setStatus('online')
-        client.user.setActivity(status, { type: "WATCHING"})
+        client.user.setActivity(status, { type: "STREAMING", url: "https://www.youtube.com/watch?v=-h7aoUZIdkk"})
         index++
     }, 7000) 
         
