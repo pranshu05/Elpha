@@ -16,6 +16,9 @@ module.exports = {
         const permalink = post.data.permalink;
         const memeUrl = `https://reddit.com${permalink}`;
         const memeImage = post.data.url;
+        const memevideo =
+          post.data.crosspost_parent_list.secure_media.reddit_video
+            .fallback_url;
         const memeTitle = post.data.title;
         const memeUpvotes = post.data.ups;
         const memeNumComments = post.data.num_comments;
@@ -31,13 +34,9 @@ module.exports = {
           embed.setImage(memeImage);
           embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
           interaction.reply({ embeds: [embed] });
-        } else if (extension === ".mp4" || extension === ".gif") {
-          interaction.reply(
-            `${memeTitle}\n${memeImage}\n👍 ${memeUpvotes} 💬 ${memeNumComments}`
-          );
         } else {
           interaction.reply(
-            `Sorry, the content format is not supported. Please retry`
+            `${memeTitle}\n${memevideo}\n👍 ${memeUpvotes} 💬 ${memeNumComments}`
           );
         }
       })
