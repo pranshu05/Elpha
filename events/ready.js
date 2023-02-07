@@ -23,7 +23,7 @@ module.exports = {
         if(index === watching.length) index = 0
         const status = watching[index]
         client.user.setStatus('online')
-        client.user.setActivity(status, { type: "STREAMING", url: "https://www.youtube.com/watch?v=-h7aoUZIdkk"})
+        client.user.setActivity(status, { type: "STREAMING", url: "https://elphabot.github.io"})
         index++
     }, 7000) 
         
