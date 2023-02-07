@@ -11,11 +11,12 @@ module.exports = {
             .then(response => {
                 const [list] = JSON.parse(response.body)
                 const [post] = list.data.children
-                const permalink = post.data.permalink
-                const memeUrl = `https://reddit.com${permalink}`
-                const memeImage = post.data.scrubber_media_url
-                const memeTitle = post.data.title
-                interaction.reply(`${memeTitle} \n ${memeImage}`)
+                const nsfwImage = post.data.scrubber_media_url
+                const nsfwTitle = post.data.title
+                embed.setTitle(`${nsfwTitle}`)
+                embed.setColor('#00FFFF')
+                embed.setImage(nsfwImage)
+                interaction.reply({ embeds: [embed] })
             })
             .catch(console.error)
     }
