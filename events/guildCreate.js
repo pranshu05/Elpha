@@ -12,6 +12,13 @@ module.exports = {
     				.setURL("https://github.com/pranshu05/elpha")
     				.setStyle('LINK'),
 				)
+		const ser = new MessageActionRow()
+			.addComponents(
+					new MessageButton()
+    				.setLabel('Support Server')
+    				.setURL("https://discord.gg/CVyx9qyYPF")
+    				.setStyle('LINK'),
+				)
 		const web = new MessageActionRow()
 			.addComponents(
 					new MessageButton()
@@ -30,7 +37,7 @@ module.exports = {
 			.addField('Setup Goodbye Channel', '**Use Slashcommand**\n  \`\`\`/setgoodbyechannel\`\`\`')
 			.addField('Create Default Role', '**Use Slashcommand**\n  \`\`\`/setdefaultrole\`\`\`')
 			.setTimestamp()
-			channel.send({ embeds: [embed], components: [repo, web] }).catch((err) => console.log(err))
+			channel.send({ embeds: [embed], components: [repo, ser, web] }).catch((err) => console.log(err))
 			console.log(`Server joined: ${guild.name}`)
 	}
 }
