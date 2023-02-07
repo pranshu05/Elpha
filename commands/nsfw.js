@@ -15,7 +15,7 @@ module.exports = {
         embed.setTitle(`${nsfwTitle}`);
         embed.setColor("#00FFFF");
         if (post.data.fallback_url) {
-          embed.setImage(post.data.fallback_url);
+          embed.setImage(post.data.secure_media.reddit_video.fallback_url);
         } else {
           embed.setImage(post.data.url);
         }
