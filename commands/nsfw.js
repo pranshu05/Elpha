@@ -15,7 +15,7 @@ module.exports = {
         const [post] = list.data.children;
         const permalink = post.data.permalink;
         const memeUrl = `https://reddit.com${permalink}`;
-        const memeImage = post.data.url;
+        const memeImage = post.data.url || post.data.url_overridden_by_dest;
         const memevideo =
           post.data.secure_media.reddit_video
             .fallback_url;
