@@ -15,9 +15,8 @@ module.exports = {
         const memeUrl = `https://reddit.com${permalink}`;
         const media = post.data.media;
         let memeImage;
-        if (media && media.type === "video") {
-          interaction.reply(media.reddit_video.fallback_url);
-        } else if (media && media.type === "image") {
+        if(media && media.type === "video") return interaction.reply(media.reddit_video.fallback_url);
+        if(media && media.type === "image") {
           memeImage = media.oembed.thumbnail_url;
           const memeTitle = post.data.title;
           const embed = new Discord.MessageEmbed()
