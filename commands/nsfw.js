@@ -9,7 +9,7 @@ module.exports = {
     .setName("nsfw")
     .setDescription("WARNING! nsfw content 18+ only"),
   async execute(interaction) {
-    got("https://www.reddit.com/r/Hornyjail/random.json")
+    got("https://www.reddit.com/r/Hornyjail/random.json?include_over_18=on")
       .then((response) => {
         const [list] = JSON.parse(response.body);
         const [post] = list.data.children;
