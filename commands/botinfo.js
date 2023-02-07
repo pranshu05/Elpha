@@ -45,7 +45,6 @@ module.exports = {
             .addField('📄 Channels', '' + interaction.client.channels.cache.size, true)
             .addField('🤵 Total Users', '' + (totalPeople ), true)
             .addField(':robot: Total Commands', '' + (commandsLength ), true)
-            .addField('🤵 Developer' , 'Pranshu05#4726', true)
             .addField('🐏 RAM Usage', `${((process.memoryUsage().rss / 1024) / 1024).toFixed(2)} MB`, true)
             .addField(':clock: System Uptime', timeCon(os.uptime()), true)
             .addField('🏓 Ping', `${(interaction.client.ws.ping).toFixed(0)} ms`, true)
