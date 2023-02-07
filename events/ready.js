@@ -12,15 +12,24 @@ module.exports = {
             `Over ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users`,
             `Contributors developing me 👀`
        ]
-        let index = 0
-        setInterval(() => {
-        if(index === watching.length) index = 0
+//         let index = 0
+//         setInterval(() => {
+//         if(index === watching.length) index = 0
 //         const status = watching[index]
 //         client.user.setStatus('dnd')
 //         client.user.setActivity(status, { type: "WATCHING"})
-           client.user.setActivity(status[Math.floor(Math.random() * status.length)], { type: "STREAMING", url: "https://www.youtube.com/watch?v=-h7aoUZIdkk"})
-        index++
-    }, 7000) 
+//         index++
+//     }, 7000) 
+        
+        setInterval(async () => {
+//const statuses = [`Under Work`]
+const statuses = [`Contributors developing me 👀`,
+            `Over ${client.guilds.cache.size} servers`,
+            `Over ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users`,
+            `Contributors developing me 👀`]
+   client.user.setActivity(statuses[Math.floor(Math.random() * statuses.length)], { type: "STREAMING", url: "https://www.youtube.com/watch?v=-h7aoUZIdkk"})
+}, 7000)
+        
     const CLIENT_ID = client.user.id
     const rest = new REST ({
         version : "9"
