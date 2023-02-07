@@ -1,24 +1,28 @@
-const { SlashCommandBuilder } = require('@discordjs/builders')
+const { SlashCommandBuilder } = require("@discordjs/builders")
 const Discord = require('discord.js')
+const got = require('got')
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('nsfw')
-        .setDescription('WARNING! nsfw content 18+ only'),
+    .setName("nsfw")
+    .setDescription("WARNING! nsfw content 18+ only"),
     async execute(interaction) {
-        let egif = [
-            'https://media4.giphy.com/media/rbwLuRQWVQ4Io/giphy.gif?cid=790b7611dbbedbfa7431f0260f737c69d5109df20e5592e2&rid=giphy.gif&ct=g',
-            'https://c.tenor.com/7ZnC36LtxbAAAAAM/funny-divertido.gif',
-            'https://c.tenor.com/o656qFKDzeUAAAAM/rick-astley-never-gonna-give-you-up.gif',
-            'https://c.tenor.com/rzVKRtHySUUAAAAM/fake-boobs.gif',
-            'https://static.fjcdn.com/gifs/Look_95b9b2_1020510.gif',
-            'https://c.tenor.com/t1xQiOn-ETAAAAAC/no-nope.gif',
-            'https://c.tenor.com/MDXFdUs8S1sAAAAC/nope-denied.gif',
-            'https://i.imgflip.com/2yxga6.gif',
-            ]
-        let index = (Math.floor(Math.random() * Math.floor(egif.length)))
         const embed = new Discord.MessageEmbed()
-        .setColor('#00ffff')
-        .setImage(egif[index])
-        interaction.reply({ embeds: [embed] })
+        got('https://www.reddit.com/r/Hornyjail/random/.json')
+            .then(response => {
+                const [list] = JSON.parse(response.body)
+                const [post] = list.data.children
+                const permalink = post.data.permalink
+                const memeUrl = `https://reddit.com${permalink}`
+                const memeImage = post.data.url
+                const memeTitle = post.data.title
+                const memeUpvotes = post.data.ups
+                const memeNumComments = post.data.num_comments
+                embed.setTitle(`${memeTitle}`)
+                embed.setColor('#00FFFF')
+                embed.setImage(memeImage)
+                embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`)
+                interaction.reply({ embeds: [embed] })
+            })
+            .catch(console.error)
     }
 }
