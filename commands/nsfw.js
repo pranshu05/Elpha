@@ -17,18 +17,16 @@ module.exports = {
         const memeUrl = `https://reddit.com${permalink}`;
         const memeImage = post.data.url || post.data.url_overridden_by_dest;
         const memevideo =
-          post.data.secure_media.reddit_video
-            .fallback_url;
+          post.data.secure_media.reddit_video.fallback_url;
         const memeTitle = post.data.title;
         const memeUpvotes = post.data.ups;
         const memeNumComments = post.data.num_comments;
-        const extension = path.extname(memeImage);
-        if (
-          extension === ".jpg" || extension === ".png" || extension === ".jpeg") {
+        const extension = path.extname(`${memeImage}`);
+        if (extension === ".jpg" || extension === ".png" || extension === ".jpeg") {
           const embed = new Discord.MessageEmbed();
           embed.setTitle(`${memeTitle}`);
           embed.setColor("#00FFFF");
-          embed.setImage(memeImage);
+          embed.setImage(`${memeImage}`);
           embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
           interaction.reply({ embeds: [embed] });
         } else {
@@ -37,6 +35,6 @@ module.exports = {
           );
         }
       })
-      interaction.reply(.catch(););
+      .catch(console.error);
   },
 };
