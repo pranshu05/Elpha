@@ -16,7 +16,7 @@ module.exports = {
         setInterval(() => {
         if(index === watching.length) index = 0
 //         const status = watching[index]
-        client.user.setStatus('dnd')
+//         client.user.setStatus('dnd')
 //         client.user.setActivity(status, { type: "WATCHING"})
            client.user.setActivity(status[Math.floor(Math.random() * status.length)], { type: "STREAMING", url: "https://www.youtube.com/watch?v=-h7aoUZIdkk"})
         index++
