@@ -17,7 +17,7 @@ module.exports = {
         const memeUrl = `https://reddit.com${permalink}`;
         const memeImage = post.data.url;
         const memevideo =
-          post.data.crosspost_parent_list.secure_media.reddit_video
+          post.data.secure_media.reddit_video
             .fallback_url;
         const memeTitle = post.data.title;
         const memeUpvotes = post.data.ups;
