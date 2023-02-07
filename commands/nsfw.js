@@ -33,7 +33,7 @@ module.exports = {
           interaction.reply({ embeds: [embed] });
         } else {
           interaction.reply(
-            `${memeTitle} \n ${memevideo}\n 👍 ${memeUpvotes} 💬 ${memeNumComments}`
+            `${memeTitle} \n ${memevideo}`
           );
         }
       })
