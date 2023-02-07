@@ -37,6 +37,6 @@ module.exports = {
           );
         }
       })
-      .catch(interaction.reply('an error occurred'));
+      interaction.reply(.catch(););
   },
 };
