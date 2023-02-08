@@ -14,7 +14,6 @@ module.exports = {
           const body = JSON.parse(response.body);
           const list = body.data;
           const post = list.children[0];
-          const memeUrl = `https://reddit.com${permalink}`;
           const memeImage = post.data.url;
           const memeTitle = post.data.title;
           const memeUpvotes = post.data.ups;
