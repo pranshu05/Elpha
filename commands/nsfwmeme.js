@@ -63,5 +63,5 @@ module.exports = {
       .catch(console.error);
   
   }
-};
+}
 }
