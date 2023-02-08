@@ -25,7 +25,7 @@ module.exports = {
        let url = `https://g.tenor.com/v1/search?q=${keyword}&key=${process.env.tenor}&limit=8`
        let response = await fetch(url)
        let json = await response.json()
-       let random_url = Math.floor(Math.random() * json.results[0].length)
+       let random_url = Math.floor(Math.random() * json.results.length)
        interaction.reply(`LMAO ${interaction.user}, ${sentance} \n json.results[random_url].url`)
   }
 }
