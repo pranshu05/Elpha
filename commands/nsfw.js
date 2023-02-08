@@ -29,10 +29,6 @@ module.exports = {
        let json = await response.json()
        let url_index = (Math.floor(Math.random() * json.results.length))
        let random_url = json.results[url_index].url
-       const embed = new Discord.MessageEmbed()
-       .setColor('00FFFF')
-       .setTitle(`LMAO ${interaction.user.name}, ${sentance}`)
-       .setImage(random_url)
-       interaction.reply({ embeds: [embed] })
+       interaction.reply(`${random_url}`)
   }
 }
