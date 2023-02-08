@@ -12,30 +12,21 @@ module.exports = {
           return interaction.reply('You can use this commands only in NSFW channel!')
   } else {
     got("https://www.reddit.com/r/NSFWMemes/random.json?include_over_18=on")
-      .then((response) => {
-        const [list] = JSON.parse(response.body)
-        const [post] = list.data.children
-        const permalink = post.data.permalink
-        const memeImage = post.data.url 
-        const memevideo = post.data.url + '/DASH_240.mp4' 
-        const memeTitle = post.data.title
-        const memeUpvotes = post.data.ups
-        const memeNumComments = post.data.num_comments
-        const extension = path.extname(memeImage)
-        if (extension === ".jpg" || extension === ".png" || extension === ".jpeg") {
-          const embed = new Discord.MessageEmbed()
-          embed.setTitle(memeTitle)
-          embed.setColor("#00FFFF")
-          embed.setImage(memeImage)
-          embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`)
-          interaction.reply({ embeds: [embed] })
-        } else {
-          interaction.reply(
-            `${memeTitle} \n ${memevideo}`
-          )
-        }
-      })
-      .catch(console.error) 
+     .then(response => {
+                const [list] = JSON.parse(response.body)
+                const [post] = list.data.children
+                const permalink = post.data.permalink
+                const memeUrl = `https://reddit.com${permalink}`
+                const memeImage = post.data.url
+                const memeTitle = post.data.title
+                const memeUpvotes = post.data.ups
+                const memeNumComments = post.data.num_comments
+                embed.setTitle(`${memeTitle}`)
+                embed.setColor('#00FFFF')
+                embed.setImage(memeImage)
+                embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`)
+                interaction.reply({ embeds: [embed] })
+            })
+            .catch(console.error)
   }
-}
 }
