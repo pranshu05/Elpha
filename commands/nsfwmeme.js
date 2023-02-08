@@ -9,7 +9,7 @@ module.exports = {
     .setDescription("WARNING! nsfw(meme) content 18+ only"),
   async execute(interaction) {
     if (interaction.channel.nsfw) {
-       got("https://www.reddit.com/r/NSFW_GIF/random.json?include_over_18=on")
+       got("https://www.reddit.com/r/NSFWmemes/random.json?include_over_18=on")
       .then((response) => {
         const [list] = JSON.parse(response.body);
         const [post] = list.data.children;
