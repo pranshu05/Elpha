@@ -30,5 +30,8 @@ module.exports = {
        let url_index = (Math.floor(Math.random() * json.results.length))
        let random_url = json.results[url_index].url
        interaction.reply(`${random_url}`)
+        setTimeout(() => {
+           interaction.channel.send(`lol ${interaction.user}, ${sentance}`)
+       }, 2500)
   }
 }
