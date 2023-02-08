@@ -68,7 +68,9 @@ module.exports = {
             .permissionsIn(interaction.channel)
             .has(Discord.Permissions.FLAGS.SEND_MESSAGES)
         ) {
-          interaction.channel.send(`lol ${interaction.user}, ${sentance} (Channel Not age-restricted)`);
+          interaction.channel.send(
+            `lol ${interaction.user}, ${sentance} (Channel Not age-restricted)`
+          );
         } else {
           return;
         }
