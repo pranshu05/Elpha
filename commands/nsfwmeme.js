@@ -1,7 +1,9 @@
+require("dotenv").config()
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const Discord = require("discord.js");
 const got = require("got");
 const fs = require("fs");
+const fetch = require("node-fetch")
 const path = require("path");
 module.exports = {
   data: new SlashCommandBuilder()
@@ -42,35 +44,12 @@ module.exports = {
         Math.random() * Math.floor(keywords.length)
       );
       let keyword = keywords[keyword_index];
-      let sentances = [
-        "What were you expecting?",
-        "You horny jerk!",
-        "I will send you to Jesus",
-        "Go to horny jail",
-        "Jesus is knocking on your door",
-        "I am sending FBI",
-      ];
-      let sentance_index = Math.floor(
-        Math.random() * Math.floor(sentances.length)
-      );
-      let sentance = sentances[sentance_index];
       let url = `https://tenor.googleapis.com/v2/search?q=${keyword}&key=${process.env.tenor}&client_key=my_test_app&limit=50`;
       let response = await fetch(url);
       let json = await response.json();
       let url_index = Math.floor(Math.random() * json.results.length);
       let random_url = json.results[url_index].url;
       interaction.reply(`${random_url}`);
-      setTimeout(() => {
-        if (
-          interaction.guild.me
-            .permissionsIn(interaction.channel)
-            .has(Discord.Permissions.FLAGS.SEND_MESSAGES)
-        ) {
-          interaction.channel.send(`lol ${interaction.user}, ${sentance}`);
-        } else {
-          return;
-        }
-      }, 4000);
     }
   },
 };
