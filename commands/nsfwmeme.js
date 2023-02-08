@@ -9,22 +9,22 @@ module.exports = {
     .setDescription("WARNING! nsfw(meme) content 18+ only"),
   async execute(interaction) {
     if (interaction.channel.nsfw) {
-      got("https://www.reddit.com/r/NSFW_GIF/random.json?include_over_18=on")
-        .then((response) => {
-        const [list] = JSON.parse(response.body);
-        const [post] = list.data.children;
-        const permalink = post.data.permalink;
-        const memeImage = post.data.url ;
-          const memeTitle = post.data.title;
-          const memeUpvotes = post.data.ups;
-          const memeNumComments = post.data.num_comments;
-          let embed = new Discord.MessageEmbed();
-          embed.setTitle(`${memeTitle}`);
-          embed.setColor("#00FFFF");
-          embed.setImage(memeImage);
-          embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
-          interaction.reply({ embeds: [embed] });
-        })
+      got("https://www.reddit.com/r/NSFW_GIF/random.json")
+         .then(response => {
+                const [list] = JSON.parse(response.body)
+                const [post] = list.data.children
+                const permalink = post.data.permalink
+                const memeUrl = `https://reddit.com${permalink}`
+                const memeImage = post.data.url
+                const memeTitle = post.data.title
+                const memeUpvotes = post.data.ups
+                const memeNumComments = post.data.num_comments
+                embed.setTitle(`${memeTitle}`)
+                embed.setColor('#00FFFF')
+                embed.setImage(memeImage)
+                embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`)
+                interaction.reply({ embeds: [embed] })
+            })
         .catch(console.error);
     } else {
       return interaction.reply(
