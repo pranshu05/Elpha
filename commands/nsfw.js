@@ -22,7 +22,7 @@ module.exports = {
           'I am sending FBI',
        ]
        let sentance = (Math.floor(Math.random() * Math.floor(sentances.length)))
-       let url = `https://g.tenor.com/v1/search?q=${keyword}&key=${process.env.tenor}&limit=8`
+       let url = `https://tenor.googleapis.com/v2/search?${keyword}`
        let response = await fetch(url)
        let json = await response.json()
        //let random_url = Math.floor(Math.random() * json.results.length)
