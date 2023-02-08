@@ -9,12 +9,12 @@ module.exports = {
     .setDescription("WARNING! nsfw(meme) content 18+ only"),
   async execute(interaction) {
     if (interaction.channel.nsfw) {
-      got("https://www.reddit.com/r/NSFWMemes/random.json?include_over_18=on")
+      got("https://www.reddit.com/r/NSFW_GIF/random.json?include_over_18=on")
         .then((response) => {
-          const body = JSON.parse(response.body);
-          const list = body.data;
-          const [post] = list.children;
-          const memeImage = post.data.url;
+        const [list] = JSON.parse(response.body);
+        const [post] = list.data.children;
+        const permalink = post.data.permalink;
+        const memeImage = post.data.url ;
           const memeTitle = post.data.title;
           const memeUpvotes = post.data.ups;
           const memeNumComments = post.data.num_comments;
