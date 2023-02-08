@@ -22,11 +22,11 @@ module.exports = {
           'I am sending FBI',
        ]
        let sentance = (Math.floor(Math.random() * Math.floor(sentances.length)))
-       let url = `https://tenor.googleapis.com/v2/search?${keyword}`
+       let url = `https://tenor.googleapis.com/v2/search?q=${keyword}&key=${process.env.tenor}&client_key=my_test_app&limit=50`
        let response = await fetch(url)
        let json = await response.json()
-       //let random_url = Math.floor(Math.random() * json.results.length)
-       //interaction.reply(`LMAO ${interaction.user}, ${sentance} \n json.results[random_url].url`)
+       let random_url = Math.floor(Math.random() * json.results.length)
+       interaction.reply(`LMAO ${interaction.user}, ${sentance} \n json.results[random_url].url`)
        console.log(json)
   }
 }
