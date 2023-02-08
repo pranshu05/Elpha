@@ -11,8 +11,6 @@ module.exports = {
     if (interaction.channel.nsfw) {
       got("https://www.reddit.com/r/NSFWMemes/random.json?include_over_18=on")
         .then((response) => {
-          const [list] = JSON.parse(response.body);
-          const [post] = list.data.children;
           const body = JSON.parse(response.body);
           const list = body.data;
           const post = list.children[0];
