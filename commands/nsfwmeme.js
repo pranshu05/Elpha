@@ -9,8 +9,6 @@ module.exports = {
     .setDescription("WARNING! nsfw(meme) content 18+ only"),
     async execute(interaction) {
     if (!interaction.channel.nsfw) {
-          return interaction.reply('You can use this commands only in NSFW channel!')
-  } else {
     got("https://www.reddit.com/r/NSFWMemes/random.json?include_over_18=on")
      .then(response => {
                 const [list] = JSON.parse(response.body)
@@ -28,5 +26,5 @@ module.exports = {
                 interaction.reply({ embeds: [embed] })
             })
             .catch(console.error)
-  }
+  } else {return interaction.reply('You can use this commands only in NSFW channel!')}
 }
