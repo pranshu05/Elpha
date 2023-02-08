@@ -31,7 +31,11 @@ module.exports = {
        let random_url = json.results[url_index].url
        interaction.reply(`${random_url}`)
         setTimeout(() => {
-           interaction.channel.send(`lol ${interaction.user}, ${sentance}`)
-       }, 2500)
+           if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+            interaction.channel.send(`lol ${interaction.user}, ${sentance}`)
+        } else{
+            return
+        }
+       }, 4000)
   }
 }
