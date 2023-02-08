@@ -12,7 +12,8 @@ module.exports = {
           'no horny',
           'anti horny',
        ]
-       let keyword = (Math.floor(Math.random() * Math.floor(keywords.length)))
+       let keyword_index = (Math.floor(Math.random() * Math.floor(keywords.length)))
+       let keyword = keywords[keyword_index]
        let sentances = [
           'What were you expecting?',
           'You horny jerk!',
@@ -21,7 +22,8 @@ module.exports = {
           'Jesus is knocking on your door',
           'I am sending FBI',
        ]
-       let sentance = (Math.floor(Math.random() * Math.floor(sentances.length)))
+       let sentance_index = (Math.floor(Math.random() * Math.floor(sentances.length)))
+       let sentance = sentances[sentance_index]
        let url = `https://tenor.googleapis.com/v2/search?q=${keyword}&key=${process.env.tenor}&client_key=my_test_app&random=true`
        let response = await fetch(url)
        let json = await response.json()
