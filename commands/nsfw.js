@@ -24,12 +24,15 @@ module.exports = {
        ]
        let sentance_index = (Math.floor(Math.random() * Math.floor(sentances.length)))
        let sentance = sentances[sentance_index]
-       let url = `https://tenor.googleapis.com/v2/search?q=${keyword}&key=${process.env.tenor}&client_key=my_test_app`
+       let url = `https://tenor.googleapis.com/v2/search?q=${keyword}&key=${process.env.tenor}&client_key=my_test_app&limit=50`
        let response = await fetch(url)
        let json = await response.json()
        let url_index = (Math.floor(Math.random() * json.results.length))
        let random_url = json.results[url_index].url
-       interaction.reply(`LMAO ${interaction.user}, ${sentance} \n ${random_url}`)
-       console.log(json)
+       const embed = new Discord.MessageEmbed()
+       .setColor('00FFFF')
+       .setTitle(`LMAO ${interaction.user}, ${sentance}`)
+       .setImage(random_url)
+       interaction.reply({ embeds: [embed] })
   }
 }
