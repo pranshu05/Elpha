@@ -7,7 +7,7 @@ const fetch = require("node-fetch");
 const path = require("path");
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("nsfwmeme")
+    .setName("nsfw")
     .setDescription("WARNING! nsfw content 18+ only"),
   async execute(interaction) {
     if (interaction.channel.nsfw) {
