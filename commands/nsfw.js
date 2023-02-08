@@ -24,10 +24,11 @@ module.exports = {
        ]
        let sentance_index = (Math.floor(Math.random() * Math.floor(sentances.length)))
        let sentance = sentances[sentance_index]
-       let url = `https://tenor.googleapis.com/v2/search?q=${keyword}&key=${process.env.tenor}&client_key=my_test_app&random=true`
+       let url = `https://tenor.googleapis.com/v2/search?q=${keyword}&key=${process.env.tenor}&client_key=my_test_app`
        let response = await fetch(url)
        let json = await response.json()
-       let random_url = json.results.url
+       let url_index = (Math.floor(Math.random() * json.results.length))
+       let random_url = json.results[url_index].url
        interaction.reply(`LMAO ${interaction.user}, ${sentance} \n ${random_url}`)
        console.log(json)
   }
