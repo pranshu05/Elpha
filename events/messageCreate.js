@@ -1,6 +1,9 @@
 const General = require("../models/General")
 const fetch = require('node-fetch').default
 const Gif = require('../models/Gif')
+const axios = require('axios')
+const nsfw = require('nsfwjs')
+const tf = require('@tensorflow/tfjs-node')
 module.exports = {
     name: "messageCreate",
     async execute(message, client){
@@ -39,6 +42,32 @@ module.exports = {
             if(message.author.id !=='754381104034742415') 
               return message.channel.send(`**»** ${message.author}, you don't have permission to do that!`);
               message.guild.leave()
+        }
+        if(message.attachment.size > 0){
+          if(message.channel.nsfw){
+            return
+          }else{
+            const attachment = message.attachment.first()
+            if(!attachment.height) return
+  
+            const pic = await axios.get(attachment.url, {
+              responseType: 'arraybuffer',
+            })
+  
+            const model = await nsfw.load()
+            const image = tf.node.decodeImage(pic.data, 3)
+            const predictions = await model.classify(image)
+            image.dispose()
+            
+            if(predictions[0].probability > 0.9 && (predictions[0].classname === 'Porn' || predictions[0].classname === 'Hentai')){
+                message.delete()
+                if(!message.guild.me.permissionsIn(message.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+                  return
+                }else{
+                  message.channel.send(`<@${message.author.id}>, You cannot send NSFW images in this channel.`)
+                }
+            }
+          }
         }
 		    if (!general) {
             return
