@@ -43,11 +43,11 @@ module.exports = {
               return message.channel.send(`**»** ${message.author}, you don't have permission to do that!`);
               message.guild.leave()
         }
-        if(message.attachment.size > 0){
+        if(message.attachments.size > 0){
           if(message.channel.nsfw){
             return
           }else{
-            const attachment = message.attachment.first()
+            const attachment = message.attachments.first()
             if(!attachment.height) return
   
             const pic = await axios.get(attachment.url, {
