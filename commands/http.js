@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 const fetch = require("node-fetch")
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("http status")
+    .setName("http_status")
     .setDescription("sends http code status with image")
     .addIntegerOption(option =>
         option.setName('status')
