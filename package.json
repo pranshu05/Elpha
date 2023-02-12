@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nodemon bot.js",
     "start": "node ./bot.js"
+
   },
   "keywords": [],
   "author": "",
