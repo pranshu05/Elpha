@@ -61,11 +61,14 @@ module.exports = {
             
             if(predictions[0].probability > 0.9 && (predictions[0].classname === 'Porn' || predictions[0].classname === 'Hentai')){
                 message.delete()
+                console.log('img was nsfw!')
                 if(!message.guild.me.permissionsIn(message.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                   return
                 }else{
                   message.channel.send(`<@${message.author.id}>, You cannot send NSFW images in this channel.`)
                 }
+            }else{
+              console.log('image wasnt nsfw!')
             }
           }
         }
