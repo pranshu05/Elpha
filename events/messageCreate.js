@@ -55,7 +55,7 @@ module.exports = {
             })
   
             const model = await nsfw.load()
-            const image = tf.node.decodeImage(pic.data, 3)
+            const image = await tf.node.decodeImage(pic.data, 3)
             const predictions = await model.classify(image)
             image.dispose()
             
