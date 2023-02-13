@@ -86,7 +86,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447841355468801')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -98,7 +98,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447841355468801')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -110,7 +110,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447842282414130')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -122,7 +122,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447842844467210')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -134,7 +134,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447834254532658')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -146,7 +146,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447834669752362')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -158,7 +158,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447835181461554')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -170,7 +170,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447835663802368')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -182,7 +182,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447846166343740')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -194,7 +194,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447845700767755')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
@@ -206,7 +206,7 @@ client.on('interactionCreate' , interaction => {
                 }
                 else{
                     member.roles.add('959447846745153586')
-                    await interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
+                    interaction.reply({ content: "The role was successfully added to you", ephemeral: true })
                     .catch(console.error)
                 }
             }
