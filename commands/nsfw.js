@@ -37,7 +37,7 @@ module.exports = {
             extension === ".gif" ||
             extension === ".mp4" ||
             extension === ".mkv" ||
-            extension === ".gifv" ||
+            extension === ".gifv"
           ) {
             interaction.reply(`${memeTitle} \n ${memeImage}`);
           } else {
