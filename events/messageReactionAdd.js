@@ -11,9 +11,6 @@ module.exports = {
         const des_emoji = '🧑🏻‍🎨'
         const ent_emoji = '🤵🏻'
         const web3_emoji = '🪙'
-        if(!reaction.message.guild.id === `754381521854398595`){
-            return
-        }else{
             if (reaction.message.channel.id === '852791356664709160'){
                 console.log(`reaction was added of ${raction.emoji.name}`)
                 if (reaction.emoji.name === prog_emoji) {
@@ -28,6 +25,6 @@ module.exports = {
             }else{
                 return
             }
-        }
+        
   }
 } 
