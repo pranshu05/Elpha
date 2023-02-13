@@ -12,17 +12,17 @@ module.exports = {
         .setDescription(`You don't have permission to use this command.Only owner of the bot can use this command for now!`)
         const occ_role = new Discord.MessageEmbed()
         .setColor('#00FFFF')
-        .setTitle(`**:construction_worker::skin-tone-1: Occupation Roles**`)
-        .setDescription(`:man_technologist_tone1: Programming \n :artist::skin-tone-1: Design \n :levitate::skin-tone-1: Entrepreneurship \n :coin: web3 \n `)
+        .setTitle(`**👷🏻 Occupation Roles**`)
+        .setDescription(`👨🏻‍💻 Programming \n\n 🧑🏻‍🎨 Design \n\n 🤵🏻 Entrepreneurship \n\n :coin: web3 \n `)
         const channel = interaction.client.channels.cache.get("852791356664709160")
         if(interaction.user.id === '754381104034742415'){
             if(!channel){
                 interaction.reply(`I don't have access to that channel!`)
             }else{
                 channel.send({embeds: [occ_role]}).then(sentEmbed => {
-                    sentEmbed.react(":man_technologist_tone1:")
-                    sentEmbed.react(":artist::skin-tone-1:")
-                    sentEmbed.react(":levitate::skin-tone-1:")
+                    sentEmbed.react("👨🏻‍💻")
+                    sentEmbed.react("🧑🏻‍🎨")
+                    sentEmbed.react("🤵🏻")
                     sentEmbed.react(":coin:")
                 })
             }
