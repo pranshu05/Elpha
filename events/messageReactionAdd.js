@@ -15,6 +15,7 @@ module.exports = {
             return
         }else{
             if (reaction.message.channel.id === '852791356664709160'){
+                console.log(`reaction was added of ${raction.emoji.name}`)
                 if (reaction.emoji.name === prog_emoji) {
                     if(member.roles.has(Programming)){
                         user.reply({content: 'You already have that role!', ephemeral: true})
