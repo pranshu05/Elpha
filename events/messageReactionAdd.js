@@ -14,10 +14,6 @@ module.exports = {
         if(!reaction.message.guild.id === `754381521854398595`){
             return
         }else{
-            if (reaction.message.partial) await reaction.message.fetch()
-            if (reaction.partial) await reaction.fetch()
-            if (user.bot) return
-            if (!reaction.message.guild) return
             if (reaction.message.channel.id === '852791356664709160'){
                 if (reaction.emoji.name === prog_emoji) {
                     if(!member.roles.has(Programming)){
