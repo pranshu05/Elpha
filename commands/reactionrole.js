@@ -20,32 +20,27 @@ module.exports = {
                     { //edit the option according to you ⚠leave the emoji fields like they are 
                         label: 'Reaction Role 1',
                         description: 'Take this role by clicking me ',
-                        value: 'first_option',
-                        emoji: r1m
+                        value: 'first_option'
                     },
                     {
                         label: 'Reaction Role 2',
                         description: 'Take this role by clicking me ',
-                        value: 'second_option',
-                        emoji: r2m
+                        value: 'second_option'
                     },
                     {
                         label: 'Reaction Role 3',
                         description: 'Take this role by clicking me ',
-                        value: 'third_option',
-                        emoji: r3m
+                        value: 'third_option'
                     },
                     {
                         label: 'Reaction Role 4',
                         description: 'Take this role by clicking me ',
-                        value: 'fourth_option',
-                        emoji: r4m
+                        value: 'fourth_option'
                     },
                     {
                         label: 'Reaction Role 5',
                         description: 'Take this role by clicking me s',
-                        value: 'fifth_option',
-                        emoji: r5m
+                        value: 'fifth_option'
                     },
                 ]),
         );
