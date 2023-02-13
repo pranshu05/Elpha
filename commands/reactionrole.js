@@ -14,7 +14,7 @@ module.exports = {
         .setColor('#00FFFF')
         .setTitle(`**:construction_worker::skin-tone-1: Occupation Roles**`)
         .setDescription(`:man_technologist_tone1: Programming \n :artist::skin-tone-1: Design \n :levitate::skin-tone-1: Entrepreneurship \n :coin: web3 \n `)
-        const channel = client.channels.cache.get("852791356664709160")
+        const channel = interaction.client.channels.cache.get("852791356664709160")
         if(interaction.user.id === '754381104034742415'){
             if(!channel){
                 interaction.reply(`I don't have access to that channel!`)
