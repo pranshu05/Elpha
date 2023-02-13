@@ -211,7 +211,7 @@ client.on('interactionCreate' , interaction => {
                 }
             }
         }else{
-            returnj
+            return
         }
     }
 })
