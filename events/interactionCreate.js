@@ -21,8 +21,9 @@ module.exports = {
             if(interaction.isSelectMenu()){
                 let choice = interaction.values[0] 
                 const member = interaction.member
+                if(interaction.customID !== 'roles') return
                 if(choice == '1'){
-                    if (member.roles.has('959447841355468801')) {
+                    if (member.roles.cache.has('959447841355468801')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447841355468801')
                     }
@@ -32,7 +33,7 @@ module.exports = {
                     }
                 }
                 if(choice == '2'){
-                    if (member.roles.has('959447841355468801')) {
+                    if (member.roles.cache.has('959447841355468801')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447841355468801')
                     }
@@ -42,7 +43,7 @@ module.exports = {
                     }
                 }
                 if(choice == '3'){
-                    if (member.roles.has('959447842282414130')) {
+                    if (member.roles.cache.has('959447842282414130')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447842282414130')
                     }
@@ -52,7 +53,7 @@ module.exports = {
                     }
                 }
                 if(choice == '4'){
-                    if (member.roles.has('959447842844467210')) {
+                    if (member.roles.cache.has('959447842844467210')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447842844467210')
                     }
@@ -62,7 +63,7 @@ module.exports = {
                     }
                 }
                 if(choice == '5'){
-                    if (member.roles.has('959447834254532658')) {
+                    if (member.roles.cache.has('959447834254532658')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447834254532658')
                     }
@@ -72,7 +73,7 @@ module.exports = {
                     }
                 }
                 if(choice == '6'){
-                    if (member.roles.has('959447834669752362')) {
+                    if (member.roles.cache.has('959447834669752362')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447834669752362')
                     }
@@ -82,7 +83,7 @@ module.exports = {
                     }
                 }
                 if(choice == '7'){
-                    if (member.roles.has('959447835181461554')) {
+                    if (member.roles.cache.has('959447835181461554')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447835181461554')
                     }
@@ -92,7 +93,7 @@ module.exports = {
                     }
                 }
                 if(choice == '8'){
-                    if (member.roles.has('959447835663802368')) {
+                    if (member.roles.cache.has('959447835663802368')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447835663802368')
                     }
@@ -102,7 +103,7 @@ module.exports = {
                     }
                 }
                 if(choice == '9'){
-                    if (member.roles.has('959447846166343740')) {
+                    if (member.roles.cache.has('959447846166343740')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447846166343740')
                     }
@@ -112,7 +113,7 @@ module.exports = {
                     }
                 }
                 if(choice == '10'){
-                    if (member.roles.has('959447845700767755')) {
+                    if (member.roles.cache.has('959447845700767755')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447845700767755')
                     }
@@ -122,7 +123,7 @@ module.exports = {
                     }
                 }
                 if(choice == '11'){
-                    if (member.roles.has('959447846745153586')) {
+                    if (member.roles.cache.has('959447846745153586')) {
                         interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
                         member.roles.remove('959447846745153586')
                     }
