@@ -16,11 +16,12 @@ module.exports = {
         }else{
             if (reaction.message.channel.id === '852791356664709160'){
                 if (reaction.emoji.name === prog_emoji) {
-                    if(!member.roles.has(Programming)){
+                    if(member.roles.has(Programming)){
+                        user.reply({content: 'You already have that role!', ephemeral: true})
+                        return
+                    }else{
                         await member.roles.add(Programming)
                         user.reply({content: 'Role was aadded succesfully!', ephemeral: true })
-                    }else{
-                        user.reply({content: 'You already have that role!', ephemeral: true})
                     }
                 }
             }else{
