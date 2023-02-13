@@ -22,6 +22,7 @@ module.exports = {
                 const choice = interaction.values[0] 
                 const member = interaction.member
                 if(interaction.customID === 'roles') {
+                    console.log('some1 reacted!')
                     if(choice === '1'){
                         if (member.roles.cache.has('959447841355468801')) {
                             interaction.reply({content: "The role was successfully removed from you" , ephemeral: true})
