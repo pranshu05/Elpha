@@ -11,32 +11,34 @@ module.exports = {
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
         .setDescription(`You don't have permission to use this command.Only owner of the bot can use this command for now!`)
-        const genRolesEmbed = new Discord.MessageEmbed()
-        .setTitle("Customize Your Gender Roles")
+        const pronRolesEmbed = new Discord.MessageEmbed()
+        .setTitle("Customize Your Pronounce Roles")
         .setColor("#5267f6")
         .setDescription(
-          "Select which Gender you identify as by selecting the role below:"
+          "Select by which Pronounce you identify as by selecting the role below:"
         )
-        const genRolesMenu = new MessageSelectMenu()
-        .setCustomId('gender_roles')
-        .setPlaceholder('Select your Gender Status')
+        const pronRolesMenu = new MessageSelectMenu()
+        .setCustomId('pronounce_roles')
+        .setPlaceholder('Select your Pronounce')
         .addOptions([
           {
-            label: 'Gender: Male',
-            emoji: ":male_sign:",
-            description: 'Let people know your Male!',
+            label: 'He/Him',
+            description: 'Let people know your He/Him!',
             value: 'test',
           },
           {
-            label: 'Gender: Female',
-            emoji: ":female_sign:",
-            description: 'Let people know your Female!',
+            label: 'She/Her',
+            description: 'Let people know your She/Her!',
             value: 'test2',
           },
           {
-            label: 'Gender: Non-Binary',
-            emoji: ":white_large_square:",
-            description: 'Select this if you are Non-Binary!',
+            label: 'They/Them',
+            description: 'Select this if you want ppl to ask your pronounce!',
+            value: 'test3',
+          },
+          {
+            label: 'Ask Pronounce',
+            description: 'Let people know your They/Them!',
             value: 'test3',
           },
         ])
@@ -45,7 +47,7 @@ module.exports = {
             if(!channel){
                 interaction.reply(`I don't have access to that channel!`)
             }else{
-                channel.send({ embeds: [genRolesEmbed], components: [{ type: 1, components: [genRolesMenu] }] })
+                channel.send({ embeds: [pronRolesEmbed], components: [{ type: 1, components: [pronRolesMenu] }] })
                 interaction.reply('Done!')
             }
         }else {
