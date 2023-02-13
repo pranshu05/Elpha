@@ -23,7 +23,7 @@ module.exports = {
                     sentEmbed.react("👨🏻‍💻")
                     sentEmbed.react("🧑🏻‍🎨")
                     sentEmbed.react("🤵🏻")
-                    sentEmbed.react(":coin:")
+                    sentEmbed.react("🪙")
                 })
             }
         }else {
