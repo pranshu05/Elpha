@@ -19,7 +19,7 @@ module.exports = {
                 })
             }
             if(interaction.isSelectMenu()){
-                let choice = interaction.values[0] 
+                const choice = interaction.values[0] 
                 const member = interaction.member
                 if(interaction.customID !== 'roles') return
                 if(choice == '1'){
