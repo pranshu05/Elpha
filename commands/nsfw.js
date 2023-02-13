@@ -33,6 +33,13 @@ module.exports = {
             embed.setImage(memeImage);
             embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
             interaction.reply({ embeds: [embed] });
+          } else if (
+            extension === ".gif" ||
+            extension === ".mp4" ||
+            extension === ".mkv" ||
+            extension === ".gifv" ||
+          ) {
+            interaction.reply(`${memeTitle} \n ${memeImage}`);
           } else {
             interaction.reply(`${memeTitle} \n ${memevideo}`);
           }
