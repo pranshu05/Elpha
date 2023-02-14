@@ -82,7 +82,7 @@ module.exports = {
 					}
 					return 
 				}
-					abc.send({embed: [wc_embed]})	
+					abc.send({embeds: [wc_embed]})	
 			}
 		})
 	}
