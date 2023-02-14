@@ -35,8 +35,9 @@ module.exports = {
 			}else{
 				if(!member.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
 					return console.log('couldnt add role')
+				}else{
+					member.roles.add(role)
 				}
-				member.roles.add(role)
 			}
 		}
 	}
