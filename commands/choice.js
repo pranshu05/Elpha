@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("choose")
-    .setDescription("Elpha will choose for u!")
+    .setDescription("Elpha will choose for you!")
     .addSubcommand(subcommand => subcommand
         .setName("choices")
         .setDescription('choice')
@@ -21,6 +21,6 @@ module.exports = {
         .addField('First choice', '' + interaction.options.getString('1st') )
         .addField(' Second choice ','' +  interaction.options.getString('2nd'))
         .setFooter(`Choosed for ${interaction.user.username}`)
-        interaction.reply({ embeds: [embed] })
+        interaction.reply({embeds: [embed]})
     }
 }

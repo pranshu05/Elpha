@@ -22,7 +22,6 @@ module.exports = {
                 embed.setImage(catImage)
                 embed.setFooter(`👍 ${catUpvotes} | 💬 ${catNumComments}`)
                 interaction.reply({ embeds: [embed] })
-            })
-            .catch(console.error)
+            }).catch(console.error)
     }
 }

@@ -30,9 +30,9 @@ function timeCon(time) {
 }
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('botinfo')
-        .setDescription('Basic Information About Elpha'),
-    async execute(interaction) {
+    .setName('botinfo')
+    .setDescription('Basic Information About Elpha'),
+        async execute(interaction) {
         let totalPeople = 0
         totalPeople = interaction.client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)
         const embed = new Discord.MessageEmbed()
@@ -41,19 +41,21 @@ module.exports = {
             .setAuthor(`Elpha's info`, interaction.client.user.displayAvatarURL())
             .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' )
             .setDescription(interaction.client.user.username + ' has been awake for ' + timeCon(process.uptime()))
-            .addField('🏠 Guilds', '' + interaction.client.guilds.cache.size, true)
-            .addField('📄 Channels', '' + interaction.client.channels.cache.size, true)
-            .addField('🤵 Total Users', '' + (totalPeople ), true)
-            .addField(':robot: Total Commands', '' + (commandsLength ), true)
-            .addField('🐏 RAM Usage', `${((process.memoryUsage().rss / 1024) / 1024).toFixed(2)} MB`, true)
-            .addField(':clock: System Uptime', timeCon(os.uptime()), true)
-            .addField('🏓 Ping', `${(interaction.client.ws.ping).toFixed(0)} ms`, true)
-            .addField(':control_knobs: Library', `Discord JS v${Discord.version}`, true)
-            .addField(':computer: Node.js ', `${process.version}`, true)
-            .addField(':globe_with_meridians: Host Name', `${os.hostname}`, true)
-            .addField(':white_check_mark: Host OS', `${os.platform} ${os.release}`, true)
-            .addField("Server", "[Click here](https://discord.gg/uJCX5yfuTf)" , true)
-            .addField("Github", "[Click here](https://github.com/pranshu05/Elpha)")
-            interaction.reply({ embeds: [embed] })
+            .addFields(
+                {name: '🏠 Guilds', value: interaction.client.guilds.cache.size},
+                {name: '📄 Channels', value: interaction.client.channels.cache.size},
+                {name: '🤵 Total Users', value: (totalPeople)},
+                {name: ':robot: Total Commands', value: (commandsLength)},
+                {name: '🐏 RAM Usage', value: `${((process.memoryUsage().rss / 1024) / 1024).toFixed(2)} MB`},
+                {name: ':floppy_disk: System Uptime', value: timeCon(os.uptime())},
+                {name: '🏓 Ping', value: `${(interaction.client.ws.ping).toFixed(0)} ms`},
+                {name: ':control_knobs: Library', value: `Discord JS v${Discord.version}`},
+                {name: ':computer: Node.js Version', value: `${process.version}`},
+                {name: ':globe_with_meridians: Host Name', value: `${os.hostname}`},
+                {name: ':white_check_mark: Host OS', value: `${os.platform} ${os.release}`},
+                {name: 'Server', value: '[Click here](https://discord.gg/uJCX5yfuTf)'},
+                {name: 'Github Repo', value: '[Click here](https://github.com/pranshu05/Elpha)'},
+            )
+        interaction.reply({ embeds: [embed] })
     }
 }

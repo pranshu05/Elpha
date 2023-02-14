@@ -25,12 +25,11 @@ module.exports = {
                 embed.setColor('#00FFFF')
                 embed.setImage(foodImage)
                 interaction.reply({ content: 'Just a sec!', ephemeral: true }).then(
-		    interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
+		        interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
                     sentEmbed.react("👍")
                     sentEmbed.react("👎")
                 })
-		)
-            })
-            .catch(console.error)
+		        )
+            }).catch(console.error)
     }
 }

@@ -6,16 +6,8 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("kick")
     .setDescription("kick user")
-    .addUserOption(option =>
-        option.setName('user')
-            .setDescription('user')
-            .setRequired(true)
-    )
-    .addStringOption(option =>
-        option.setName('reason')
-            .setDescription('reason')
-            .setRequired(true)
-    ),
+    .addUserOption(option => option.setName('user').setDescription('user').setRequired(true))
+    .addStringOption(option => option.setName('reason').setDescription('reason').setRequired(true)),
     async execute(interaction) {
         const reason = interaction.options.getString('reason')
         const user = interaction.options.getUser('user')
@@ -45,49 +37,47 @@ module.exports = {
         if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.KICK_MEMBERS)){
             return interaction.reply({embeds: [no_kick_perms]})
         }
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)) {
-             if (user.id === '754381104034742415') return interaction.reply('You cannot kick my developer')
-             if (user === interaction.user) return interaction.reply('You cannot kick yourself')
-             if (user === interaction.client.user) return interaction.reply('You cannot kick me')
-             if (interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot kick Moder')}
-             if(!kick_member.kickable) return interaction.reply('I cannot kick the member because they have roles above me or you!')
-             await kick_member.kick({reason: reason}).catch(console.error)
-                interaction.reply({ embeds: [kicked_embed] })
-                Kicked.findOne({guild_id: interaction.guild.id}, (err, settings) => {
-                if (err) {
+        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)){
+            if(user.id === '754381104034742415') return interaction.reply('You cannot kick my developer')
+            if(user === interaction.user) return interaction.reply('You cannot kick yourself')
+            if(user === interaction.client.user) return interaction.reply('You cannot kick me')
+            if(interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot kick Moder')}
+            if(!kick_member.kickable) return interaction.reply('I cannot kick the member because they have roles above me or you!')
+            await kick_member.kick({reason: reason}).catch(console.error)
+            interaction.reply({embeds: [kicked_embed]})
+            Kicked.findOne({guild_id: interaction.guild.id}, (err, settings) => {
+                if(err){
                     console.log(err)
                     interaction.reply({embeds: [kick_db_fail]})
                     return
-                }else {
+                }else{
                     settings = new Kicked({
-                        guild_id: interaction.guild.id,
-                        user_id: user.id,
-                        moderatorId: interaction.user.id,
-                        reason: interaction.options.getString('reason'),
+                    guild_id: interaction.guild.id,
+                    user_id: user.id,
+                    moderatorId: interaction.user.id,
+                    reason: interaction.options.getString('reason'),
                     })
                 } 
                 settings.save(err => {
-                    if (err) {
+                    if(err){
                         console.log(err)
                         interaction.reply({embeds: [kick_db_fail]})
                         return
                     }
                 })
             })
-             if (!modlog) {
+            if(!modlog){
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                     if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                         if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                              interaction.channel.send({embeds: [modlog_perms]})
-                              return 
+                            interaction.channel.send({embeds: [modlog_perms]})
+                            return 
                         }
                         return 
                     }
-                    abc.send({
-                        embeds: [kicked_embed] 
-                    })	
+                    abc.send({embeds: [kicked_embed]})	
             }
             user.send(`You were kicked from ${interaction.guild.name}`).catch(console.error)
         } else {

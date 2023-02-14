@@ -5,11 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("http_status")
     .setDescription("sends http code status with image")
-    .addIntegerOption(option =>
-        option.setName('status')
-            .setDescription('http status')
-            .setRequired(true)
-    ),
+    .addIntegerOption(option => option.setName('status').setDescription('http status').setRequired(true)),
     async execute(interaction) {
         const status = interaction.options.getInteger('status')
         let url = `https://http.cat/${status}`

@@ -22,7 +22,6 @@ module.exports = {
                 embed.setImage(dogImage)
                 embed.setFooter(`👍 ${dogUpvotes} 💬 ${dogNumComments}`)
                 interaction.reply({ embeds: [embed] })
-            })
-            .catch(console.error)
+            }).catch(console.error)
     }
 }

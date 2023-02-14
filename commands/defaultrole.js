@@ -6,11 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("setdefaultrole")
     .setDescription("sets default role")
-    .addStringOption(option =>
-        option.setName('role')
-            .setDescription('role')
-            .setRequired(true)
-    ),
+    .addStringOption(option => option.setName('role').setDescription('role').setRequired(true)),
     async execute(interaction, guild) {
         const role = interaction.options.getString('role')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})

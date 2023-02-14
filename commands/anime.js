@@ -22,7 +22,6 @@ module.exports = {
                 embed.setImage(animeImage)
                 embed.setFooter(`👍 ${animeUpvotes} | 💬 ${animeNumComments}`)
                 interaction.reply({ embeds: [embed] })
-            })
-            .catch(console.error)
+            }).catch(console.error)
     }
 }

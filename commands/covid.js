@@ -6,11 +6,10 @@ module.exports = {
     .setName("covid")
     .setDescription("Sends covid stats of given country")
     .addStringOption(option => 
-        option
-        .setName("country")
+        option.setName("country")
         .setDescription("location")
         .setRequired(true)
-        ),
+    ),
         async execute(interaction){
            const country = interaction.options.getString("country")
            fetch(`https://covid19.mathdro.id/api/countries/${country}`).then(res => res.json()).then(json => {
