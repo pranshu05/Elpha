@@ -20,11 +20,11 @@ module.exports = {
             .setTitle(guild.name + ' Server Stats')
             .setThumbnail(guild.iconURL())
             .addFields(
-                {name: ':man: Members', value: `${interaction.guild.members.cache.filter(member => member.user.bot).size} Bots | ${(interaction.guild.memberCount) - (interaction.guild.members.cache.filter(member => member.user.bot).size)} Humans | ${interaction.guild.memberCount} Total Members | ${Math.round((interaction.guild.members.cache.filter(member => member.user.bot).size / interaction.guild.memberCount) * 100)}% Bots | ${Math.round((((interaction.guild.memberCount) - (interaction.guild.members.cache.filter(member => member.user.bot).size)) / interaction.guild.memberCount) * 100)}% Humans`},
-                {name: ':man_in_tuxedo: Server Owner', value: `<@${interaction.guild.ownerId}>`},
-                {name: ':man_in_tuxedo: Server Owner ID', value: interaction.guild.ownerId},
+                {name: ':man: Members', value: `${guild.members.cache.filter(member => member.user.bot).size} Bots | ${(interaction.guild.memberCount) - (interaction.guild.members.cache.filter(member => member.user.bot).size)} Humans | ${interaction.guild.memberCount} Total Members | ${Math.round((interaction.guild.members.cache.filter(member => member.user.bot).size / interaction.guild.memberCount) * 100)}% Bots | ${Math.round((((interaction.guild.memberCount) - (interaction.guild.members.cache.filter(member => member.user.bot).size)) / interaction.guild.memberCount) * 100)}% Humans`},
+                {name: ':man_in_tuxedo: Server Owner', value: `<@${guild.ownerId}>`},
+                {name: ':man_in_tuxedo: Server Owner ID', value: guild.ownerId},
             )
-            interaction.reply({ embeds: [embed] }).catch(console.error)
+            interaction.reply({embeds: [embed]}).catch(console.error)
         }else {
             interaction.reply({embeds: [insf_perms]})
         }

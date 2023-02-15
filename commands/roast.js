@@ -52,9 +52,11 @@ module.exports = {
         if (user === interaction.user) return interaction.reply('You cannot roast yourself')
         if (user === interaction.client.user) return interaction.reply('You cannot roast me')
         let index = (Math.floor(Math.random() * Math.floor(roast.length)))
-        const embed = new Discord.MessageEmbed()
-        .setColor('00FFFF')
-        .setTitle(user.username + roast[index] )
-        interaction.reply({ embeds: [embed] })
+        if(!interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+            return interaction.reply({content: `I don't have permission to send message in this channel`, ephemeral: true})
+        }else{
+            interaction.channel.send(`${user} ${roast[index]}`)
+            interaction.reply({content: `Done!`, ephemeral: true})
+        }
     }
 }
