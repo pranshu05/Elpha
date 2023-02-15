@@ -3,10 +3,10 @@ var Long = require('long')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('serverinv')
-        .setDescription('Generate an invite link for this server'),
+    .setName('serverinv')
+    .setDescription('Generate an invite link for this server'),
     async execute(interaction) {
-        function getDefaultChannel(guild) {
+        function getDefaultChannel(guild){
             if (guild.channels.cache.some(name1 => name1.name === 'general')) { return guild.channels.cache.find(name => name.name === 'general') }
             return guild.channels.cache
                 .filter(c => c.type === 'GUILD_TEXT' &&

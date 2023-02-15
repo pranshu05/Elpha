@@ -5,13 +5,9 @@ const General = require("../models/General")
 const Modlog = require("../models/Modlog")
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("setgeneralchannel")
-		.setDescription("Set the general message channel")
-		.addChannelOption(option => option
-			.setName("general")
-			.setDescription("The channel to set as the general channel")
-			.setRequired(true)
-		),
+	.setName("setgeneralchannel")
+	.setDescription("Set the general message channel")
+	.addChannelOption(option => option.setName("general").setDescription("The channel to set as the general channel").setRequired(true)),
 	async execute(interaction) {
 		const msg_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')

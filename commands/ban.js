@@ -43,7 +43,7 @@ module.exports = {
             if(user === interaction.user) return interaction.reply('**You cannot ban yourself**')
             if(user === interaction.client.user) return interaction.reply('**You cannot ban me**')
             if(user === interaction.guild.owner) return interaction.reply('**You cannot ban owner of this server!**')
-            if(member.bannable) return interaction.reply('I cannot kick the member because they have roles above me or you!')
+            if(!member.bannable) return interaction.reply('I cannot kick the member because they have roles above me or you!')
             if(interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) return interaction.reply('**You cannot ban member with higher roles!**')
                 interaction.guild.members.fetch(user.id).then(member => {
                 member.ban().catch(err => console.error(err))
