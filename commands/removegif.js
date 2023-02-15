@@ -4,13 +4,9 @@ const Discord = require('discord.js')
 const Gif = require("../models/Gif")
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("removegif")
-		.setDescription("Remove any gif by name")
-		.addStringOption(option =>
-			option.setName('name')
-				.setDescription('Name of GIF')
-				.setRequired(true)
-		),
+	.setName("removegif")
+	.setDescription("Remove any gif by name")
+	.addStringOption(option => option.setName('name').setDescription('Name of GIF').setRequired(true)),
 	async execute(interaction) {
 		const modlog_perms = new Discord.MessageEmbed()
 		const name = interaction.options.getString('name')
@@ -26,7 +22,7 @@ module.exports = {
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
 		.setDescription(`An error occurred while removing channel data from database!`)
-		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
+		if(!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS , Permissions.FLAGS.MANAGE_MESSAGES , Permissions.FLAGS.MANAGE_ROLES , Permissions.FLAGS.ADMINISTRATOR ])) {
 			interaction.reply({embeds: [insf_perms]})
 			return
 		}
@@ -35,12 +31,12 @@ module.exports = {
 			return
 		}else{
 			Gif.deleteOne({ guild_id: interaction.guild.id, gif_name: name }, (err, settings) => {
-				if (err) {
+				if(err){
 					console.log(err)
 					interaction.reply({embeds: [gif_rem_db_fail]})
 					return
 				}
-				if (!settings) {
+				if(!settings){
 					interaction.reply('There is no gif to remove from this server!')
 					return
 				} 

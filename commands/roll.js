@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('roll')
-        .setDescription('Roll a dice'),
+    .setName('roll')
+    .setDescription('Roll a dice'),
     async execute(interaction) {
         let dicenum = [
             ':one:',

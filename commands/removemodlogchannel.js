@@ -4,8 +4,8 @@ const Discord = require('discord.js')
 const Modlog = require("../models/Modlog")
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("removemodlogchannel")
-		.setDescription("Remove the modlog message channel"),
+	.setName("removemodlogchannel")
+	.setDescription("Remove the modlog message channel"),
 	async execute(interaction) {
 		const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -28,12 +28,12 @@ module.exports = {
 			return
 		}
 		Modlog.deleteOne({ guild_id: interaction.guild.id }, (err, settings) => {
-			if (err) {
+			if(err){
 				console.log(err)
 				interaction.reply({embeds: [ml_rem_db_fail]})
 				return
 			}
-			if (!settings) {
+			if(!settings){
 				interaction.reply({embeds: [ml_rem_db_fail]})
 				return
 			} 

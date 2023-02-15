@@ -4,11 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('roast')
     .setDescription('Roast someone')
-    .addUserOption(option =>
-        option.setName('user')
-            .setDescription('user id')
-            .setRequired(true)
-    ),
+    .addUserOption(option => option.setName('user').setDescription('user id').setRequired(true)),
     async execute(interaction) {
         var user = interaction.options.getUser('user')
         let roast = [
