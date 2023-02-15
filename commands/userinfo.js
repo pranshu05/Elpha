@@ -26,9 +26,9 @@ module.exports = {
         let status2 = {
             true: 'Bot',
             false: 'Not a Bot'
-        }
+        } 
         const embed = new Discord.MessageEmbed()
-       .setColor('#00ffff')
+        .setColor('#00ffff')
         .setTitle(`User info`)
         .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL())
         .setColor("00FFFF")

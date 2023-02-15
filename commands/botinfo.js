@@ -42,19 +42,19 @@ module.exports = {
             .setTitle(interaction.client.user.username + ' V: ' + pkg.version + ' ' )
             .setDescription(interaction.client.user.username + ' has been awake for ' + timeCon(process.uptime()))
             .addFields(
-                {name: '🏠 Guilds', value: interaction.client.guilds.cache.size},
-                {name: '📄 Channels', value: interaction.client.channels.cache.size},
-                {name: '🤵 Total Users', value: (totalPeople)},
-                {name: ':robot: Total Commands', value: (commandsLength)},
-                {name: '🐏 RAM Usage', value: `${((process.memoryUsage().rss / 1024) / 1024).toFixed(2)} MB`},
-                {name: ':floppy_disk: System Uptime', value: timeCon(os.uptime())},
-                {name: '🏓 Ping', value: `${(interaction.client.ws.ping).toFixed(0)} ms`},
-                {name: ':control_knobs: Library', value: `Discord JS v${Discord.version}`},
-                {name: ':computer: Node.js Version', value: `${process.version}`},
-                {name: ':globe_with_meridians: Host Name', value: `${os.hostname}`},
-                {name: ':white_check_mark: Host OS', value: `${os.platform} ${os.release}`},
-                {name: 'Server', value: '[Click here](https://discord.gg/uJCX5yfuTf)'},
-                {name: 'Github Repo', value: '[Click here](https://github.com/pranshu05/Elpha)'},
+            {name: '🏠 Guilds', value: `${interaction.client.guilds.cache.size}`},
+            {name: '📄 Channels', value: `${interaction.client.channels.cache.size}`},
+            {name: '🤵 Total Users', value: `${(totalPeople)}`},
+            {name: ':robot: Total Commands', value: `${(commandsLength)}`},
+            {name: '🐏 RAM Usage', value: `${((process.memoryUsage().rss / 1024) / 1024).toFixed(2)} MB`},
+            {name: ':floppy_disk: System Uptime', value: `${timeCon(os.uptime())}`},
+            {name: '🏓 Ping', value: `${(interaction.client.ws.ping).toFixed(0)} ms`},
+            {name: ':control_knobs: Library', value: `Discord JS v${Discord.version}`},
+            {name: ':computer: Node.js Version', value: `${process.version}`},
+            {name: ':globe_with_meridians: Host Name', value: `${os.hostname}`},
+            {name: ':white_check_mark: Host OS', value: `${os.platform} ${os.release}`},
+            {name: 'Server', value: '[Click here](https://discord.gg/uJCX5yfuTf)'},
+            {name: 'Github Repo', value: '[Click here](https://github.com/pranshu05/Elpha)'},
             )
         interaction.reply({ embeds: [embed] })
     }

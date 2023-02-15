@@ -9,9 +9,9 @@ module.exports = {
         let url = `https://type.fit/api/quotes`
         let response = await fetch(url)
         let json = await response.json()
-        let url_index = Math.floor(Math.random() * json.data.length)
-        let random_quote = json.data[url_index].text
-        let random_author = json.data[url_index].author
+        let url_index = Math.floor(Math.random() * json.length)
+        let random_quote = json[url_index].text
+        let random_author = json[url_index].author
         interaction.reply(`**${random_quote}** -${random_author}`)
     }
 }
