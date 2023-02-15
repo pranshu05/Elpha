@@ -14,14 +14,13 @@ module.exports = {
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
-        .setDescription(`You don't have permission to use this command.`)
+        .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
         const guild_id = interaction.options.getString('guild_id')
         const guild = interaction.client.guilds.cache.get(guild_id)
         if(interaction.user.id === '754381104034742415'){
-            if (!guild) return interaction.reply("Invalid Guild ID. I'm not in this server.")
+            if(!guild) return interaction.reply("Invalid Guild ID. I'm not in this server.")
             guild.leave()
-            interaction.reply('Done!')
-            .catch(console.error)
+            interaction.reply('Done!').catch(console.error)
         }else {
             interaction.reply({embeds: [insf_perms]})
         }

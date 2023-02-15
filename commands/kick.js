@@ -41,7 +41,7 @@ module.exports = {
             if(user.id === '754381104034742415') return interaction.reply('You cannot kick my developer')
             if(user === interaction.user) return interaction.reply('You cannot kick yourself')
             if(user === interaction.client.user) return interaction.reply('You cannot kick me')
-            if(interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot kick Moder')}
+            if(interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || user.id === '754381104034742415') {return interaction.reply('You cannot kick member with higher roles!')}
             if(!kick_member.kickable) return interaction.reply('I cannot kick the member because they have roles above me or you!')
             await kick_member.kick({reason: reason}).catch(console.error)
             interaction.reply({embeds: [kicked_embed]})

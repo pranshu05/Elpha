@@ -22,7 +22,6 @@ module.exports = {
                 embed.setImage(memeImage)
                 embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`)
                 interaction.reply({ embeds: [embed] })
-            })
-            .catch(console.error)
+            }).catch(console.error)
     }
 }

@@ -23,8 +23,7 @@ module.exports = {
                   `User: <@${ban.user_id}>`,
                   `Reason: ${ban.reason}`,
                 ].join('\n');
-                })
-                .join('\n\n')
+                }).join('\n\n')
 			    const Embed = new Discord.MessageEmbed()
 			    .setColor("00FFFF")
 		        .setTitle(`banned users in ${interaction.guild.name}`)

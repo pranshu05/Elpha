@@ -19,6 +19,7 @@ module.exports = {
             return interaction.reply({content: `I don't have permission to send message in this channel`, ephemeral: true})
         }else{
             interaction.channel.send(`${random_url}`)
+            interaction.reply({content: `Done!`, ephemeral: true})
         }
     }
 }

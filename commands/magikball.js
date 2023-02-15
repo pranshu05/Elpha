@@ -4,12 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('8ball')
     .setDescription('A magic 8ball command 🎱')
-    .addStringOption(option => 
-        option
-        .setName("question")
-        .setDescription("8ball question")
-        .setRequired(true)
-        ),
+    .addStringOption(option => option.setName("question").setDescription("8ball question").setRequired(true)),
 	async execute(interaction) {
         let eball = [
             'It is certain.',
@@ -91,6 +86,6 @@ module.exports = {
         .setColor('00FFFF')
         .setTitle(interaction.options.getString("question") )
         .setDescription(eball[index])
-        interaction.reply({ embeds: [embed] })
+        interaction.reply({embeds: [embed]})
 	}
 }
