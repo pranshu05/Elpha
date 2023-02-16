@@ -53,7 +53,7 @@ module.exports = {
                     return
                 }
             })
-            interaction.reply({ embeds: [unmute_embed] })
+            interaction.reply({embeds: [unmute_embed]})
             if(!modlog){
                 return
             }else{

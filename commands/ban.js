@@ -1,5 +1,5 @@
-const SlashCommandBuilder = require('@discordjs/builders')
-const {Discord, Permissions} = require('discord.js')
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { Discord, Permissions } = require('discord.js')
 const Modlog = require('../models/Modlog')
 const Banned = require('../models/Banned')
 module.exports = {
