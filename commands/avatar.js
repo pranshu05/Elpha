@@ -1,8 +1,8 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const SlashCommandBuilder = require('@discordjs/builders')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("avatar")
+    .setName('avatar')
     .setDescription("user's avatar")
     .addUserOption(option => option.setName('user').setDescription('user avatar').setRequired(true)),
     async execute(interaction) {
@@ -11,6 +11,6 @@ module.exports = {
         .setColor('#00ffff')
         .setTitle(`${user.username}'s Avatar`)
         .setImage(user.displayAvatarURL({size: 2048}))
-        interaction.reply({ embeds: [embed] }).catch(console.error)
+        interaction.reply({embeds: [embed]}).catch(console.error)
     }
 }

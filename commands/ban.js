@@ -1,12 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const Discord = require('discord.js')
-const Permissions = require('discord.js')
-const Modlog = require("../models/Modlog")
-const Banned = require("../models/Banned")
+const SlashCommandBuilder = require('@discordjs/builders')
+const {Discord, Permissions} = require('discord.js')
+const Modlog = require('../models/Modlog')
+const Banned = require('../models/Banned')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("ban")
-    .setDescription("ban user")
+    .setName('ban')
+    .setDescription('ban user')
     .addUserOption(option => option.setName('user').setDescription('user').setRequired(true))
     .addStringOption(option => option.setName('reason').setDescription('reason').setRequired(true)),
     async execute(interaction) {

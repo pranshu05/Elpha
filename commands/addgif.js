@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Gif = require("../models/Gif")
+const Gif = require('../models/Gif')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("addgif")
-    .setDescription("add gif with option of name!")
+    .setName('addgif')
+    .setDescription('add gif with option of name!')
     .addStringOption(option => option.setName('name').setDescription('name of the GIF').setRequired(true)) 
     .addStringOption(option => option.setName('url').setDescription('URL of GIF').setRequired(true)),
     async execute(interaction) {
@@ -24,11 +24,12 @@ module.exports = {
         }
         if(gif){
             interaction.reply(`Gif named **${name}** already exist in this server! Please select another name.`)
+            return
         }
         Gif.findOne({guild_id: interaction.guild.id}, (err, settings) => {
             if(err){
                 console.log(err)
-                interaction.reply({ embeds: [gif_fail] })
+                interaction.reply({embeds: [gif_fail]})
                 return
             }else{
                 settings = new Gif({
@@ -40,11 +41,11 @@ module.exports = {
             settings.save(err => {
                 if(err){
                     console.log(err)
-                    interaction.reply({ embeds: [gif_fail] })
+                    interaction.reply({embeds: [gif_fail]})
                     return
                 }
             })
         })
-        interaction.reply({ embeds: [gif_success] }).catch(console.error)
+        interaction.reply({embeds: [gif_success]}).catch(console.error)
     }
 }

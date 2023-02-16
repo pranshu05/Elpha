@@ -43,6 +43,7 @@ module.exports = {
             }
             if(!locked_channel){
                 interaction.reply(`That channel isn't locked!`)
+                return
             }
             if(interaction.options.getChannel("channel").type !== 'GUILD_TEXT'){
 			    interaction.reply({embeds: [invalid_channel]})

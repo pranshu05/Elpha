@@ -40,7 +40,7 @@ module.exports = {
             if(!interaction.guild.members.fetch(user.id).then(member => {
                 member.roles.has(muteRole)
             })){
-                interaction.reply(`User havn't be muted yet!`)
+                interaction.reply(`User havn't been muted yet!`)
                 return
             }
             interaction.guild.members.fetch(user.id).then(member => {
