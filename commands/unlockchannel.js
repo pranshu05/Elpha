@@ -12,7 +12,7 @@ module.exports = {
         const reason = interaction.options.getString('reason')
         const channel = interaction.options.getChannel('channel')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
-        const locked_channel = Locked.findOne({guild_id: interaction.guild.id, channelname: channel.name})
+        const locked_channel = Locked.find({guild_id: interaction.guild.id, channelname: channel.name})
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
@@ -41,7 +41,7 @@ module.exports = {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
                 return interaction.reply({embeds: [no_channel_perms]})
             }
-            if(!locked_channel){
+            if(locked_channel.length === 0){
                 interaction.reply(`That channel isn't locked!`)
                 return
             }
