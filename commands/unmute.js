@@ -39,7 +39,7 @@ module.exports = {
                 return interaction.reply({embeds: [no_mute_perms]})
             }
             if(!muteRole) return interaction.reply('User or this server donot contain a role named **Mute**')
-            if(member.roles.cache.some(role => role.name === 'Mute')){
+            if(!member.roles.cache.some(role => role.name === 'Mute')){
                 interaction.reply(`User havn't been muted yet!`)
                 return
             }
