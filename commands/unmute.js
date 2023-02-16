@@ -13,7 +13,6 @@ module.exports = {
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const member = interaction.options.getMember('user')
-        const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
