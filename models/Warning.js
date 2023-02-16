@@ -5,4 +5,4 @@ const WarningSchema = new mongoose.Schema({
 	warning: String,
     moderatorId: String,
 })
-module.exports = mongoose.model("Warning", WarningSchema)
+module.exports = mongoose.model('Warning', WarningSchema)

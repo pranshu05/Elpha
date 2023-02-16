@@ -5,4 +5,4 @@ const MutedSchema = new mongoose.Schema({
     moderatorId: String,
     reason: String,
 })
-module.exports = mongoose.model("Muted", MutedSchema)
+module.exports = mongoose.model('Muted', MutedSchema)

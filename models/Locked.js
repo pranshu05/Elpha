@@ -5,4 +5,4 @@ const LockedSchema = new mongoose.Schema({
     moderatorId: String,
     reason: String,
 })
-module.exports = mongoose.model("Locked", LockedSchema)
+module.exports = mongoose.model('Locked', LockedSchema)

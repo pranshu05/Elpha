@@ -4,4 +4,4 @@ const GuildSettingsSchema = new mongoose.Schema({
 	welcome_channel_id: String,
 	general_channel_id: String,
 })
-module.exports = mongoose.model("GuildSettings", GuildSettingsSchema)
+module.exports = mongoose.model('GuildSettings', GuildSettingsSchema)

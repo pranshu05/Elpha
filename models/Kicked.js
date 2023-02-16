@@ -5,4 +5,4 @@ const KickedSchema = new mongoose.Schema({
     moderatorId: String,
     reason: String,
 })
-module.exports = mongoose.model("Kicked", KickedSchema)
+module.exports = mongoose.model('Kicked', KickedSchema)

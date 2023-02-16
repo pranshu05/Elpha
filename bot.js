@@ -1,7 +1,7 @@
-require("dotenv").config()
-const fs = require("fs")
-const {Client,Collection} = require("discord.js")
-const Database = require("./config/Database")
+require('dotenv').config()
+const fs = require('fs')
+const {Client,Collection} = require('discord.js')
+const Database = require('./config/Database')
 const db = new Database()
 db.connect()
 const client = new Client({ 
@@ -28,7 +28,7 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command)
 }
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
-for (const file of eventFiles) {
+for(const file of eventFiles){
 	const event = require(`./events/${file}`)
     if (event.once){
         client.once(event.name, (...args) => event.execute(...args, commands))
@@ -38,16 +38,16 @@ for (const file of eventFiles) {
 }
 client.on('guildCreate' , guild => {   
     const embed = new MessageEmbed()
-    .setColor("00FFFF")
-    .setTitle("New Guild!")
+    .setColor('00FFFF')
+    .setTitle('New Guild!')
     .setDescription(`Elpha has joined the server ${guild.name}`)
     .addField('Members:' , `${guild.memberCount}`)
     .addField('Guild ID:' , `${guild.id}`)
-    .addField("Guild owner:", `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
+    .addField('Guild owner:', `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
     .addField('Total servers:', `${client.guilds.cache.size}`)
     .setThumbnail(guild.iconURL())
     .setTimestamp()
-		client.channels.cache.get("919799899929841694").send(
+		client.channels.cache.get('919799899929841694').send(
 				{
 					 embeds: [embed]
 			})	
@@ -55,16 +55,16 @@ client.on('guildCreate' , guild => {
 client.on('guildDelete' , guild => {
     if(guild.available){
         const embed = new MessageEmbed()
-        .setColor("00FFFF")
-        .setTitle("Guild Left")
+        .setColor('00FFFF')
+        .setTitle('Guild Left')
         .setDescription(`Elpha has left the server ${guild.name}`)
         .addField('Members:' , `${guild.memberCount}`)
         .addField('Guild ID:' , `${guild.id}`)
-        .addField("Guild owner:", `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
+        .addField('Guild owner:', `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
         .addField('Total servers:', `${client.guilds.cache.size}`)
         .setThumbnail(guild.iconURL())
         .setTimestamp()
-            client.channels.cache.get("919799899929841694").send(
+            client.channels.cache.get('919799899929841694').send(
                     {
                          embeds: [embed]
                 })	

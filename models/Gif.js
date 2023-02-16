@@ -4,4 +4,4 @@ const GifSchema = new mongoose.Schema({
     gif_name: String,
 	gif_url: String,
 })
-module.exports = mongoose.model("Gif", GifSchema)
+module.exports = mongoose.model('Gif', GifSchema)

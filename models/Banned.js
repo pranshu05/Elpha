@@ -5,4 +5,4 @@ const BannedSchema = new mongoose.Schema({
     moderatorId: String,
     reason: String, 
 })
-module.exports = mongoose.model("Banned", BannedSchema)
+module.exports = mongoose.model('Banned', BannedSchema)
