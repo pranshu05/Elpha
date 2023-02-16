@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 module.exports = {
-    name: "interactionCreate",
+    name: 'interactionCreate',
     async execute(interaction){
         const err_embed = new Discord.MessageEmbed()
         .setColor('FF0000')

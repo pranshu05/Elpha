@@ -1,8 +1,8 @@
-const {REST} = require("@discordjs/rest")
-const {Routes} = require("discord-api-types/v9")
-require("dotenv").config()
+const {REST} = require('@discordjs/rest')
+const {Routes} = require('discord-api-types/v9')
+require('dotenv').config()
 module.exports = {
-    name: "ready",
+    name: 'ready',
     once: true,
     execute(client, commands){
         console.debug('ready!')
@@ -17,24 +17,23 @@ module.exports = {
         if(index === watching.length) index = 0
         const status = watching[index]
         client.user.setStatus('online')
-        client.user.setActivity(status, { type: "STREAMING", url: "https://www.youtube.com/watch?v=-h7aoUZIdkk"})
+        client.user.setActivity(status, { type: 'STREAMING', url: 'https://www.youtube.com/watch?v=-h7aoUZIdkk'})
         index++
-    }, 7000) 
-        
-    const CLIENT_ID = client.user.id
-    const rest = new REST ({
-        version : "9"
-    }).setToken(process.env.token);
+        }, 7000) 
+        const CLIENT_ID = client.user.id
+        const rest = new REST ({
+            version : '9'
+        }).setToken(process.env.token);
 
-    (async ()  => {
-        try{
-            await rest.put(Routes.applicationCommands(CLIENT_ID), {
-                body : commands
-            });
+        (async ()  => {
+            try{
+                await rest.put(Routes.applicationCommands(CLIENT_ID),{
+                    body : commands
+                });
             console.info(`Succesfully registered commands globally ! with ${client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)} users and ${client.guilds.cache.size} servers `)
-        } catch (err) {
-          if (err)  console.error(err)
-        }
-    })()
+            }catch(err){
+                if(err)  console.error(err)
+            }
+        })()
     }
 }

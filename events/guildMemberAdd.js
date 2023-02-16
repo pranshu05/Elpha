@@ -1,8 +1,8 @@
 const Discord = require('discord.js')
-const GuildSettings = require("../models/GuildSettings")
-const Role = require("../models/Role")
+const GuildSettings = require('../models/GuildSettings')
+const Role = require('../models/Role')
 module.exports = {
-	name: "guildMemberAdd",
+	name: 'guildMemberAdd',
 	async execute(member , guild) {
 		console.log(`${member.user.username} joined ${member.guild.name}`)
 		const roles = await Role.findOne({guild_id: member.guild.id})
@@ -12,8 +12,8 @@ module.exports = {
 		}else{ 
 			if(!guildSettings.welcome_channel_id) return
 			const newMemberEmbed = new Discord.MessageEmbed()
-			.setColor("00FFFF")
-			.setTitle("New Member!")
+			.setColor('00FFFF')
+			.setTitle('New Member!')
 			.setDescription(`${member.user} has joined the server! We hope you enjoy your stay!`)
 			.setThumbnail(member.user.displayAvatarURL())
 			.setTimestamp()
@@ -21,9 +21,9 @@ module.exports = {
 			if(!member.guild.me.permissionsIn(guildSettings.welcome_channel_id).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
 				return console.log('Couldnt send msg')
 			}
-				member.guild.channels.cache.get(guildSettings.welcome_channel_id).send({
-					embeds: [newMemberEmbed] 
-				})
+			member.guild.channels.cache.get(guildSettings.welcome_channel_id).send({
+				embeds: [newMemberEmbed] 
+			})
 		}
 		if(!roles){
 			return
