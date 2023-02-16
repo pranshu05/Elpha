@@ -12,6 +12,7 @@ module.exports = {
         const user = interaction.options.getUser('user')
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
+        const member = interaction.options.getMember('user')
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
@@ -37,15 +38,11 @@ module.exports = {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
                 return interaction.reply({embeds: [no_mute_perms]})
             }
-            if(!interaction.guild.members.fetch(user.id).then(member => {
-                member.roles.has(muteRole)
-            })){
+            if(member.roles.cache.some(role => role.name === 'Mute')){
                 interaction.reply(`User havn't been muted yet!`)
                 return
             }
-            interaction.guild.members.fetch(user.id).then(member => {
-                member.roles.remove(muteRole).catch(err => console.error(err))
-            })
+            member.roles.remove(muteRole).catch(err => console.error(err))
             Muted.deleteOne({guild_id: interaction.guild.id}, (err, settings) => {
                 if(err){
                     console.log(err)
