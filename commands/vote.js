@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('vote')
-        .setDescription('Sends vote links'),
+    .setName('vote')
+    .setDescription('Sends vote links'),
     async execute(interaction) {
         const embed = new Discord.MessageEmbed()
         .setColor('#00ffff')

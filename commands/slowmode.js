@@ -26,7 +26,7 @@ module.exports = {
 		.setDescription(`I don't have permission to send message in modlogs channel!`)
         if(interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)){
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
-                return interaction.reply({embeds: [no_channel_perms]})
+            return interaction.reply({embeds: [no_channel_perms]})
         }
             interaction.channel.setRateLimitPerUser(time)
             interaction.reply({ embeds: [sm_embed] })

@@ -6,10 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("unmute")
     .setDescription("unmute user")
-    .addUserOption(option =>
-        option.setName('user')
-            .setDescription('user')
-            .setRequired(true)
+    .addUserOption(option => option.setName('user').setDescription('user').setRequired(true)
     ),
     async execute(interaction) {
         const user = interaction.options.getUser('user')
@@ -40,31 +37,34 @@ module.exports = {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
                 return interaction.reply({embeds: [no_mute_perms]})
             }
+            if(!interaction.guild.members.fetch(user.id).then(member => {
+                member.roles.find(r => r.name === "Mute")
+            })){
+                interaction.reply(`User havn't be muted yet!`)
+            }
             interaction.guild.members.fetch(user.id).then(member => {
-            member.roles.remove(muteRole).catch(err => console.error(err))
-        })
-             Muted.deleteOne({guild_id: interaction.guild.id}, (err, settings) => {
-                if (err) {
+                member.roles.remove(muteRole).catch(err => console.error(err))
+            })
+            Muted.deleteOne({guild_id: interaction.guild.id}, (err, settings) => {
+                if(err){
                     console.log(err)
                     interaction.reply({embeds: [unmute_db_fail]})
                     return
                 }
             })
-                interaction.reply({ embeds: [unmute_embed] })
-             if (!modlog) {
+            interaction.reply({ embeds: [unmute_embed] })
+            if(!modlog){
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                     if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                         if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                              interaction.channel.send({embeds: [modlog_perms]})
-                              return 
+                            interaction.channel.send({embeds: [modlog_perms]})
+                            return 
                         }
                         return 
                     }
-                abc.send({
-                    embeds: [unmute_embed] 
-                })	
+                abc.send({embeds: [unmute_embed]})	
             }
             user.send(`You were unmuted in ${interaction.guild.name}`).catch(console.error)
         } else { 

@@ -6,16 +6,8 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("unlockchannel")
     .setDescription("unlocks selected channel")
-    .addChannelOption(option =>
-        option.setName('channel')
-            .setDescription('channel to unlock')
-            .setRequired(true)
-    )
-    .addStringOption(option =>
-        option.setName('reason')
-            .setDescription('reason')
-            .setRequired(true)
-    ),
+    .addChannelOption(option => option.setName('channel').setDescription('channel to unlock').setRequired(true))
+    .addStringOption(option => option.setName('reason').setDescription('reason').setRequired(true)),
     async execute(interaction) {
         const reason = interaction.options.getString('reason')
         const channel = interaction.options.getChannel('channel')
@@ -33,9 +25,9 @@ module.exports = {
 	    .setTitle(`**:x: Invalid Channel**`)
         .setDescription(`This command is only applicable for text channels`)
         const unlocked_embed = new Discord.MessageEmbed()
-         .setColor('#00ff00')
-         .setTitle(`**:white_check_mark: Unlocked ${channel.name}**`)
-         .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
+        .setColor('#00ff00')
+        .setTitle(`**:white_check_mark: Unlocked ${channel.name}**`)
+        .setDescription(`reason: ${reason}\n` + `moderator: ${interaction.user.username}`)
         const unlock_db_fail = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: DataBase Error!**`)
@@ -67,14 +59,12 @@ module.exports = {
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                 if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                     if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                          interaction.channel.send({embeds: [modlog_perms]})
-                          return 
+                        interaction.channel.send({embeds: [modlog_perms]})
+                        return 
                     }
                     return 
                 }
-                    abc.send({
-                    embeds: [unlocked_embed] 
-                })	
+                    abc.send({embeds: [unlocked_embed]})	
             }
         } else {
             interaction.reply({embeds: [insf_perms]})
