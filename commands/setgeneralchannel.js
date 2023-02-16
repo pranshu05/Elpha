@@ -46,39 +46,39 @@ module.exports = {
 			return
 		}
 		General.findOne({ guild_id: interaction.guild.id }, (err, settings) => {
-			if (err) {
+			if(err){
 				console.log(err)
 				interaction.reply({embeds: [gen_db_fail]})
 				return
 			}
-			if (!settings) {
+			if(!settings){
 				settings = new General({
 					guild_id: interaction.guild.id,
 					general_channel_id: interaction.options.getChannel("general").id
 				})
-			} else {
+			}else{
 				settings.general_channel_id = interaction.options.getChannel("general").id
 			}
 			settings.save(err => {
-				if (err) {
+				if(err){
 					console.log(err)
 					interaction.reply({embeds: [gen_db_fail]})
 					return
 				}
 				interaction.reply({embeds: [gen_embed]})
 			})
-			if (!modlog) {
+			if(!modlog){
 				return
 			}else{
 				const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
 				if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
 					if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-						  interaction.channel.send({embeds: [modlog_perms]})
-						  return 
+						interaction.channel.send({embeds: [modlog_perms]})
+						return 
 					}
 					return 
 				}
-					abc.send({embeds : [gen_embed]})	
+				abc.send({embeds : [gen_embed]})	
 			}
 		})
 	}
