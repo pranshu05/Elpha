@@ -22,7 +22,7 @@ module.exports = {
             interaction.reply('Please provide a valid URL')
             return
         }
-        if(gif){
+        if(gif.length !== 0){
             interaction.reply(`Gif named **${name}** already exist in this server! Please select another name.`)
             return
         }else{
