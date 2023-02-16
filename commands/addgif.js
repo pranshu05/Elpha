@@ -25,8 +25,8 @@ module.exports = {
         if(gif){
             interaction.reply(`Gif named **${name}** already exist in this server! Please select another name.`)
             return
-        }
-        Gif.findOne({guild_id: interaction.guild.id}, (err, settings) => {
+        }else{
+            Gif.findOne({guild_id: interaction.guild.id}, (err, settings) => {
             if(err){
                 console.log(err)
                 interaction.reply({embeds: [gif_fail]})
@@ -47,5 +47,6 @@ module.exports = {
             })
         })
         interaction.reply({embeds: [gif_success]}).catch(console.error)
+        }
     }
 }
