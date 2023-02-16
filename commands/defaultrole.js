@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Modlog = require("../models/Modlog")
-const Role = require("../models/Role")
+const Modlog = require('../models/Modlog')
+const Role = require('../models/Role')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("setdefaultrole")
-    .setDescription("sets default role")
+    .setName('setdefaultrole')
+    .setDescription('sets default role')
     .addStringOption(option => option.setName('role').setDescription('role').setRequired(true)),
     async execute(interaction, guild) {
         const role = interaction.options.getString('role')
@@ -30,49 +30,47 @@ module.exports = {
         .setColor('#FF0000')
 	    .setTitle(`**:x: Message Error!**`)
         .setDescription(`I don't have permission to send message in modlogs channel!`)
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
+        if(interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415'){
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
                 return interaction.reply({embeds: [no_role_perms]})
             }
-            interaction.guild.roles.create({ name: role})
-            interaction.reply({ embeds: [role_added] })
+            interaction.guild.roles.create({name: role})
+            interaction.reply({embeds: [role_added]})
             Role.findOne({guild_id: interaction.guild.id}, (err, settings) => {
-                if (err) {
+                if(err){
                     console.log(err)
                     interaction.reply({embeds: [role_db_fail]})
                     return
-                }if (!settings){
+                }if(!settings){
                     settings = new Role({
                         guild_id: interaction.guild.id,
                         role: interaction.options.getString('role'),
                     })
-                }else {
+                }else{
                     settings.role = interaction.options.getString('role')
                 } 
                 settings.save(err => {
-                    if (err) {
+                    if(err){
                         console.log(err)
                         interaction.reply({embeds: [role_db_fail]})
                         return
                     }
                 })
             })
-             if (!modlog) {
+            if(!modlog){
                 return
             }else{
                 const abc = interaction.guild.channels.cache.get(modlog.modlog_channel_id)
                     if(!interaction.guild.me.permissionsIn(abc).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
                         if(interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-                              interaction.channel.send({embeds: [modlog_perms]})
-                              return 
+                            interaction.channel.send({embeds: [modlog_perms]})
+                            return 
                         }
                         return 
                     }
-                    abc.send({
-                        embeds: [role_added] 
-                    })		
+                abc.send({embeds: [role_added]})		
             }
-        } else {
+        }else{
             interaction.reply({embeds: [insf_perms]})
         }
     }

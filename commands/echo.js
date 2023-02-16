@@ -1,9 +1,9 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("echo")
-    .setDescription("Echoes your inputs!")
+    .setName('echo')
+    .setDescription('Echoes your inputs!')
     .addStringOption(option => option.setName("message").setDescription("The message to Echo").setRequired(true)),
     async execute(interaction){
         const message = interaction.options.getString("message")

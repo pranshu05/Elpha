@@ -1,9 +1,9 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Warning = require("../models/Warning")
+const Warning = require('../models/Warning')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("userwarning")
+    .setName('userwarning')
     .setDescription("sends user's warning")
     .addUserOption(option => option.setName('user').setDescription('user id').setRequired(true)),
     async execute(interaction) {
@@ -26,7 +26,7 @@ module.exports = {
             ].join('\n');
             }).join('\n\n')
             const Embed = new Discord.MessageEmbed()
-            .setColor("00FFFF")
+            .setColor('00FFFF')
             .setTitle(`${user.username}'s warnings`)
             .setDescription(embedDescription)
             .setThumbnail(user.displayAvatarURL())

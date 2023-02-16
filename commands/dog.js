@@ -1,9 +1,9 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 const got = require('got')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("dog")
+    .setName('dog')
     .setDescription("Random dog's pic"),
     async execute(interaction) {
         const embed = new Discord.MessageEmbed()

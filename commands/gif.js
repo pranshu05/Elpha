@@ -1,11 +1,11 @@
-require("dotenv").config()
-const { SlashCommandBuilder } = require("@discordjs/builders")
+require('dotenv').config()
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 const fetch = require("node-fetch")
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("gif")
-    .setDescription("search for gif")
+    .setName('gif')
+    .setDescription('search for gif')
     .addStringOption(option => option.setName('name').setDescription('name of the GIF').setRequired(true)
     ),
     async execute(interaction) {

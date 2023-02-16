@@ -1,13 +1,13 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions } = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { Permissions } = require('discord.js')
 const Discord = require('discord.js') 
-const Leave = require("../models/Leave")
-const Modlog = require("../models/Modlog")
+const Leave = require('../models/Leave')
+const Modlog = require('../models/Modlog')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName("setgoodbyechannel")
-	.setDescription("Set the goodbye message channel")
-	.addChannelOption(option => option.setName("goodbye").setDescription("The channel to set as the goodbye channel").setRequired(true)),
+	.setName('setgoodbyechannel')
+	.setDescription('Set the goodbye message channel')
+	.addChannelOption(option => option.setName('goodbye').setDescription('The channel to set as the goodbye channel').setRequired(true)),
 	async execute(interaction) {
 		const msg_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -23,7 +23,7 @@ module.exports = {
         .setDescription(`This command is only applicable for text channels`)
 		const gb_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
-		.setTitle(`**:white_check_mark: GoodBye channel has been set to ${interaction.options.getChannel("goodbye")}**`)
+		.setTitle(`**:white_check_mark: GoodBye channel has been set to ${interaction.options.getChannel('goodbye')}**`)
 		const gb_db_fail = new Discord.MessageEmbed()
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
@@ -37,11 +37,11 @@ module.exports = {
 			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
-		if(interaction.options.getChannel("goodbye").type !== 'GUILD_TEXT'){
+		if(interaction.options.getChannel('goodbye').type !== 'GUILD_TEXT'){
 			interaction.reply({embeds: [invalid_channel]})
 			return
 		}
-		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel("goodbye")).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel('goodbye')).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
 			interaction.reply({embeds: [msg_perms]})
 			return
 		}
@@ -54,10 +54,10 @@ module.exports = {
 			if(!settings){
 				settings = new Leave({
 					guild_id: interaction.guild.id,
-					goodbye_channel_id: interaction.options.getChannel("goodbye").id
+					goodbye_channel_id: interaction.options.getChannel('goodbye').id
 				})
 			}else{
-				settings.goodbye_channel_id = interaction.options.getChannel("goodbye").id
+				settings.goodbye_channel_id = interaction.options.getChannel('goodbye').id
 			}
 			settings.save(err => {
 				if(err){

@@ -1,13 +1,13 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions } = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { Permissions } = require('discord.js')
 const Discord = require('discord.js') 
-const GuildSettings = require("../models/GuildSettings")
-const Modlog = require("../models/Modlog")
+const GuildSettings = require('../models/GuildSettings')
+const Modlog = require('../models/Modlog')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName("setwelcomechannel")
-	.setDescription("Set the welcome message channel")
-	.addChannelOption(option => option.setName("welcome").setDescription("The channel to set as the welcome channel").setRequired(true)),
+	.setName('setwelcomechannel')
+	.setDescription('Set the welcome message channel')
+	.addChannelOption(option => option.setName('welcome').setDescription('The channel to set as the welcome channel').setRequired(true)),
 	async execute(interaction) {
 		const msg_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -23,7 +23,7 @@ module.exports = {
         .setDescription(`This command is only applicable for text channels`)
 		const wc_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
-		.setTitle(`**:white_check_mark: Welcome channel has been set to ${interaction.options.getChannel("welcome")}**`)
+		.setTitle(`**:white_check_mark: Welcome channel has been set to ${interaction.options.getChannel('welcome')}**`)
 		const wc_db_fail = new Discord.MessageEmbed()
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
@@ -37,11 +37,11 @@ module.exports = {
 			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
-		if(interaction.options.getChannel("welcome").type !== 'GUILD_TEXT'){
+		if(interaction.options.getChannel('welcome').type !== 'GUILD_TEXT'){
 			interaction.reply({embeds: [invalid_channel]})
 			return
 		}
-		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel("welcome")).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel('welcome')).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
 			interaction.reply({embeds: [msg_perms]})
 			return
 		}
@@ -54,10 +54,10 @@ module.exports = {
 			if(!settings){
 				settings = new GuildSettings({
 					guild_id: interaction.guild.id,
-					welcome_channel_id: interaction.options.getChannel("welcome").id
+					welcome_channel_id: interaction.options.getChannel('welcome').id
 				})
 			}else{
-				settings.welcome_channel_id = interaction.options.getChannel("welcome").id
+				settings.welcome_channel_id = interaction.options.getChannel('welcome').id
 			}
 			settings.save(err => {
 				if(err){

@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Modlog = require("../models/Modlog")
-const Locked = require("../models/Locked")
+const Modlog = require('../models/Modlog')
+const Locked = require('../models/Locked')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("unlockchannel")
-    .setDescription("unlocks selected channel")
+    .setName('unlockchannel')
+    .setDescription('unlocks selected channel')
     .addChannelOption(option => option.setName('channel').setDescription('channel to unlock').setRequired(true))
     .addStringOption(option => option.setName('reason').setDescription('reason').setRequired(true)),
     async execute(interaction) {
@@ -41,7 +41,7 @@ module.exports = {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
                 return interaction.reply({embeds: [no_channel_perms]})
             }
-            if(interaction.options.getChannel("channel").type !== 'GUILD_TEXT'){
+            if(interaction.options.getChannel('channel').type !== 'GUILD_TEXT'){
 			    interaction.reply({embeds: [invalid_channel]})
 			    return
             }

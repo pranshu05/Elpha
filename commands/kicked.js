@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Kicked = require("../models/Kicked")
+const Kicked = require('../models/Kicked')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("kickeduser")
-    .setDescription("sends kicked users"),
+    .setName('kickeduser')
+    .setDescription('sends kicked users'),
     async execute(interaction) {
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -26,7 +26,7 @@ module.exports = {
                 })
                 .join('\n\n')
 			    const Embed = new Discord.MessageEmbed()
-			    .setColor("00FFFF")
+			    .setColor('00FFFF')
 			    .setTitle(`kicked users in ${interaction.guild.name}`)
 			    .setDescription(embedDescription)
 			    .setThumbnail(interaction.guild.iconURL())

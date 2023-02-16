@@ -1,10 +1,9 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const  Interaction  = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("guild_info")
-    .setDescription("send info of a guild")
+    .setName('guild_info')
+    .setDescription('send info of a guild')
     .addStringOption(option => option.setName('guild_id').setDescription('id of guild').setRequired(true)),
     async execute(interaction) {
         const insf_perms = new Discord.MessageEmbed()

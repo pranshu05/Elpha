@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js') 
-const Modlog = require("../models/Modlog")
-const Muted = require("../models/Muted")
+const Modlog = require('../models/Modlog')
+const Muted = require('../models/Muted')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("unmute")
-    .setDescription("unmute user")
+    .setName('unmute')
+    .setDescription('unmute user')
     .addUserOption(option => option.setName('user').setDescription('user').setRequired(true)
     ),
     async execute(interaction) {

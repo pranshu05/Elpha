@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions } = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { Permissions } = require('discord.js')
 const Discord = require('discord.js') 
-const Modlog = require("../models/Modlog")
+const Modlog = require('../models/Modlog')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName("setmodlogchannel")
-	.setDescription("Set the modlog message channel")
-	.addChannelOption(option => option.setName("modlog").setDescription("The channel to set as the modlog channel").setRequired(true)),
+	.setName('setmodlogchannel')
+	.setDescription('Set the modlog message channel')
+	.addChannelOption(option => option.setName('modlog').setDescription('The channel to set as the modlog channel').setRequired(true)),
 	async execute(interaction) {
 		const msg_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -22,7 +22,7 @@ module.exports = {
         .setDescription(`This command is only applicable for text channels`)
 		const ml_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
-		.setTitle(`**:white_check_mark: Modlog channel has been set to ${interaction.options.getChannel("modlog")}**`)
+		.setTitle(`**:white_check_mark: Modlog channel has been set to ${interaction.options.getChannel('modlog')}**`)
 		const ml_db_fail = new Discord.MessageEmbed()
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
@@ -36,11 +36,11 @@ module.exports = {
 			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
-		if(interaction.options.getChannel("modlog").type !== 'GUILD_TEXT'){
+		if(interaction.options.getChannel('modlog').type !== 'GUILD_TEXT'){
 			interaction.reply({embeds: [invalid_channel]})
 			return
 		}
-		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel("modlog")).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel('modlog')).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
 			interaction.reply({embeds: [msg_perms]})
 			return
 		}
@@ -53,10 +53,10 @@ module.exports = {
 			if(!settings){
 				settings = new Modlog({
 					guild_id: interaction.guild.id,
-					modlog_channel_id: interaction.options.getChannel("modlog").id
+					modlog_channel_id: interaction.options.getChannel('modlog').id
 				})
 			}else{
-				settings.modlog_channel_id = interaction.options.getChannel("modlog").id
+				settings.modlog_channel_id = interaction.options.getChannel('modlog').id
 			}
 			settings.save(err => {
 				if (err) {

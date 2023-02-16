@@ -1,13 +1,13 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions, DiscordAPIError } = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { Permissions, DiscordAPIError } = require('discord.js')
 const Discord = require('discord.js') 
-const General = require("../models/General")
-const Modlog = require("../models/Modlog")
+const General = require('../models/General')
+const Modlog = require('../models/Modlog')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName("setgeneralchannel")
-	.setDescription("Set the general message channel")
-	.addChannelOption(option => option.setName("general").setDescription("The channel to set as the general channel").setRequired(true)),
+	.setName('setgeneralchannel')
+	.setDescription('Set the general message channel')
+	.addChannelOption(option => option.setName('general').setDescription('The channel to set as the general channel').setRequired(true)),
 	async execute(interaction) {
 		const msg_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -23,7 +23,7 @@ module.exports = {
         .setDescription(`This command is only applicable for text channels`)
 		const gen_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
-		.setTitle(`**:white_check_mark: General channel has been set to ${interaction.options.getChannel("general")}**`)
+		.setTitle(`**:white_check_mark: General channel has been set to ${interaction.options.getChannel('general')}**`)
 		const gen_db_fail = new Discord.MessageEmbed()
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
@@ -33,15 +33,15 @@ module.exports = {
 		.setTitle(`**:x: Message Error!**`)
 		.setDescription(`I don't have permission to send message in modlogs channel!`)
 		const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
-		if (!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS ])) {
+		if(!interaction.member.permissions.has([ Permissions.FLAGS.MANAGE_CHANNELS ])){
 			interaction.reply({embeds: [insf_perms]})
 			return
 		} 
-		if (interaction.options.getChannel("general").type !== 'GUILD_TEXT') {
+		if(interaction.options.getChannel('general').type !== 'GUILD_TEXT'){
 			interaction.reply({embeds: [invalid_channel]})
 			return
 		}
-		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel("general")).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+		if(!interaction.guild.me.permissionsIn(interaction.options.getChannel('general')).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
 			interaction.reply({embeds: [msg_perms]})
 			return
 		}
@@ -54,10 +54,10 @@ module.exports = {
 			if(!settings){
 				settings = new General({
 					guild_id: interaction.guild.id,
-					general_channel_id: interaction.options.getChannel("general").id
+					general_channel_id: interaction.options.getChannel('general').id
 				})
 			}else{
-				settings.general_channel_id = interaction.options.getChannel("general").id
+				settings.general_channel_id = interaction.options.getChannel('general').id
 			}
 			settings.save(err => {
 				if(err){

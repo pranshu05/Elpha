@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Muted = require("../models/Muted")
+const Muted = require('../models/Muted')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("muteduser")
-    .setDescription("sends muted users"),
+    .setName('muteduser')
+    .setDescription('sends muted users'),
     async execute(interaction) {
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -25,7 +25,7 @@ module.exports = {
               ].join('\n');
               }).join('\n\n')
 			        const Embed = new Discord.MessageEmbed()
-			        .setColor("00FFFF")
+			        .setColor('00FFFF')
 			        .setTitle(`muted users in ${interaction.guild.name}`)
 			        .setDescription(embedDescription)
 			        .setThumbnail(interaction.guild.iconURL())

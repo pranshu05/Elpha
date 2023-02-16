@@ -84,7 +84,7 @@ module.exports = {
         let index = (Math.floor(Math.random() * Math.floor(eball.length)))
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
-        .setTitle(interaction.options.getString("question") )
+        .setTitle(interaction.options.getString('question'))
         .setDescription(eball[index])
         interaction.reply({embeds: [embed]})
 	}

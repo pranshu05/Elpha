@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Modlog = require("../models/Modlog")
-const Locked = require("../models/Locked")
+const Modlog = require('../models/Modlog')
+const Locked = require('../models/Locked')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("lockchannel")
-    .setDescription("locks selected channel")
+    .setName('lockchannel')
+    .setDescription('locks selected channel')
     .addChannelOption(option => option.setName('channel').setDescription('channel to lock').setRequired(true))
     .addStringOption(option => option.setName('reason').setDescription('reason').setRequired(true)),
     async execute(interaction) {

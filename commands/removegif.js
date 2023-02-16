@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions} = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { Permissions} = require('discord.js')
 const Discord = require('discord.js') 
-const Gif = require("../models/Gif")
+const Gif = require('../models/Gif')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName("removegif")
-	.setDescription("Remove any gif by name")
+	.setName('removegif')
+	.setDescription('Remove any gif by name')
 	.addStringOption(option => option.setName('name').setDescription('Name of GIF').setRequired(true)),
 	async execute(interaction) {
 		const modlog_perms = new Discord.MessageEmbed()

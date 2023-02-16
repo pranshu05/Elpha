@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js') 
-const Modlog = require("../models/Modlog")
-const Warning = require("../models/Warning")
-const Warned = require("../models/Warned")
+const Modlog = require('../models/Modlog')
+const Warning = require('../models/Warning')
+const Warned = require('../models/Warned')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("warn")
-    .setDescription("warn user")
+    .setName('warn')
+    .setDescription('warn user')
     .addUserOption(option => option.setName('user').setDescription('user').setRequired(true))
     .addStringOption(option => option.setName('warning').setDescription('warning').setRequired(true)),
     async execute(interaction) {
@@ -38,7 +38,7 @@ module.exports = {
             Warned.findOne({guild_id: interaction.guild.id}, (err, settings) => {
                 if(err){
                     console.log(err)
-                    interaction.reply("An error occurred while adding warned user to database!")
+                    interaction.reply('An error occurred while adding warned user to database!')
                         return
                 }else{
                     settings = new Warned({
@@ -51,7 +51,7 @@ module.exports = {
                 settings.save(err => {
                     if (err) {
                         console.log(err)
-                        interaction.reply("An error occurred while adding warned user to database!")
+                        interaction.reply('An error occurred while adding warned user to database!')
                         return
                     }
                 })

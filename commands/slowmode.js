@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js') 
-const Modlog = require("../models/Modlog")
+const Modlog = require('../models/Modlog')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("slowmode")
-    .setDescription("set slowmode of current channel")
+    .setName('slowmode')
+    .setDescription('set slowmode of current channel')
     .addStringOption(option => option.setName('time').setDescription('slowmode time in seconds').setRequired(true)),
     async execute(interaction) {
         const time = interaction.options.getString('time')

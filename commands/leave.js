@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const  Interaction  = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const  Interaction  = require('discord.js')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("leave")
-    .setDescription("force bot to leave a server")
+    .setName('leave')
+    .setDescription('force bot to leave a server')
     .addStringOption(option =>
         option.setName('guild_id')
             .setDescription('id of guild')

@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 const got = require('got')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("eat-or-pass")
-    .setDescription("send eat or pass poll"),
+    .setName('eat-or-pass')
+    .setDescription('send eat or pass poll'),
     async execute(interaction) {
         if(!interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
             interaction.reply('I dont have permission to send message in this channel')

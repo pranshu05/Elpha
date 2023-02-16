@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Banned = require("../models/Banned")
+const Banned = require('../models/Banned')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("banneduser")
-    .setDescription("sends banned users"),
+    .setName('banneduser')
+    .setDescription('sends banned users'),
     async execute(interaction) {
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')

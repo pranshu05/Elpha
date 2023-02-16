@@ -1,8 +1,8 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("guild_list")
-    .setDescription("send list of guilds"),
+    .setName('guild_list')
+    .setDescription('send list of guilds'),
     async execute(interaction) {
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')

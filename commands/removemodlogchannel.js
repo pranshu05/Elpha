@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { Permissions} = require("discord.js")
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { Permissions} = require('discord.js')
 const Discord = require('discord.js') 
-const Modlog = require("../models/Modlog")
+const Modlog = require('../models/Modlog')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName("removemodlogchannel")
-	.setDescription("Remove the modlog message channel"),
+	.setName('removemodlogchannel')
+	.setDescription('Remove the modlog message channel'),
 	async execute(interaction) {
 		const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')

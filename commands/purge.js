@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Modlog = require("../models/Modlog")
+const Modlog = require('../models/Modlog')
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('purge')
@@ -24,8 +24,8 @@ module.exports = {
         if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)){
             return interaction.reply({embeds: [no_purge_perms]})
         }
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)) {
-            interaction.channel.bulkDelete(args).catch(() => interaction.reply('Bots can only purge messages that are less than 14 days old. This error could be caused by DiscordAPI Overload'))
+        if(interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)){
+            interaction.channel.bulkDelete(args).catch(() => interaction.channel.send('Bots can only purge messages that are less than 14 days old. This error could be caused by DiscordAPI Overload'))
             interaction.reply({ content: 'Done!', ephemeral: true })
             if(!modlog){
                 return
@@ -38,7 +38,7 @@ module.exports = {
                         }
                         return 
                     }
-                abc.send(`${interaction.options.getInteger('messages')} messages deleted by ${interaction.user} in ${interaction.channel}`)		
+                abc.send(`Bulk messages deleted by ${interaction.user} in ${interaction.channel}`)		
             }
         }else{
             interaction.reply({embeds: [insf_perms]})

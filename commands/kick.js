@@ -1,11 +1,11 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
-const Modlog = require("../models/Modlog")
-const Kicked = require("../models/Kicked")
+const Modlog = require('../models/Modlog')
+const Kicked = require('../models/Kicked')
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("kick")
-    .setDescription("kick user")
+    .setName('kick')
+    .setDescription('kick user')
     .addUserOption(option => option.setName('user').setDescription('user').setRequired(true))
     .addStringOption(option => option.setName('reason').setDescription('reason').setRequired(true)),
     async execute(interaction) {
@@ -37,7 +37,7 @@ module.exports = {
         if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.KICK_MEMBERS)){
             return interaction.reply({embeds: [no_kick_perms]})
         }
-        if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)){
+        if(interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)){
             if(user.id === '754381104034742415') return interaction.reply('You cannot kick my developer')
             if(user === interaction.user) return interaction.reply('You cannot kick yourself')
             if(user === interaction.client.user) return interaction.reply('You cannot kick me')
