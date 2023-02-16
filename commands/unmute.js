@@ -38,9 +38,10 @@ module.exports = {
                 return interaction.reply({embeds: [no_mute_perms]})
             }
             if(!interaction.guild.members.fetch(user.id).then(member => {
-                member.roles.find(r => r.name === "Mute")
+                member.roles.has(muteRole)
             })){
                 interaction.reply(`User havn't be muted yet!`)
+                return
             }
             interaction.guild.members.fetch(user.id).then(member => {
                 member.roles.remove(muteRole).catch(err => console.error(err))
