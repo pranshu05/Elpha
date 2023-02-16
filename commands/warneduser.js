@@ -13,7 +13,7 @@ module.exports = {
         if (interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES) || interaction.guild.members.cache.get(interaction.user.id).permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR) || interaction.user.id === '754381104034742415') {
             const warned =  await Warned.find({guild_id: interaction.guild.id})
             const warned_single = await Warned.findOne({guild_id: interaction.guild.id})
-		        if(warned_single.lenght === 0){
+		        if(!warned_single){
                 interaction.reply(`There are no warned users in the server`)
 			          return
 		        }else{
