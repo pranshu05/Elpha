@@ -41,23 +41,24 @@ module.exports = {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_CHANNELS)){
                 return interaction.reply({embeds: [no_channel_perms]})
             }
-            if(locked_channel.length === 0){
-                interaction.reply(`That channel isn't locked!`)
-                return
-            }
             if(interaction.options.getChannel("channel").type !== 'GUILD_TEXT'){
 			    interaction.reply({embeds: [invalid_channel]})
 			    return
-            }  
-            channel.permissionOverwrites.edit(channel.guild.roles.everyone, {SEND_MESSAGES: true })
-            interaction.reply({ embeds: [unlocked_embed] })
-            Locked.deleteOne({guild_id: interaction.guild.id, channelname: channel.name}, (err, settings) => {
-                if(err){
-                    console.log(err)
-                    interaction.reply({embeds: [unlock_db_fail]})
-                    return
-                }
-            })
+            }
+            if(locked_channel.length === 0){
+                interaction.reply(`That channel isn't locked!`)
+                return
+            }else{  
+                channel.permissionOverwrites.edit(channel.guild.roles.everyone, {SEND_MESSAGES: true })
+                interaction.reply({ embeds: [unlocked_embed] })
+                Locked.deleteOne({guild_id: interaction.guild.id, channelname: channel.name}, (err, settings) => {
+                    if(err){
+                        console.log(err)
+                        interaction.reply({embeds: [unlock_db_fail]})
+                        return
+                    }
+                })
+            }
             if(!modlog){
                 return
             }else{
