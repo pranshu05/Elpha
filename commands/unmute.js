@@ -13,6 +13,7 @@ module.exports = {
         const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const modlog = await Modlog.findOne({guild_id: interaction.guild.id})
         const member = interaction.options.getMember('user')
+        const muteRole = interaction.guild.roles.cache.find(val => val.name === 'Mute')
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
@@ -38,6 +39,7 @@ module.exports = {
             if(!interaction.guild.me.permissions.has(Discord.Permissions.FLAGS.MANAGE_ROLES)){
                 return interaction.reply({embeds: [no_mute_perms]})
             }
+            if(!muteRole) return interaction.reply('User or this server donot contain a role named **Mute**')
             if(member.roles.cache.some(role => role.name === 'Mute')){
                 interaction.reply(`User havn't been muted yet!`)
                 return
