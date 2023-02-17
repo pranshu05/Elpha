@@ -18,7 +18,7 @@ const client = new Client({
         'GUILD_VOICE_STATES',
     ] 
 })
-const { MessageEmbed } = require('discord.js')
+const Discord = require('discord.js')
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 const commands = []
 client.commands = new Collection()
@@ -37,7 +37,7 @@ for(const file of eventFiles){
     }
 }
 client.on('guildCreate' , guild => {   
-    const guild_embed = new MessageEmbed()
+    const guild_embed = new Discord.MessageEmbed()
     .setColor('00FFFF')
     .setTitle('New Guild!')
     .setDescription(`Elpha has joined the server ${guild.name}`)
@@ -45,7 +45,7 @@ client.on('guildCreate' , guild => {
         {name: 'Members:', value: `${guild.memberCount}`},
         {name: 'Guild ID:', value: `${guild.id}`},
         {name: 'Guild owner:', value: `> <@${guild.ownerId}> \`[${guild.ownerId}]\``},
-        {name: 'Total servers:', value: `${await client.guilds.cache.size}`},
+        {name: 'Total servers:', value: `${client.guilds.cache.size}`},
     )
     .setThumbnail(guild.iconURL())
     .setTimestamp()
@@ -53,7 +53,7 @@ client.on('guildCreate' , guild => {
 })
 client.on('guildDelete' , guild => {
     if(guild.available){
-        const embed = new MessageEmbed()
+        const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
         .setTitle('Guild Left')
         .setDescription(`Elpha has left the server ${guild.name}`)
@@ -61,7 +61,7 @@ client.on('guildDelete' , guild => {
             {name: 'Members:', value: `${guild.memberCount}`},
             {name: 'Guild ID:', value: `${guild.id}`},
             {name: 'Guild owner:', value: `> <@${guild.ownerId}> \`[${guild.ownerId}]\``},
-            {name: 'Total servers:', value: `${await client.guilds.cache.size}`},
+            {name: 'Total servers:', value: `${client.guilds.cache.size}`},
         )
         .setThumbnail(guild.iconURL())
         .setTimestamp()
