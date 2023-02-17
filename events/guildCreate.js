@@ -39,7 +39,7 @@ module.exports = {
 		)
 		.setTimestamp()
 		channel.send({ embeds: [embed], components: [repo, ser, web] }).catch((err) => console.log(err))
-		const embed = new MessageEmbed()
+		const guild_embed = new MessageEmbed()
     	.setColor('00FFFF')
 	    .setTitle('New Guild!')
 	    .setDescription(`Elpha has joined the server ${guild.name}`)
@@ -49,7 +49,7 @@ module.exports = {
 	    .addField('Total servers:', `${client.guilds.cache.size}`)
     	.setThumbnail(guild.iconURL())
     	.setTimestamp()
-		client.channels.cache.get('919799899929841694').send({embeds: [embed]})	
+		client.channels.cache.get('919799899929841694').send({embeds: [guild_embed]})	
 		console.log(`Server joined: ${guild.name}`)
 	}
 }
