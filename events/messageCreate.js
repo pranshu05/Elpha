@@ -13,9 +13,6 @@ module.exports = {
         if(msg.author.bot) return
         const general = await General.findOne({guild_id: msg.guild.id})
         const gif =  await Gif.find({guild_id: msg.guild.id})
-        if(!message.guild.me.permissionsIn(message.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
-          return
-        }else{
           if(message.content === `<@916613852362330133>`){
                 await message.reply(`${message.author}, Don't ping :eyes:`).then(ping =>{
                 message.reply(`${message.author}`)
@@ -53,6 +50,5 @@ module.exports = {
               }).catch(()=>{message.channel.send('API timeout')})
             }
           }
-        }
   }
 } 
