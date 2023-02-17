@@ -26,19 +26,30 @@ module.exports = {
     				.setStyle('LINK'),
 			)
 		const embed = new Discord.MessageEmbed()
-			.setColor('00FFFF')
-			.setTitle('Hello I am Elpha,thanks for choosing me!')
-			.setDescription(`**I'm an open-source discord bot! Developed by contributors.Contribute to my code to Make me more powerful 💪🏻**`)
-			.addFields(
-				{name: 'Setup instructions',value: '👇'},
-				{name: 'Setup Welcome Channel',value: '**Use Slashcommand**\n  \`\`\`/setwelcomechannel\`\`\`'},
-				{name: 'Setup General Channel',value: '**Use Slashcommand**\n  \`\`\`/setgeneralchannel\`\`\`'},
-				{name: 'Setup Modlogs Channel',value: '**Use Slashcommand**\n  \`\`\`/setmodlogchannel\`\`\`'},
-				{name: 'Setup Goodbye Channel',value: '**Use Slashcommand**\n  \`\`\`/setgoodbyechannel\`\`\`'},
-				{name: 'Create Default Role',value: '**Use Slashcommand**\n  \`\`\`/setdefaultrole\`\`\`'},
-			)
-			.setTimestamp()
+		.setColor('00FFFF')
+		.setTitle('Hello I am Elpha,thanks for choosing me!')
+		.setDescription(`**I'm an open-source discord bot! Developed by contributors.Contribute to my code to Make me more powerful 💪🏻**`)
+		.addFields(
+			{name: 'Setup instructions',value: '👇'},
+			{name: 'Setup Welcome Channel',value: '**Use Slashcommand**\n  \`\`\`/setwelcomechannel\`\`\`'},
+			{name: 'Setup General Channel',value: '**Use Slashcommand**\n  \`\`\`/setgeneralchannel\`\`\`'},
+			{name: 'Setup Modlogs Channel',value: '**Use Slashcommand**\n  \`\`\`/setmodlogchannel\`\`\`'},
+			{name: 'Setup Goodbye Channel',value: '**Use Slashcommand**\n  \`\`\`/setgoodbyechannel\`\`\`'},
+			{name: 'Create Default Role',value: '**Use Slashcommand**\n  \`\`\`/setdefaultrole\`\`\`'},
+		)
+		.setTimestamp()
 		channel.send({ embeds: [embed], components: [repo, ser, web] }).catch((err) => console.log(err))
+		const embed = new MessageEmbed()
+    	.setColor('00FFFF')
+	    .setTitle('New Guild!')
+	    .setDescription(`Elpha has joined the server ${guild.name}`)
+	    .addField('Members:' , `${guild.memberCount}`)
+	    .addField('Guild ID:' , `${guild.id}`)
+	    .addField('Guild owner:', `> <@${guild.ownerId}> \`[${guild.ownerId}]\``)
+	    .addField('Total servers:', `${client.guilds.cache.size}`)
+    	.setThumbnail(guild.iconURL())
+    	.setTimestamp()
+		client.channels.cache.get('919799899929841694').send({embeds: [embed]})	
 		console.log(`Server joined: ${guild.name}`)
 	}
 }
