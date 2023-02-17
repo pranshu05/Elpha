@@ -47,7 +47,7 @@ module.exports = {
 			{name: 'Members:', value: `${guild.memberCount}`},
 			{name: 'Guild ID:', value: `${guild.id}`},
 			{name: 'Guild owner:', value: `> <@${guild.ownerId}> \`[${guild.ownerId}]\``},
-			{name: 'Total servers:', value: `${client.guilds.cache.size}`},
+			{name: 'Total servers:', value: `${await client.guilds.cache.size}`},
 		)
     	.setThumbnail(guild.iconURL())
     	.setTimestamp()
