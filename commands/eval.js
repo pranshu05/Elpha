@@ -18,7 +18,7 @@ module.exports = {
         .setColor('#00FFFF')
         .setTitle('Evaluated successsfully!')
         .addFields(
-            {name: 'To evaluate',value: `\`\`\`${code}, {format: 'js'}\`\`\``},
+            {name: 'To evaluate',value: `\`\`\`js ${code}\`\`\``},
             {name: 'Evaluated', value: `\`\`\`${cleaned}\`\`\``},
         )
         .setTimestamp()
