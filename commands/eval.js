@@ -16,10 +16,6 @@ module.exports = {
         const cleaned = await clean(client, evaluated)
         const embed = new Discord.MessageEmbed()
         .setColor('#00FFFF')
-	    .setTitle(`**:x: Insufficient Permission!**`)
-        .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
-        const insf_perms = new Discord.MessageEmbed()
-        .setColor('#FF0000')
         .setTitle('Evaluated successsfully!')
         .addFields(
             {name: 'To evaluate',value: `\`\`\`${code}, {format: 'js'}\`\`\``},
@@ -27,6 +23,10 @@ module.exports = {
         )
         .setTimestamp()
         .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL)
+        const insf_perms = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+	    .setTitle(`**:x: Insufficient Permission!**`)
+        .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
         try{
             if(interaction.user.id === '754381104034742415'){
                 if(code === 'process.env.token') return interaction.reply('Using eval command for token is dangerous!')
