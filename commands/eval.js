@@ -40,6 +40,7 @@ module.exports = {
             .setTitle('An Error occured while executing the code!')
             .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL)
             interaction.reply({embeds: [eval_err]})
+            console.log(e)
         }
     }
 }
