@@ -5,11 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('leave')
     .setDescription('force bot to leave a server')
-    .addStringOption(option =>
-        option.setName('guild_id')
-            .setDescription('id of guild')
-            .setRequired(true)
-    ),
+    .addStringOption(option => option.setName('guild_id').setDescription('id of guild').setRequired(true)),
     async execute(interaction) {
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
