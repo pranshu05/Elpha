@@ -29,7 +29,7 @@ module.exports = {
         .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL)
         try{
             if(interaction.user.id === '754381104034742415'){
-                if(code.toString().toLowerCase().inculdes('token')) return interaction.reply('Using eval command for token is dangerous!')
+                if(code === 'process.env.token') return interaction.reply('Using eval command for token is dangerous!')
                 interaction.reply({embeds: [embed]})
             }else{
                 interaction.reply({embeds: [insf_perms]})
