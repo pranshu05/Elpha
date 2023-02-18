@@ -6,9 +6,14 @@ module.exports = {
     .setName('eval')
     .setDescription('Evaluates the code you put in!')
     .addStringOption(option => option.setName('code').setDescription('code to eval!').setRequired(true)),
-    async execute(interaction){
+    async execute(interaction, client){
         const code = interaction.options.getString('code') 
         const evaluated = eval(code)
+        const clean = async (client, code) => {
+            if (code && code.constructor.name == "Promise")
+            code = await code
+        }
+        const cleaned = await clean(client, evaluated)
         const embed = new Discord.MessageEmbed()
         .setColor('#00FFFF')
 	    .setTitle(`**:x: Insufficient Permission!**`)
@@ -18,7 +23,7 @@ module.exports = {
         .setTitle('Evaluated successsfully!')
         .addFields(
             {name: 'To evaluate',value: `\`\`\`${code}, {format: 'js'}\`\`\``},
-            {name: 'Evaluated', value: `\`\`\`${evaluated}\`\`\``},
+            {name: 'Evaluated', value: `\`\`\`${cleaned}\`\`\``},
         )
         .setTimestamp()
         .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL)
