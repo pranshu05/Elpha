@@ -33,7 +33,6 @@ module.exports = {
             const eval_err = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('An Error occured while executing the code!')
-            .setDescription(e)
             .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL)
             interaction.reply({embeds: [eval_err]})
         }
