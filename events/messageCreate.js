@@ -45,6 +45,10 @@ module.exports = {
             let evaled = eval(code)
             if(typeof evaled !== "string") evaled = require("util").inspect(evaled)
             if(evaled.length > 1024) evaled = `Evaluated value is too big to display!`
+            const insf_perms = new Discord.MessageEmbed()
+            .setColor('#FF0000')
+            .setTitle(`**:x: Insufficient Permission!**`)
+            .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
             const embed = new Discord.MessageEmbed()
             .setColor('#00FFFF')
             .setTitle('Evaluated successsfully!')
@@ -54,17 +58,16 @@ module.exports = {
             )
             .setTimestamp()
             .setFooter(message.client.user.username, message.client.user.displayAvatarURL())
-            const insf_perms = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle(`**:x: Insufficient Permission!**`)
-            .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
             try{
-              if(!message.author.id === '754381104034742415') return message.reply({embeds: [insf_perms]})
-              if(!args.length){
-                return message.channel.send(`You didn't provide any arguments, ${message.author}!`)
+              if(!message.author.id === '754381104034742415'){
+                return message.reply({embeds: [insf_perms]})
               }else{
-                if(message.content.includes('token')) return message.reply('Using eval command for token is dangerous!')
-                me.reply({embeds: [embed]})
+                if(!args.length){
+                  return message.channel.send(`You didn't provide any arguments, ${message.author}!`)
+                }else{
+                  if(message.content.includes('token')) return message.reply('Using eval command for token is dangerous!')
+                  me.reply({embeds: [embed]})
+                }
               }
             }catch(e){
               if (e.length > 1024) e = `The error is too big to display!`
