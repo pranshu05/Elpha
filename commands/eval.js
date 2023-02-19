@@ -24,18 +24,22 @@ module.exports = {
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
         .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
-        if(!interaction.user.id === '754381104034742415') return interaction.reply({embeds: [insf_perms]})
-        try{
-                if(code === 'process.env.token') return interaction.reply('Using eval command for token is dangerous!')
+        if(!interaction.user.id === '754381104034742415'){
+            return 
+            interaction.reply({embeds: [insf_perms]})
+        }else{
+            try{
+                if(code.content.includes('token')) return interaction.reply('Using eval command for token is dangerous!')
                 interaction.reply({embeds: [embed]})
-        }catch(e){
-            if (e.length > 1024) e = `The error is too big to display!`
-            const eval_err = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('An Error occured while evaluating the code!')
-            .setDescription(`\`ERROR\` \`\`\`xl\n${e}\n\`\`\``)
-            .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
-            interaction.reply({embeds: [eval_err]})
+            }catch(e){
+                if (e.length > 1024) e = `The error is too big to display!`
+                const eval_err = new Discord.MessageEmbed()
+                .setColor('#FF0000')
+                .setTitle('An Error occured while evaluating the code!')
+                .setDescription(`\`ERROR\` \`\`\`xl\n${e}\n\`\`\``)
+                .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
+                interaction.reply({embeds: [eval_err]})
+            }
         }
     }
 }
