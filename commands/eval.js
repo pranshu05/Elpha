@@ -8,24 +8,24 @@ module.exports = {
     .addStringOption(option => option.setName('code').setDescription('code to eval!').setRequired(true)),
     async execute(interaction, client){
         const code = interaction.options.getString('code')
-        let evaled = eval(code)
-        if(typeof evaled !== "string") evaled = require("util").inspect(evaled)
-        if (evaled.length > 1024) evaled = `Evaluated value is too big to display!`
-        const eval_embed = new Discord.MessageEmbed()
-        .setColor('#00FFFF')
-        .setTitle('Evaluated successsfully!')
-        .addFields(
-            {name: 'To evaluate',value: `\`\`\`js\n ${code}\`\`\``},
-            {name: 'Evaluated', value: `\`\`\`${evaled}\`\`\``},
-        )
-        .setTimestamp()
-        .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
         .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
         if(interaction.user.id !== '754381104034742415') return interaction.reply({embeds: [insf_perms]})
         try{
+            let evaled = eval(code)
+            if(typeof evaled !== "string") evaled = require("util").inspect(evaled)
+            if (evaled.length > 1024) evaled = `Evaluated value is too big to display!`
+            const eval_embed = new Discord.MessageEmbed()
+            .setColor('#00FFFF')
+            .setTitle('Evaluated successsfully!')
+            .addFields(
+                {name: 'To evaluate',value: `\`\`\`js\n ${code}\`\`\``},
+                {name: 'Evaluated', value: `\`\`\`${evaled}\`\`\``},
+            )
+            .setTimestamp()
+            .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
             if(code === 'process.env.token') return interaction.reply('Using eval command for token is dangerous!')
             interaction.reply({embeds: [eval_embed]})
         }catch(e){
