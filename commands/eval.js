@@ -24,7 +24,7 @@ module.exports = {
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
         .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
-        if(!interaction.user.id === '754381104034742415'){
+        if(interaction.user.id !== '754381104034742415'){
             return 
             interaction.reply({embeds: [insf_perms]})
         }else{
