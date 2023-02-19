@@ -7,22 +7,18 @@ module.exports = {
     .setDescription('Evaluates the code you put in!')
     .addStringOption(option => option.setName('code').setDescription('code to eval!').setRequired(true)),
     async execute(interaction, client){
-        const code = interaction.options.getString('code') 
-        const evaluated = eval(code)
-        const clean = async (client, code) => {
-            if (code && code.constructor.name == "Promise")
-            code = await code
-        }
-        const cleaned = await clean(client, evaluated)
+        const code = interaction.options.getString('code')
+        let evaled = eval(code)
+        if(typeof evaled !== "string") evaled = require("util").inspect(evaled)
         const embed = new Discord.MessageEmbed()
         .setColor('#00FFFF')
         .setTitle('Evaluated successsfully!')
         .addFields(
-            {name: 'To evaluate',value: `\`\`\`js ${code}\`\`\``},
-            {name: 'Evaluated', value: `\`\`\`${cleaned}\`\`\``},
+            {name: 'To evaluate',value: `\`\`\`js\ ${code}\`\`\``},
+            {name: 'Evaluated', value: `\`\`\`${evaled}\`\`\``},
         )
         .setTimestamp()
-        .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL)
+        .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
         const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
 	    .setTitle(`**:x: Insufficient Permission!**`)
@@ -37,8 +33,9 @@ module.exports = {
         }catch(e){
             const eval_err = new Discord.MessageEmbed()
             .setColor('#FF0000')
-            .setTitle('An Error occured while executing the code!')
-            .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL)
+            .setTitle('An Error occured while evaluating the code!')
+            .setDescription(`\`ERROR\` \`\`\`xl\n${e}\n\`\`\``)
+            .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
             interaction.reply({embeds: [eval_err]})
             console.log(e)
         }
