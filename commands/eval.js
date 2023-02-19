@@ -14,6 +14,7 @@ module.exports = {
         .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
         if(interaction.user.id !== '754381104034742415') return interaction.reply({embeds: [insf_perms]})
         try{
+            if(code.includes('token')) return interaction.reply('Using eval command for token is dangerous!')
             let evaled = eval(code)
             if(typeof evaled !== "string") evaled = require("util").inspect(evaled)
             if (evaled.length > 1024) evaled = `Evaluated value is too big to display!`
@@ -26,7 +27,6 @@ module.exports = {
             )
             .setTimestamp()
             .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
-            if(code.includes('token')) return interaction.reply('Using eval command for token is dangerous!')
             interaction.reply({embeds: [eval_embed]})
         }catch(e){
             if (e.length > 1024) e = `The error is too big to display!`
