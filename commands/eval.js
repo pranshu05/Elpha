@@ -26,7 +26,7 @@ module.exports = {
             )
             .setTimestamp()
             .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
-            if(code === 'process.env.token') return interaction.reply('Using eval command for token is dangerous!')
+            if(code.includes('token')) return interaction.reply('Using eval command for token is dangerous!')
             interaction.reply({embeds: [eval_embed]})
         }catch(e){
             if (e.length > 1024) e = `The error is too big to display!`
