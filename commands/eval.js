@@ -25,11 +25,12 @@ module.exports = {
 	    .setTitle(`**:x: Insufficient Permission!**`)
         .setDescription(`You don't have permission to use this command.Only owner of this bot can use this command!`)
         try{
-            if(interaction.user.id === '754381104034742415'){
+            if(!interaction.user.id === '754381104034742415'){
+                interaction.reply({embeds: [insf_perms]})
+                return
+            }else{
                 if(code === 'process.env.token') return interaction.reply('Using eval command for token is dangerous!')
                 interaction.reply({embeds: [embed]})
-            }else{
-                interaction.reply({embeds: [insf_perms]})
             }
         }catch(e){
             if (e.length > 1024) e = `The error is too big to display!`
