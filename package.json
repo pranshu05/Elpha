@@ -4,7 +4,6 @@
   "main": "bot.js",
   "scripts": {
     "start": "node ./bot.js"
-
   },
   "keywords": [],
   "author": "",
@@ -31,5 +30,13 @@
     "pngjs": "^6.0.0",
     "superagent": "^6.1.0",
     "weather-js": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^2.8.4"
   }
 }
