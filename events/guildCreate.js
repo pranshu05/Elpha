@@ -4,6 +4,7 @@ const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 module.exports = {
   name: 'guildCreate',
   async execute(guild, client) {
+    // Being sent to joined server
     const channel = guild.channels.cache.find(
       (channel) =>
         channel.type === 'GUILD_TEXT' &&
@@ -65,6 +66,26 @@ module.exports = {
     channel
       .send({ embeds: [embed], components: [repo, ser, web] })
       .catch((err) => console.log(err));
+
+    // Being sent to Elpha Server
+    const guild_embed = new MessageEmbed()
+      .setColor('00FFFF')
+      .setTitle('New Guild!')
+      .setDescription(`Elpha has joined the server ${guild.name}`)
+      .addFields(
+        { name: 'Members:', value: `${guild.memberCount}` },
+        { name: 'Guild ID:', value: `${guild.id}` },
+        {
+          name: 'Guild owner:',
+          value: `> <@${guild.ownerId}> \`[${guild.ownerId}]\``,
+        },
+        { name: 'Total servers:', value: `${client.guilds.cache.size}` }
+      )
+      .setThumbnail(guild.iconURL())
+      .setTimestamp();
+
+    const channel = client.channels.cache.get('919799899929841694');
+    channel.send({ embeds: [guild_embed] });
 
     console.log(`Server joined: ${guild.name}`);
   },
