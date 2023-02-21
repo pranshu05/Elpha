@@ -49,7 +49,7 @@ module.exports = {
       if (!role) {
         return;
       } else {
-        if (role.position > message.guild.roles.cache.find(
+        if (role.position > guild.roles.cache.find(
           (val) => val.name === 'Elpha'
         ).position) return console.log('Couldnt add the role because the role is higher than me!');
         if (
