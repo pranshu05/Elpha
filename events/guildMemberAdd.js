@@ -49,6 +49,7 @@ module.exports = {
       if (!role) {
         return;
       } else {
+        if (member.roles.highest.position > clientInformation.user.roles.highest.position) return console.log('Couldnt add the role because the role is higher than me!');
         if (
           !member.guild.me.permissions.has(
             Discord.Permissions.FLAGS.MANAGE_ROLES
