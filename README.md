@@ -61,7 +61,7 @@ Elpha uses Discord slash commands however the custom command's prefix will be ad
 
 # 📈 Analytics
 > ###### Status of the dev version on <https://github.com/pranshu05/Elpha>
-[![Status](https://repobeats.axiom.co/api/embed/cc72dd77cf3d342196ecf412872e087cbaa0e3bc.svg "Analytics image")](https://github.com/pranshu05/elpha/pulse)
+[![Status](https://repobeats.axiom.co/api/embed/06ce5b60cff43fcfea8658562813c176fb527bce.svg "Analytics image")](https://github.com/pranshu05/elpha/pulse)
 
 
 # 📝 License
