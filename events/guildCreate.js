@@ -84,8 +84,8 @@ module.exports = {
       .setThumbnail(guild.iconURL())
       .setTimestamp();
 
-    const channel = client.channels.cache.get('919799899929841694');
-    channel.send({ embeds: [guild_embed] });
+    const new_channel = client.channels.cache.get('919799899929841694');
+    new_channel.send({ embeds: [guild_embed] });
 
     console.log(`Server joined: ${guild.name}`);
   },
