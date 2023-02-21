@@ -63,10 +63,10 @@ client.on('guildDelete' , guild =>{
   )
   .setThumbnail(guild.iconURL())
   .setTimestamp();
-})
 
-const channel = client.channels.cache.get('919799899929841694');
-channel.send({ embeds: [embed] });
+  const channel = client.channels.cache.get('919799899929841694');
+  channel.send({ embeds: [embed] });
+})
 
 client.on('guildCreate' , guild =>{
   // Being sent to Elpha Server
@@ -85,9 +85,9 @@ client.on('guildCreate' , guild =>{
   )
   .setThumbnail(guild.iconURL())
   .setTimestamp();
-})
 
-const new_channel = client.channels.cache.get('919799899929841694');
-new_channel.send({ embeds: [guild_embed] });
+  const new_channel = client.channels.cache.get('919799899929841694');
+  new_channel.send({ embeds: [guild_embed] });
+})
 
 client.login(process.env.token);
