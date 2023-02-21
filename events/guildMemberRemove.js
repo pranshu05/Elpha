@@ -17,12 +17,7 @@ module.exports = {
         .setTitle('Member left')
         .setDescription(`${member.user} left the srver`)
         .setThumbnail(member.user.displayAvatarURL())
-        .setTimestamp()
-        .setFooter(
-          `membercount : ${
-            member.guild.members.cache.filter((member) => !member.user.bot).size
-          }`
-        );
+        .setTimestamp();
       if (
         !member.guild.me
           .permissionsIn(guildSettings.goodbye_channel_id)

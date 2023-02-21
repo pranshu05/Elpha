@@ -25,12 +25,7 @@ module.exports = {
           `${member.user} has joined the server! We hope you enjoy your stay!`
         )
         .setThumbnail(member.user.displayAvatarURL())
-        .setTimestamp()
-        .setFooter(
-          `membercount : ${
-            member.guild.members.cache.filter((member) => !member.user.bot).size
-          }`
-        );
+        .setTimestamp();
 
       if (
         !member.guild.me
