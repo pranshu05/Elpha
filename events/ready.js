@@ -26,7 +26,7 @@ module.exports = {
       client.user.setStatus('online');
       client.user.setActivity(status, {
         type: 'STREAMING',
-        url: 'https://www.youtube.com/watch?v=-h7aoUZIdkk',
+        url: 'https://pranshu05.thedev.id/bruh-u-clicked/Bruh%20U%20clicked.mp4',
       });
       index++;
     }, 7000);
