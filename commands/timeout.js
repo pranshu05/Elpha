@@ -38,7 +38,7 @@ module.exports = {
             .setDescription(`I don't have permission to timeout users.`)
         const timeout_embed = new Discord.MessageEmbed()
             .setColor('#00ff00')
-            .setTitle(`**:white_check_mark: Timeouted ${user.username}**`)
+            .setTitle(`**:white_check_mark: Timed Out ${user.username}**`)
             .setDescription(
                 `reason: ${reason}\n` +
                     `moderator: ${interaction.user.username}\n` +
@@ -115,7 +115,7 @@ module.exports = {
                 abc.send({ embeds: [timeout_embed] })
             }
             user.send(
-                `You were timeouted in ${interaction.guild.name} for duration: ${duration}`
+                `You were timed out in ${interaction.guild.name} for duration: ${duration}`
             ).catch(console.error)
         } else {
             interaction.reply({ embeds: [insf_perms] })
