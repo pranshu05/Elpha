@@ -26,7 +26,7 @@ module.exports = {
             client.user.setStatus('online')
             client.user.setActivity(status, {
                 type: 'STREAMING',
-                url: 'https://youtu.be/VDjapkV9XGM',
+                url: 'https://www.youtube.com/watch?v=VDjapkV9XGM&feature=youtu.be',
             })
             index++
         }, 7000)
