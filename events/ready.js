@@ -1,56 +1,56 @@
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
-require('dotenv').config();
+const { REST } = require('@discordjs/rest')
+const { Routes } = require('discord-api-types/v9')
+require('dotenv').config()
 
 module.exports = {
-  name: 'ready',
-  once: true,
-  execute(client, commands) {
-    console.debug('ready!');
+    name: 'ready',
+    once: true,
+    execute(client, commands) {
+        console.debug('ready!')
 
-    let watching = [
-      `with my Contributors 👀`,
-      `Over ${client.guilds.cache.size} servers`,
-      `Over ${client.guilds.cache
-        .map((person) => person.memberCount)
-        .reduce(function (s, v) {
-          return s + (v || 0);
-        }, 0)} users`,
-      `Contributors developing me 👀`,
-    ];
-    let index = 0;
+        let watching = [
+            `with my Contributors 👀`,
+            `Over ${client.guilds.cache.size} servers`,
+            `Over ${client.guilds.cache
+                .map((person) => person.memberCount)
+                .reduce(function (s, v) {
+                    return s + (v || 0)
+                }, 0)} users`,
+            `Contributors developing me 👀`,
+        ]
+        let index = 0
 
-    setInterval(() => {
-      if (index === watching.length) index = 0;
-      const status = watching[index];
-      client.user.setStatus('online');
-      client.user.setActivity(status, {
-        type: 'STREAMING',
-        url: 'https://pranshu05.thedev.id/bruh-u-clicked/Bruh%20U%20clicked.mp4',
-      });
-      index++;
-    }, 7000);
+        setInterval(() => {
+            if (index === watching.length) index = 0
+            const status = watching[index]
+            client.user.setStatus('online')
+            client.user.setActivity(status, {
+                type: 'STREAMING',
+                url: 'https://pranshu05.thedev.id/bruh-u-clicked/Bruh%20U%20clicked.mp4',
+            })
+            index++
+        }, 7000)
 
-    const CLIENT_ID = client.user.id;
-    const rest = new REST({
-      version: '9',
-    }).setToken(process.env.token);
+        const CLIENT_ID = client.user.id
+        const rest = new REST({
+            version: '9',
+        }).setToken(process.env.token)
 
-    (async () => {
-      try {
-        await rest.put(Routes.applicationCommands(CLIENT_ID), {
-          body: commands,
-        });
-        console.info(
-          `Succesfully registered commands globally ! with ${client.guilds.cache
-            .map((person) => person.memberCount)
-            .reduce(function (s, v) {
-              return s + (v || 0);
-            }, 0)} users and ${client.guilds.cache.size} servers `
-        );
-      } catch (err) {
-        if (err) console.error(err);
-      }
-    })();
-  },
-};
+        ;(async () => {
+            try {
+                await rest.put(Routes.applicationCommands(CLIENT_ID), {
+                    body: commands,
+                })
+                console.info(
+                    `Succesfully registered commands globally ! with ${client.guilds.cache
+                        .map((person) => person.memberCount)
+                        .reduce(function (s, v) {
+                            return s + (v || 0)
+                        }, 0)} users and ${client.guilds.cache.size} servers `
+                )
+            } catch (err) {
+                if (err) console.error(err)
+            }
+        })()
+    },
+}
