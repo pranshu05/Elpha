@@ -30,7 +30,6 @@ module.exports = {
         const user = interaction.options.getUser('user')
         const member = interaction.options.getMember('user')
         const modlog = await Modlog.findOne({ guild_id: interaction.guild.id })
-
         const insf_perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle(`**:x: Insufficient Permission!**`)
@@ -45,7 +44,7 @@ module.exports = {
             .setDescription(
                 `reason: ${reason}\n` +
                     `moderator: ${interaction.user.username}\n` +
-                    `duration: ${ms(duration)}`
+                    `duration: ${duration}`
             )
             .setThumbnail(user.displayAvatarURL())
         const timeout_db_fail = new Discord.MessageEmbed()
