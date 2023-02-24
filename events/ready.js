@@ -26,7 +26,7 @@ module.exports = {
             client.user.setStatus('online')
             client.user.setActivity(status, {
                 type: 'STREAMING',
-                url: 'https://pranshu05.thedev.id/bruh-u-clicked/Bruh%20U%20clicked.mp4',
+                url: 'https://youtu.be/VDjapkV9XGM',
             })
             index++
         }, 7000)
