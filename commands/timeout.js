@@ -28,7 +28,6 @@ module.exports = {
         const reason = interaction.options.getString('reason')
         const duration = interaction.options.getString('duration')
         const user = interaction.options.getUser('user')
-        const member = interaction.options.getMember('user')
         const modlog = await Modlog.findOne({ guild_id: interaction.guild.id })
         const insf_perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
@@ -95,7 +94,9 @@ module.exports = {
             }
             if (user.id === '754381104034742415')
                 return interaction.reply('You cannot timeout my developer')
-            member.timeout(ms(duration))
+            interaction.guild.members.fetch(user.id).then((member) => {
+                member.timeout(ms(duration)).catch((err) => console.error(err))
+            })
             interaction.reply({ embeds: [timeout_embed] })
             Timeouted.findOne(
                 { guild_id: interaction.guild.id },
