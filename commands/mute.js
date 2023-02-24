@@ -79,7 +79,7 @@ module.exports = {
                 return interaction.reply('You cannot mute me')
             if (!muteRole.editable)
                 return interaction.reply(
-                    'I cannot mute the member because they have roles above me or you!'
+                    'I cannot mute the member because the `Mute role` is above me or you!'
                 )
             if (
                 interaction.guild.members.cache
