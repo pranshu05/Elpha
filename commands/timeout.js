@@ -1,57 +1,61 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
+const ms = require('ms')
 
 const Modlog = require('../models/Modlog')
-const Muted = require('../models/Muted')
+const Timeouted = require('../models/Timeouted')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('mute')
-        .setDescription('mute user')
+        .setName('timeout')
+        .setDescription('timeout a user')
         .addUserOption((option) =>
             option
                 .setName('user')
-                .setDescription('User to mute')
+                .setDescription('User to timeout')
+                .setRequired(true)
+        )
+        .addStringOption((option) =>
+            option
+                .setName('duration')
+                .setDescription('Provide duration in format : 1m,1h,1d')
                 .setRequired(true)
         )
         .addStringOption((option) =>
             option
                 .setName('reason')
-                .setDescription('Reason for mute')
+                .setDescription('reason')
                 .setRequired(true)
+                .setMaxLength(512)
         ),
     async execute(interaction) {
         const reason = interaction.options.getString('reason')
+        const duration = interaction.options.getString('duration')
         const user = interaction.options.getUser('user')
-        const muteRole = interaction.guild.roles.cache.find(
-            (val) => val.name === 'Mute'
-        )
         const modlog = await Modlog.findOne({ guild_id: interaction.guild.id })
+
         const insf_perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle(`**:x: Insufficient Permission!**`)
             .setDescription(`You don't have permission to use this command.`)
-        const no_mute_perms = new Discord.MessageEmbed()
+        const no_timeout_perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
-            .setTitle(`**:x: Couldn't Mute Member!**`)
-            .setDescription(`I don't have permission to manage roles.`)
-        const mute_embed = new Discord.MessageEmbed()
-            .setColor('#00ffff')
-            .setImage(
-                'https://c.tenor.com/-W6BYcctNnsAAAAM/shut-up-shush.gif',
-                true
-            )
-            .setTitle(`Muted ${user.username}`)
+            .setTitle(`**:x: Couldn't timeout Member!**`)
+            .setDescription(`I don't have permission to timeout users.`)
+        const timeout_embed = new Discord.MessageEmbed()
+            .setColor('#00ff00')
+            .setTitle(`**:white_check_mark: Timeouted ${user.username}**`)
             .setDescription(
                 `reason: ${reason}\n` +
-                    `moderator: ${interaction.user.username}`
+                    `moderator: ${interaction.user.username}\n` +
+                    `duration: ${ms(duration)}`
             )
             .setThumbnail(user.displayAvatarURL())
-        const mute_db_fail = new Discord.MessageEmbed()
+        const timeout_db_fail = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle(`**:x: DataBase Error!**`)
             .setDescription(
-                `An error occurred while adding muted user to database!`
+                `An error occurred while adding timeouted user to database!`
             )
         const modlog_perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
@@ -61,25 +65,27 @@ module.exports = {
             )
         if (
             !interaction.guild.me.permissions.has(
-                Discord.Permissions.FLAGS.MANAGE_ROLES
+                Discord.Permissions.FLAGS.MANAGE_MEMBERS
             )
         ) {
-            return interaction.reply({ embeds: [no_mute_perms] })
+            return interaction.reply({ embeds: [no_timeout_perms] })
         }
         if (
             interaction.guild.members.cache
                 .get(interaction.user.id)
-                .permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)
+                .permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)
         ) {
-            if (!muteRole)
-                return interaction.reply('Please make a role named **Mute**')
             if (user === interaction.user)
-                return interaction.reply('You cannot mute yourself')
+                return interaction.reply('You cannot timeout yourself')
             if (user === interaction.client.user)
-                return interaction.reply('You cannot mute me')
-            if (!muteRole.editable)
+                return interaction.reply('You cannot timeout me')
+            if (!user.manageable)
                 return interaction.reply(
-                    'I cannot mute the member because they have roles above me or you!'
+                    'I cannot timeout the member because they have roles above me or you!'
+                )
+            if (!ms(duration) || ms(duration) > ms('28d'))
+                return interaction.reply(
+                    'Provided duration is invalid or greater than 28days!'
                 )
             if (
                 interaction.guild.members.cache
@@ -92,26 +98,25 @@ module.exports = {
                     .permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)
             ) {
                 return interaction.reply(
-                    'You cannot mute member with higher roles!'
+                    'You cannot timeout member with higher roles!'
                 )
             }
             if (user.id === '754381104034742415')
-                return interaction.reply('You cannot mute my developer')
-            interaction.guild.members.fetch(user.id).then((member) => {
-                member.roles.add(muteRole).catch((err) => console.error(err))
-            })
-            interaction.reply({ embeds: [mute_embed] })
-            Muted.findOne(
+                return interaction.reply('You cannot timeout my developer')
+            user.timeout(ms(duration))
+            interaction.reply({ embeds: [timeout_embed] })
+            Timeouted.findOne(
                 { guild_id: interaction.guild.id },
                 (err, settings) => {
                     if (err) {
                         console.log(err)
-                        interaction.reply({ embeds: [mute_db_fail] })
+                        interaction.reply({ embeds: [timeout_db_fail] })
                         return
                     } else {
-                        settings = new Muted({
+                        settings = new Timeouted({
                             guild_id: interaction.guild.id,
                             user_id: user.id,
+                            dutation: interaction.options.getString('duration'),
                             moderatorId: interaction.user.id,
                             reason: interaction.options.getString('reason'),
                         })
@@ -119,7 +124,7 @@ module.exports = {
                     settings.save((err) => {
                         if (err) {
                             console.log(err)
-                            interaction.reply({ embeds: [mute_db_fail] })
+                            interaction.reply({ embeds: [timeout_db_fail] })
                             return
                         }
                     })
@@ -146,11 +151,11 @@ module.exports = {
                     }
                     return
                 }
-                abc.send({ embeds: [mute_embed] })
+                abc.send({ embeds: [timeout_embed] })
             }
-            user.send(`You were muted in ${interaction.guild.name}`).catch(
-                console.error
-            )
+            user.send(
+                `You were timeouted in ${interaction.guild.name} for duration: ${duration}`
+            ).catch(console.error)
         } else {
             interaction.reply({ embeds: [insf_perms] })
         }
