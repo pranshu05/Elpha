@@ -61,7 +61,7 @@ module.exports = {
         if (
             interaction.guild.members.cache
                 .get(interaction.user.id)
-                .permissions.has(Discord.Permissions.FLAGS.MANAGE_MEMBERS)
+                .permissions.has(Discord.Permissions.FLAGS.MANAGE_MESSAGES)
         ) {
             if (user === interaction.user)
                 return interaction.reply('You cannot timeout yourself')
