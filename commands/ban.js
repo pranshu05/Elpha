@@ -70,10 +70,6 @@ module.exports = {
                 return interaction.reply(
                     '**You cannot ban owner of this server!**'
                 )
-            if (!member.bannable)
-                return interaction.reply(
-                    'I cannot ban the member because they have roles above me or you!'
-                )
             if (
                 interaction.guild.members.cache
                     .get(user.id)
