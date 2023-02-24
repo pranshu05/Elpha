@@ -3,7 +3,6 @@ const Discord = require('discord.js')
 const ms = require('ms')
 
 const Modlog = require('../models/Modlog')
-const Timeouted = require('../models/Timeouted')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -46,12 +45,6 @@ module.exports = {
                     `duration: ${duration}`
             )
             .setThumbnail(user.displayAvatarURL())
-        const timeout_db_fail = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle(`**:x: DataBase Error!**`)
-            .setDescription(
-                `An error occurred while adding timeouted user to database!`
-            )
         const modlog_perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle(`**:x: Message Error!**`)
@@ -98,31 +91,6 @@ module.exports = {
                 member.timeout(ms(duration)).catch((err) => console.error(err))
             })
             interaction.reply({ embeds: [timeout_embed] })
-            Timeouted.findOne(
-                { guild_id: interaction.guild.id },
-                (err, settings) => {
-                    if (err) {
-                        console.log(err)
-                        interaction.reply({ embeds: [timeout_db_fail] })
-                        return
-                    } else {
-                        settings = new Timeouted({
-                            guild_id: interaction.guild.id,
-                            user_id: user.id,
-                            dutation: interaction.options.getString('duration'),
-                            moderatorId: interaction.user.id,
-                            reason: interaction.options.getString('reason'),
-                        })
-                    }
-                    settings.save((err) => {
-                        if (err) {
-                            console.log(err)
-                            interaction.reply({ embeds: [timeout_db_fail] })
-                            return
-                        }
-                    })
-                }
-            )
             if (!modlog) {
                 return
             } else {
