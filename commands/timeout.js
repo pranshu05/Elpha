@@ -22,11 +22,7 @@ module.exports = {
                 .setRequired(true)
         )
         .addStringOption((option) =>
-            option
-                .setName('reason')
-                .setDescription('reason')
-                .setRequired(true)
-                .setMaxLength(512)
+            option.setName('reason').setDescription('reason').setRequired(true)
         ),
     async execute(interaction) {
         const reason = interaction.options.getString('reason')
