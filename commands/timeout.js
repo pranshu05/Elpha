@@ -75,10 +75,6 @@ module.exports = {
                 return interaction.reply('You cannot timeout yourself')
             if (user === interaction.client.user)
                 return interaction.reply('You cannot timeout me')
-            if (!user.manageable)
-                return interaction.reply(
-                    'I cannot timeout the member because they have roles above me or you!'
-                )
             if (!ms(duration) || ms(duration) > ms('28d'))
                 return interaction.reply(
                     'Provided duration is invalid or greater than 28days!'
