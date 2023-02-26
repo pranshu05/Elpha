@@ -1,25 +1,18 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 const got = require('got')
-
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('eat-or-pass')
-        .setDescription('send eat or pass poll'),
+    .setName('eat-or-pass')
+    .setDescription('send eat or pass poll'),
     async execute(interaction) {
-        if (
-            !interaction.guild.me
-                .permissionsIn(interaction.channel)
-                .has(Discord.Permissions.FLAGS.SEND_MESSAGES)
-        ) {
-            interaction.reply(
-                'I dont have permission to send message in this channel'
-            )
+        if(!interaction.guild.me.permissionsIn(interaction.channel).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
+            interaction.reply('I dont have permission to send message in this channel')
             return
         }
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/food/random/.json')
-            .then((response) => {
+            .then(response => {
                 const [list] = JSON.parse(response.body)
                 const [post] = list.data.children
                 const permalink = post.data.permalink
@@ -31,17 +24,12 @@ module.exports = {
                 embed.setTitle(`Eat or Pass`)
                 embed.setColor('#00FFFF')
                 embed.setImage(foodImage)
-                interaction
-                    .reply({ content: 'Just a sec!', ephemeral: true })
-                    .then(
-                        interaction.channel
-                            .send({ embeds: [embed] })
-                            .then((sentEmbed) => {
-                                sentEmbed.react('👍')
-                                sentEmbed.react('👎')
-                            })
-                    )
-            })
-            .catch(console.error)
-    },
+                interaction.reply({ content: 'Just a sec!', ephemeral: true }).then(
+		        interaction.channel.send({ embeds: [embed] }).then(sentEmbed => {
+                    sentEmbed.react("👍")
+                    sentEmbed.react("👎")
+                })
+		        )
+            }).catch(console.error)
+    }
 }

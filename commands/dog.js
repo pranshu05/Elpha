@@ -1,15 +1,14 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 const got = require('got')
-
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('dog')
-        .setDescription("Random dog's pic"),
+    .setName('dog')
+    .setDescription("Random dog's pic"),
     async execute(interaction) {
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/dogpics/random/.json')
-            .then((response) => {
+            .then(response => {
                 const [list] = JSON.parse(response.body)
                 const [post] = list.data.children
                 const permalink = post.data.permalink
@@ -23,7 +22,6 @@ module.exports = {
                 embed.setImage(dogImage)
                 embed.setFooter(`👍 ${dogUpvotes} 💬 ${dogNumComments}`)
                 interaction.reply({ embeds: [embed] })
-            })
-            .catch(console.error)
-    },
+            }).catch(console.error)
+    }
 }
