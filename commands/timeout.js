@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('timeout')
     .setDescription('timeout a user')
-    .addUserOption((option) =>moption.setName('user').setDescription('User to timeout').setRequired(true))
+    .addUserOption((option) => option.setName('user').setDescription('User to timeout').setRequired(true))
     .addStringOption((option) => option.setName('duration').setDescription('Provide duration in format : 1m,1h,1d').setRequired(true))
     .addStringOption((option) => option.setName('reason').setDescription('reason').setRequired(true)),
     async execute(interaction) {
