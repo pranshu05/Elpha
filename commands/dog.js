@@ -20,7 +20,7 @@ module.exports = {
                 embed.setTitle(`${dogTitle}`)
                 embed.setColor('#00FFFF')
                 embed.setImage(dogImage)
-                embed.setFooter(`👍 ${dogUpvotes} 💬 ${dogNumComments}`)
+                embed.setFooter({text: `👍 ${dogUpvotes} 💬 ${dogNumComments}`})
                 interaction.reply({ embeds: [embed] })
             }).catch(console.error)
     }

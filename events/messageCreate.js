@@ -4,7 +4,7 @@ const Discord = require('discord.js')
 const Gif = require('../models/Gif')
 module.exports = {
     name: 'messageCreate',
-    async execute(message, client){
+    async execute(message){
         const prefix = 'elp'
         const msg = message
         const args = message.content.slice(prefix.length).trim().split(' ')

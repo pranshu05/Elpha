@@ -44,7 +44,7 @@ module.exports = {
 		{ name: 'Permissions', value: "`"+`${member.permissions.toArray()}`+"`"},
 	    )
 	    .setTimestamp()
-        .setFooter(`Info of ${user.username}#${user.discriminator} requested by ${interaction.user.username}`)
+        .setFooter({text: `Info of ${user.username}#${user.discriminator} requested by ${interaction.user.username}`})
         interaction.reply({ embeds: [embed] })
     }
 }

@@ -2,7 +2,6 @@ require('dotenv').config()
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 const got = require('got')
-const fs = require('fs')
 const fetch = require('node-fetch')
 const path = require('path')
 module.exports = {

@@ -21,7 +21,7 @@ module.exports = {
         .setColor('#00FFFF')
         .setTitle('Ratemachine PP')
         .setDescription(`${interaction.member} has pp of size ${pp[index]}`)
-        .setFooter(`measured for ${interaction.user.username}`)
+        .setFooter({text: `measured for ${interaction.user.username}`})
         interaction.reply({ embeds: [embed] })
     }
 }

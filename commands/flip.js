@@ -13,7 +13,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
         .setTitle(flip[index])
-        .setFooter(`Flipped for ${interaction.user.username}`)
+        .setFooter({text: `Flipped for ${interaction.user.username}`})
         interaction.reply({ embeds: [embed] })
     }
 }

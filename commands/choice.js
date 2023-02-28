@@ -14,9 +14,11 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setColor('00FFFF')
         .setTitle('I choose' + ' ' + choose[index])
-        .addField('First choice', '' + interaction.options.getString('1st') )
-        .addField(' Second choice ','' +  interaction.options.getString('2nd'))
-        .setFooter(`Choosed for ${interaction.user.username}`)
+        .addFields(
+            {name: 'First choice', value: `${interaction.options.getString('1st')}`},
+            {name:'Second choice' ,value: `${interaction.options.getString('2nd')}`}
+        )
+        .setFooter({text: `Choosed for ${interaction.user.username}`})
         interaction.reply({embeds: [embed]})
     }
 }

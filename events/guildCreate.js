@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js')
 module.exports = {
 	name: 'guildCreate',
-	async execute(guild,client) {
+	async execute(guild) {
 		const channel = guild.channels.cache.find(channel => channel.type === 'GUILD_TEXT' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
 		const repo = new MessageActionRow()
 			.addComponents(

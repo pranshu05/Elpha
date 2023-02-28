@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
-const  Interaction  = require('discord.js')
 const Discord = require('discord.js')
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,7 +25,7 @@ module.exports = {
                 {name: 'Evaluated', value: `\`\`\`${evaled}\`\`\``},
             )
             .setTimestamp()
-            .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
+            .setFooter({text: `${interaction.client.user.username}`,iconURL: `${interaction.client.user.displayAvatarURL()}`})
             interaction.reply({embeds: [eval_embed]})
         }catch(e){
             if (e.length > 1024) e = `The error is too big to display!`
@@ -34,7 +33,7 @@ module.exports = {
             .setColor('#FF0000')
             .setTitle('An Error occured while evaluating the code!')
             .setDescription(`\`ERROR\` \`\`\`xl\n${e}\n\`\`\``)
-            .setFooter(interaction.client.user.username, interaction.client.user.displayAvatarURL())
+            .setFooter({text: `${interaction.client.user.username}`,iconURL: `${interaction.client.user.displayAvatarURL()}`})
             interaction.reply({embeds: [eval_err]})
         }
     }
