@@ -17,7 +17,6 @@ module.exports = {
 			.setDescription(`${member.user} has joined the server! We hope you enjoy your stay!`)
 			.setThumbnail(member.user.displayAvatarURL())
 			.setTimestamp()
-			.setFooter(`membercount : ${member.guild.members.cache.filter(member => !member.user.bot).size}`)
 			if(!member.guild.me.permissionsIn(guildSettings.welcome_channel_id).has(Discord.Permissions.FLAGS.SEND_MESSAGES)){
 				return console.log('Couldnt send msg')
 			}
