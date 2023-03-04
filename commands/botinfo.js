@@ -7,16 +7,15 @@ fs.readdir(dir, (_err, files) => {
 })
 const Discord = require('discord.js')
 const pkg = require('../package.json')
-const os = require('os')
-let days = Math.floor(client.uptime / 86400000 )
-let hours = Math.floor(client.uptime / 3600000 ) % 24 
-let minutes = Math.floor(client.uptime / 60000) % 60
-let seconds = Math.floor(client.uptime / 1000) % 60
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('botinfo')
     .setDescription('Basic Information About Elpha'),
         async execute(interaction) {
+        let days = Math.floor(interaction.client.uptime / 86400000 )
+        let hours = Math.floor(interaction.client.uptime / 3600000 ) % 24 
+        let minutes = Math.floor(interaction.client.uptime / 60000) % 60
+        let seconds = Math.floor(interaction.client.uptime / 1000) % 60
         let totalPeople = 0
         totalPeople = interaction.client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0) }, 0)
         const embed = new Discord.MessageEmbed()
