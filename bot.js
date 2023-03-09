@@ -38,7 +38,7 @@ for(const file of eventFiles){
 }
 client.on('guildCreate' , guild => {   
     const guild_embed = new Discord.MessageEmbed()
-    .setColor('FFFF00')
+    .setColor('00FFFF')
     .setTitle('New Guild!')
     .setDescription(`I have joined the server ${guild.name}`)
     .addFields(
@@ -54,7 +54,7 @@ client.on('guildCreate' , guild => {
 client.on('guildDelete' , guild => {
     if(guild.available){
         const embed = new Discord.MessageEmbed()
-        .setColor('FFFF00')
+        .setColor('00FFFF')
         .setTitle('Guild Left')
         .setDescription(`I left the server ${guild.name}`)
         .addFields(

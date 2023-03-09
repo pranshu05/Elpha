@@ -26,7 +26,7 @@ module.exports = {
             interaction.reply({ embeds: [embed] })
             } 
             catch(err) {
-              interaction.reply("Unable To Get the data of Given location's location.")
+              interaction.reply("Unable To Get the data of Given location's weather.")
             }
         })
     }
