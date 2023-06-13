@@ -5,8 +5,8 @@ const General = require('../models/General')
 const Modlog = require('../models/Modlog')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName('removegeneralchannel')
-	.setDescription('Remove the general message channel'),
+	.setName('removechatbot')
+	.setDescription('Remove the chatbot message channel'),
 	async execute(interaction) {
 		const insf_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -14,7 +14,7 @@ module.exports = {
         .setDescription(`You don't have permission to use this command.`)
 	    const gen_rem_embed = new Discord.MessageEmbed()
 	    .setColor('#00ff00')
-	    .setTitle(`**:white_check_mark: Removed General Channel**`)
+	    .setTitle(`**:white_check_mark: Removed chatbot Channel**`)
 	    const gen_rem_db_fail = new Discord.MessageEmbed()
 	    .setColor('#FF0000')
 	    .setTitle(`**:x: DataBase Error!**`)
@@ -30,7 +30,7 @@ module.exports = {
 			return
 		} 
 		if(channel.length === 0){
-			interaction.reply(`There isn't any general channel in this server!`)
+			interaction.reply(`There isn't any chatbot channel in this server!`)
 			return
 		}
 		General.deleteOne({ guild_id: interaction.guild.id }, (err, settings) => {
