@@ -5,9 +5,9 @@ const General = require('../models/General')
 const Modlog = require('../models/Modlog')
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName('setgeneralchannel')
-	.setDescription('Set the general message channel')
-	.addChannelOption(option => option.setName('general').setDescription('The channel to set as the general channel').setRequired(true)),
+	.setName('setchatbot')
+	.setDescription('Set the chatbot message channel')
+	.addChannelOption(option => option.setName('general').setDescription('The channel to set as the chatbot channel').setRequired(true)),
 	async execute(interaction) {
 		const msg_perms = new Discord.MessageEmbed()
         .setColor('#FF0000')
@@ -23,7 +23,7 @@ module.exports = {
         .setDescription(`This command is only applicable for text channels`)
 		const gen_embed = new Discord.MessageEmbed()
 		.setColor('#00ff00')
-		.setTitle(`**:white_check_mark: General channel has been set to ${interaction.options.getChannel('general')}**`)
+		.setTitle(`**:white_check_mark: Chatbot channel has been set to ${interaction.options.getChannel('general')}**`)
 		const gen_db_fail = new Discord.MessageEmbed()
 		.setColor('#FF0000')
 		.setTitle(`**:x: DataBase Error!**`)
