@@ -3,9 +3,13 @@ module.exports = {
     const intlogemb = {
       title: "Interaction Log",
       thumbnail: {
-        url: "https://imgur.com/d4yRAUD",
+        url: "https://i.imgur.com/d4yRAUD.png",
       },
       fields: [
+        {
+          name: "Command:",
+          value: `${interaction.commandName} (${interaction.id})`
+        },
         {
           name: "User:",
           value: `${interaction.user} (${interaction.user.id})`,
