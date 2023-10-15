@@ -3,7 +3,6 @@
 <h1>Elpha! The open-source discord bot</h1>
 <br />
 
-  
 ![Elpha](https://user-images.githubusercontent.com/70943732/213678287-d3c9a9c9-4fa5-44e6-99d7-0976d91cdad6.png)
 
 [![Discord](https://img.shields.io/discord/754381521854398595?color=white&label=DISCORD&logo=discord)](https://discord.gg/CVyx9qyYPF)
@@ -33,11 +32,11 @@ For this project, we will be using [discord.js](https://discord.js.org/) as our 
 
 To test and communicate with the community, please join the [Discord Server](https://discord.gg/N9DhCWk2yR). Once you've forked and cloned this repository, it's crucial to go through the following sections:
 
-- **Installation and Preparations**: Get your development environment set up by following the steps outlined in [Installation and Preparations](https://discordjs.guide/preparations).
+-   **Installation and Preparations**: Get your development environment set up by following the steps outlined in [Installation and Preparations](https://discordjs.guide/preparations).
 
-- **Creating Your Bot**: Learn how to create your Discord bot by following the guidelines in [Creating your bot](https://discordjs.guide/creating-your-bot). After creating your bot please send bot's **client id** in the [Discord Server](https://discord.gg/N9DhCWk2yR).
+-   **Creating Your Bot**: Learn how to create your Discord bot by following the guidelines in [Creating your bot](https://discordjs.guide/creating-your-bot). After creating your bot please send bot's **client id** in the [Discord Server](https://discord.gg/N9DhCWk2yR).
 
-- **Slash Commands**: Understand how to implement Slash Commands, a powerful feature in Discord bots, by referring to [Slash Commands](https://discordjs.guide/slash-commands).
+-   **Slash Commands**: Understand how to implement Slash Commands, a powerful feature in Discord bots, by referring to [Slash Commands](https://discordjs.guide/slash-commands).
 
 Please note that the [old branch](https://github.com/pranshu05/Elpha/tree/old) of this repository contains files of the bot created in discord.js v13. In SLoP3.0, we are migrating this bot to discord.js v14, so it's crucial to review the changes between the two versions. You can find a comprehensive list of these changes in [A list of the changes from discord.js v13 to v14](https://discordjs.guide/additional-info/changes-in-v14.html).
 
@@ -70,11 +69,13 @@ npm start
 If you are developing the bot and want automatic code reloading during changes, you can use nodemon. Here's how to set it up:
 
 Install `nodemon` globally by running:
+
 ```sh
 npm install -g nodemon
 ```
 
 Add a `dev` script to your package.json file, like this:
+
 ```json
  "scripts": {
     "start": "node src/bot.js",
@@ -83,9 +84,11 @@ Add a `dev` script to your package.json file, like this:
 ```
 
 Now, you can run the bot in development mode using the following command:
+
 ```sh
 npm run dev
 ```
+
 This will automatically restart the bot whenever you make changes to the source code, making your development workflow more efficient.
 
 ## .env File

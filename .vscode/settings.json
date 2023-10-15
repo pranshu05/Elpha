@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": "D:\\GitHub Repos\\Elpha2.0\\pretconfig.json"
+}

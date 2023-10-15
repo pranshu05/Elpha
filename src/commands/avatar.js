@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("discord.js");
-const { EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder } = require('discord.js')
+const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("avatar")
-        .setDescription("Display the avatar of the user")
+        .setName('avatar')
+        .setDescription('Display the avatar of the user')
         .addUserOption((option) =>
             option
                 .setName(`user`)
@@ -13,22 +13,23 @@ module.exports = {
         ),
     async execute(interaction) {
         const userMention =
-            interaction.options.getUser(`user`) || interaction.user;
+            interaction.options.getUser(`user`) || interaction.user
         const avatar = userMention.displayAvatarURL({
             size: 1024,
-            extension: "png",
-        });
+            extension: 'png',
+        })
 
         const embed = new EmbedBuilder()
-            .setColor("#00ffff")
+            .setColor('#00ffff')
             .setAuthor({
                 name: `${userMention.tag}'s avatar`,
                 iconURL: `${userMention.displayAvatarURL()}`,
+                url: `https://discord.com/users/${userMention.id}`
             })
             .setTitle(`Download`)
             .setURL(avatar)
-            .setImage(avatar);
+            .setImage(avatar)
 
-        const message = await interaction.reply({ embeds: [embed] });
+        const message = await interaction.reply({ embeds: [embed] })
     },
-};
+}

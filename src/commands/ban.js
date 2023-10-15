@@ -2,7 +2,7 @@ const {
     SlashCommandBuilder,
     PermissionFlagsBits,
     Interaction,
-} = require("discord.js");
+} = require('discord.js')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,11 +26,11 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
-        const targetUserId = interaction.options.getUser(`target-user`);
+        const targetUserId = interaction.options.getUser(`target-user`)
         const reason =
-            interaction.options.getString(`reason`) || "No reason provided";
+            interaction.options.getString(`reason`) || 'No reason provided'
 
-        await interaction.deferReply();
+        await interaction.deferReply()
 
         // Checking of bot has permissions to ban members
         if (
@@ -39,26 +39,26 @@ module.exports = {
             )
         ) {
             await interaction.editReply({
-                content: "⚠️ I do not have the permissions to ban members",
-            });
-            return;
+                content: '⚠️ I do not have the permissions to ban members',
+            })
+            return
         }
 
         // Check if user has already left the server
-        const targetUser = await interaction.guild.members.fetch(targetUserId);
+        const targetUser = await interaction.guild.members.fetch(targetUserId)
         if (!targetUser) {
             await interaction.editReply({
-                content: "⚠️ That user is not present in this server!",
-            });
-            return;
+                content: '⚠️ That user is not present in this server!',
+            })
+            return
         }
 
         // Check if user is server owner
         if (targetUser.id === interaction.guild.ownerId) {
             await interaction.editReply({
-                content: "⚠️ Cannot ban the server owner!",
-            });
-            return;
+                content: '⚠️ Cannot ban the server owner!',
+            })
+            return
         }
 
         // Checking if target is an admin
@@ -70,15 +70,15 @@ module.exports = {
             ])
         ) {
             interaction.editReply({
-                content: "⚠️ Cannot ban an admin/mod!",
-            });
-            return;
+                content: '⚠️ Cannot ban an admin/mod!',
+            })
+            return
         }
 
         // Fetching the highest role positions of all 3
-        const targetUserRP = targetUser.roles.highest.position;
-        const requestUserRP = interaction.member.roles.highest.position;
-        const botRP = interaction.guild.members.me.roles.highest.position;
+        const targetUserRP = targetUser.roles.highest.position
+        const requestUserRP = interaction.member.roles.highest.position
+        const botRP = interaction.guild.members.me.roles.highest.position
 
         // Check if target user has a higher role than the requested user
         if (
@@ -86,30 +86,30 @@ module.exports = {
             targetUserRP >= requestUserRP
         ) {
             await interaction.editReply({
-                content: "⚠️ Cannot ban a member with a higher role than you",
-            });
-            return;
+                content: '⚠️ Cannot ban a member with a higher role than you',
+            })
+            return
         }
 
         // Check if target user has higher role than bot
         if (targetUserRP >= botRP) {
             await interaction.editReply({
-                content: "⚠️ Cannot ban a member with a higher role than me!",
-            });
-            return;
+                content: '⚠️ Cannot ban a member with a higher role than me!',
+            })
+            return
         }
 
         // All conditions have been checked, ban the user
         try {
-            await targetUser.ban({ reason });
+            await targetUser.ban({ reason })
             await interaction.editReply(
                 `🟢️ User ${targetUser} was banned\nReason: ${reason}`
-            );
+            )
         } catch (err) {
             await interaction.editReply({
                 content:
-                    "⚠️ Some unknown error occured, could not ban that member!",
-            });
+                    '⚠️ Some unknown error occured, could not ban that member!',
+            })
         }
     },
-};
+}
