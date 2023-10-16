@@ -128,7 +128,7 @@ By adding `.env` to your `.gitignore`, you ensure that this sensitive file is no
 # 🤝 Contributors
 
 <a href="https://github.com/pranshu05/elpha/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=pranshu05/Elpha" />
+  <img src="https://contrib.rocks/image?repo=pranshu05/elpha" />
 </a>
 
 # 📈 Analytics
