@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,7 +26,7 @@ module.exports = {
         const choose = [firstChoice, secondChoice];
         const chosenIndex = Math.floor(Math.random() * choose.length);
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor('00FFFF')
             .setTitle('I choose ' + choices[chosenIndex])
             .addFields(
