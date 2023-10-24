@@ -1,8 +1,6 @@
-const {
-    SlashCommandBuilder,
-    PermissionFlagsBits,
-    Interaction,
-} = require('discord.js')
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { warnEmbed } = require('../utils/warnEmbed')
+const { errEmbed } = require('../utils/errEmbed')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -21,16 +19,16 @@ module.exports = {
                 .setDescription(`The reason for ban`)
                 .setRequired(false)
         ),
-    /**
-     *
-     * @param {Interaction} interaction
-     */
+
     async execute(interaction) {
         const targetUserId = interaction.options.getUser(`target-user`)
         const reason =
             interaction.options.getString(`reason`) || 'No reason provided'
 
         await interaction.deferReply()
+
+        const warn = warnEmbed()
+        const err = errEmbed()
 
         // Checking of bot has permissions to ban members
         if (
@@ -39,7 +37,11 @@ module.exports = {
             )
         ) {
             await interaction.editReply({
-                content: '⚠️ I do not have the permissions to ban members',
+                embeds: [
+                    warn.setDescription(
+                        'I do not have the permissions to ban members'
+                    ),
+                ],
             })
             return
         }
@@ -48,7 +50,9 @@ module.exports = {
         const targetUser = await interaction.guild.members.fetch(targetUserId)
         if (!targetUser) {
             await interaction.editReply({
-                content: '⚠️ That user is not present in this server!',
+                embeds: [
+                    warn.setDescription('User has already left the server!'),
+                ],
             })
             return
         }
@@ -56,7 +60,7 @@ module.exports = {
         // Check if user is server owner
         if (targetUser.id === interaction.guild.ownerId) {
             await interaction.editReply({
-                content: '⚠️ Cannot ban the server owner!',
+                embeds: [warn.setDescription('Cannot ban the server owner!')],
             })
             return
         }
@@ -70,7 +74,7 @@ module.exports = {
             ])
         ) {
             interaction.editReply({
-                content: '⚠️ Cannot ban an admin/mod!',
+                embeds: [warn.setDescription('Cannot ban an admin/mod!')],
             })
             return
         }
@@ -86,7 +90,11 @@ module.exports = {
             targetUserRP >= requestUserRP
         ) {
             await interaction.editReply({
-                content: '⚠️ Cannot ban a member with a higher role than you',
+                embeds: [
+                    warn.setDescription(
+                        'Cannot ban a member with a higher role than you'
+                    ),
+                ],
             })
             return
         }
@@ -94,7 +102,11 @@ module.exports = {
         // Check if target user has higher role than bot
         if (targetUserRP >= botRP) {
             await interaction.editReply({
-                content: '⚠️ Cannot ban a member with a higher role than me!',
+                embeds: [
+                    warn.setDescription(
+                        'Cannot ban a member with a higher role than me!'
+                    ),
+                ],
             })
             return
         }
@@ -107,8 +119,11 @@ module.exports = {
             )
         } catch (err) {
             await interaction.editReply({
-                content:
-                    '⚠️ Some unknown error occured, could not ban that member!',
+                embeds: [
+                    err.setDescription(
+                        'Some unknown error occured, could not ban that member!'
+                    ),
+                ],
             })
         }
     },

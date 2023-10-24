@@ -8,20 +8,20 @@ module.exports = {
             fields: [
                 {
                     name: 'Command:',
-                    value: `${interaction.commandName} (${interaction.id})`,
+                    value: `**${interaction.commandName}** \`[${interaction.id}]\``,
                 },
                 {
                     name: 'User:',
-                    value: `${interaction.user} (${interaction.user.id})`,
+                    value: `**${interaction.user}** \`[${interaction.user.id})]\``,
                 },
                 {
                     name: 'Server:',
-                    value: `${interaction.guild.name} (${interaction.guild.id})`,
+                    value: `**${interaction.guild.name}** \`[${interaction.guild.id})]\``,
                     inline: false,
                 },
                 {
                     name: 'Channel:',
-                    value: `${interaction.channel.name} (${interaction.channel.id})`,
+                    value: `**${interaction.channel.name}** \`[${interaction.channel.id})]\``,
                     inline: false,
                 },
             ],

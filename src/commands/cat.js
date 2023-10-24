@@ -14,17 +14,13 @@ module.exports = {
             .then((response) => {
                 const [list] = response.data
                 const [post] = list.data.children
-                const permalink = post.data.permalink
-                const catUrl = `https://reddit.com${permalink}`
                 const catImage = post.data.url
-                const catTitle = post.data.title
                 const catUpvotes = post.data.ups
-                const catNumComments = post.data.num_comments
                 embed.setTitle(`Download`)
+                embed.setDescription(`:heart: **${catUpvotes}**`)
                 embed.setURL(catImage)
                 embed.setColor('#00FFFF')
                 embed.setImage(catImage)
-                //embed.setFooter(`👍 ${catUpvotes} | 💬 ${catNumComments}`)
                 interaction.reply({ embeds: [embed] })
             })
             .catch(console.error)

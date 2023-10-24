@@ -24,7 +24,7 @@ module.exports = {
             .setAuthor({
                 name: `${userMention.tag}'s avatar`,
                 iconURL: `${userMention.displayAvatarURL()}`,
-                url: `https://discord.com/users/${userMention.id}`
+                url: `https://discord.com/users/${userMention.id}`,
             })
             .setTitle(`Download`)
             .setURL(avatar)
