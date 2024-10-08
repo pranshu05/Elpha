@@ -22,7 +22,7 @@
 
 ### Elpha is an open source discord bot which developed from discord.js and based on slash commands. Contribute to this open-source repo to make the bot more powerful.
 
-# Getting Started with SLoP3.0
+# Getting Started with SLoP4.0
 
 ## Before You Begin...
 
@@ -130,10 +130,6 @@ By adding `.env` to your `.gitignore`, you ensure that this sensitive file is no
 <a href="https://github.com/pranshu05/elpha/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=pranshu05/elpha" />
 </a>
-
-# 📈 Analytics
-
-> [![Status](https://repobeats.axiom.co/api/embed/06ce5b60cff43fcfea8658562813c176fb527bce.svg 'Analytics image')](https://github.com/pranshu05/elpha/pulse)
 
 # 📝 License
 
